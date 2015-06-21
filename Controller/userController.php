@@ -9,6 +9,11 @@ function connexion () {
 	require ('View/connexion.tpl');
 }
 
+function inscription() {
+	
+	require ('View/inscription.tpl');
+}
+
 function ajax_connect () {
 	//Récupération des variables saisies dans le formulaire-----------------------------
 	$email = isset($_POST['email'])?$_POST['email']:"";

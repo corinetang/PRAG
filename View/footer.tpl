@@ -1,7 +1,7 @@
-		<footer>
+		<div id=footer>
 			<ul>
-			<li>© Copyright 2015 SIPHIP.org</li>
+				<li> © Copyright 2015 SIPHIP.org</li>
 			</ul> 
-		<footer>
+		</div>
 	</body>
 </html>
