@@ -1,4 +1,5 @@
-﻿<html>
+﻿<!DOCTYPE HTML>
+<html>
 <head>
 	<link rel="stylesheet" type="text/css" 
                        href="View/css/connexion.css " /> 

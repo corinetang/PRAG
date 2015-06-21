@@ -1,7 +1,6 @@
 
 	
 <div> 
-	
 	<div  id="dialog-form"  title="Connexion">
 	<fieldset>
 		<form id="f1" method="post" action="index.php?control=user&action=ajax_connect">
@@ -19,7 +18,3 @@
 	</fieldset>
 	</div>
 </div>
-
-
-</body>
-</html>
