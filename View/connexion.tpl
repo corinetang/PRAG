@@ -1,5 +1,4 @@
 
-	
 <div> 
 	<div  id="dialog-form"  title="Connexion">
 	<fieldset>
@@ -11,8 +10,8 @@
 			<label for="password">Password</label>
 			<input type="password" name="pass" value="<?php echo $pass ?>" class="text ui-widget-content ui-corner-all" placeholder="Tapez votre mot de passe">
 			<br><br>
-			<input type="submit" value="Connexion">
-			<input type="submit" value="Inscription">
+			<input type="submit" value="Connexion" name="Connexion">
+			<input type="submit" value="Inscription" name="Inscription">
 			<h5></h5>
 		</form>
 	</fieldset>

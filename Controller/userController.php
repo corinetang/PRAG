@@ -22,11 +22,15 @@ function ajax_connect () {
 	require ('Model/userModel.php');
 
 	//Controle des infos saisies--------------------------------------------------
-	if (authentification($email,$pass)) {
-		$_SESSION['utilisateur']= $email;	
-
-		echo ($_SESSION['utilisateur']);
+	if isset($_POST['Connexion']){
+		if (authentification($email,$pass)) {
+			$_SESSION['utilisateur']= $email;	
+			echo ($_SESSION['utilisateur']);
 		}
-	else {echo("KO");}
+		else {echo("KO");}
+	}
+	elseif(isset($_POST['Inscription'])) {
+		inscription();
+	} 
 }
 ?>
