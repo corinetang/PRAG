@@ -30,7 +30,7 @@ function ajax_connect () {
 		else {echo("KO");}
 		}
 	}
-	elseif(isset($_POST['Inscription'])) {
+	else {
 		inscription();
 	} 
 }
