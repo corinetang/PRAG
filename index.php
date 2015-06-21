@@ -7,4 +7,6 @@ $action= isset($_GET['action'])?$_GET['action']:'connexion';
 
 require ('Controller/' .  $control . 'Controller.php');
 $action();
+
+require("/View/footer.tpl");
 ?>
