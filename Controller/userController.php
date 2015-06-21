@@ -1,17 +1,24 @@
 
 <?php
+
+
 function connexion () {
-	$email = isset($_POST['email'])?$_POST['email']:"";
-	$pass = isset($_POST['pass'])?$_POST['pass']:"";
+	
 	$presentation = "";
 
 	require ('View/connexion.tpl');
 }
 
 function ajax_connect () {
+	//Récupération des variables saisies dans le formulaire-----------------------------
+	$email = isset($_POST['email'])?$_POST['email']:"";
+	$pass = isset($_POST['pass'])?$_POST['pass']:"";
+
 	require ('Model/userModel.php');
-	if ($utilisateur = connexion_bd()) {
-		$_SESSION['utilisateur']= $utilisateur;	
+
+	//Controle des infos saisies--------------------------------------------------
+	if (authentification($email,$pass)) {
+		$_SESSION['utilisateur']= $email;	
 
 		echo ($_SESSION['utilisateur']);
 		}

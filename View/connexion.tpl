@@ -25,6 +25,7 @@
 			<label for="password">Password</label>
 			<input type="password" name="pass" value="<?php echo $pass ?>" class="text ui-widget-content ui-corner-all" placeholder="Tapez votre mot de passe">
 			<br><br>
+			<input type="submit" value="Valider">
 			<h5></h5>
 		</form>
 	</fieldset>
