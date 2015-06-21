@@ -28,6 +28,7 @@ function ajax_connect () {
 			echo ($_SESSION['utilisateur']);
 		}
 		else {echo("KO");}
+		}
 	}
 	elseif(isset($_POST['Inscription'])) {
 		inscription();
