@@ -73,11 +73,11 @@
 	#=======================================================================================================
 
 	function authentification($login, $mdp){
-		if(!verif_nom($login))
+		/*if(!verif_nom($login))
 			return false;
 
 		if(!verif_psswd($mdp))
-			return false;
+			return false;*/
 		
 		if(!authentification_BD($login, $mdp))
 			return false;
@@ -90,26 +90,27 @@
 	
 	/*** INSCRIPTION ***/
 
-	function ajout_BD($nom, $prenom, $email, $sexe, $login, $mdp, $naiss, $niveau_etude, $ville, $CP, $pays){
-	    $add = $bd->prepare("INSERT INTO CLIENT(mdp_user, nom_user, prenom_user, email_user,niveau_etude) 
-							VALUES(:mdp, :nom, :prenom, :email, :niveau_etude ");
+	function ajout_BD($nom, $prenom, $email, $mdp, $nbSemestre_user){
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("INSERT INTO user(mdp_user, nom_user, prenom_user, email_user,nbSemestre_user) 
+							VALUES(:mdp, :nom, :prenom, :email, :nbSemestre_user)");
 	    $add->bindParam(':mdp', $mdp);
 		$add->bindParam(':nom', $nom);
 	    $add->bindParam(':prenom', $prenom);
 		$add->bindParam(':email', $email);
-	    $add->bindParam(':niveau_etude', $niveau_etude);
+	    $add->bindParam(':nbSemestre_user', $nbSemestre_user);
 
 	    return ($add->execute());
 	}#End ajout_BD
 
 	#=======================================================================================================
 
-	function ajout($nom, $prenom, $email, $sexe, $login, $mdp, $naiss, $niveau_etude, $ville, $CP, $pays){
-		if(!verif_nom($nom))
+	function ajout($nom, $prenom, $email, $mdp, $nbSemestre_user){
+		/*if(!verif_nom($nom))
 			return false;
 			
 		if(!verif_nom($prenom))
-			return false;
+			return false;*/
 			
 		if(!verif_email($email))
 			return false;	
@@ -117,7 +118,7 @@
 		if(!verif_psswd($mdp))
 			return false;
 
-		return ajout_BD($nom, $prenom, $email, $sexe, $login, $mdp, $naiss, $niveau_etude, $ville, $CP, $pays);
+		return ajout_BD($nom, $prenom, $email, $mdp, $nbSemestre_user);
 	}#End ajout
 
 	#=======================================================================================================

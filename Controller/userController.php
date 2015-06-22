@@ -31,7 +31,7 @@ function ajax_connect () {
 		else {echo("KO");}
 	}
 	else {
-		inscription();
+		ajout('','',$email,$pass,'');
 	} 
 }
 ?>
