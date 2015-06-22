@@ -9,8 +9,8 @@
 			<input type="password" name="pass" value="<?php echo $pass ?>" class="text ui-widget-content ui-corner-all" placeholder="Mot de passe">
 			<br><br>
 			<input type="submit" value="Connexion" name="Connexion">
-			<a href="index.php?control=userController&action=inscription">Inscription</a>
-			<a href="index.php?control=userController&action=recuperation">Mot de passe oubli&eacute ?</a>
+			<a href="index.php?control=user&action=inscription">Inscription</a>
+			<a href="index.php?control=user&action=recuperation">Mot de passe oubli&eacute ?</a>
 			<h5></h5>
 		</form>
 	</fieldset>

@@ -15,6 +15,10 @@ function inscription() {
 	require ('View/inscription.tpl');
 }
 
+function recuperation() {
+	$email = isset($_POST['email'])?$_POST['email']:"";
+	require ('View/recuperation.tpl');
+}
 function ajax_connect () {
 	//Récupération des variables saisies dans le formulaire-----------------------------
 	$email = isset($_POST['email'])?$_POST['email']:"";
