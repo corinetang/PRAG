@@ -24,116 +24,169 @@ USE `siphif`;
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `attribution`
---
 
-CREATE TABLE IF NOT EXISTS `attribution` (
-  `id_attribution` int(11) NOT NULL AUTO_INCREMENT,
-  `evaluation_attribution` varchar(1000) NOT NULL,
-  `id_stage` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  PRIMARY KEY (`id_attribution`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#------------------------------------------------------------
+# Table: Groupe
+#------------------------------------------------------------
 
--- --------------------------------------------------------
+CREATE TABLE Groupe(
+        id_Groupe int (11) Auto_increment  NOT NULL ,
+        libelle   Varchar (25) ,
+        PRIMARY KEY (id_Groupe )
+)ENGINE=InnoDB;
 
---
--- Structure de la table `choix`
---
 
-CREATE TABLE IF NOT EXISTS `choix` (
-  `id_choix` int(11) NOT NULL AUTO_INCREMENT,
-  `rang_choix` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_stage` int(11) NOT NULL,
-  PRIMARY KEY (`id_choix`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#------------------------------------------------------------
+# Table: Evaluation
+#------------------------------------------------------------
 
--- --------------------------------------------------------
+CREATE TABLE Evaluation(
+        id_Evaluation int (11) Auto_increment  NOT NULL ,
+        Valide        Bool ,
+        id_Stages     Int ,
+        PRIMARY KEY (id_Evaluation )
+)ENGINE=InnoDB;
 
---
--- Structure de la table `etablissement`
---
 
-CREATE TABLE IF NOT EXISTS `etablissement` (
-  `id_etablissement` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_etablissement` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_etablissement`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#------------------------------------------------------------
+# Table: User
+#------------------------------------------------------------
 
--- --------------------------------------------------------
+CREATE TABLE User(
+        id_user           int (11) Auto_increment  NOT NULL ,
+        Identifiant       Varchar (25) ,
+        nom               Varchar (25) ,
+        prenom            Varchar (25) ,
+        mdp               Varchar (25) ,
+        NbSemestre        Int ,
+        moyenneClassement Int ,
+        dateDeNaissance   Date ,
+        RangClassement    Int ,
+        id_Groupe         Int ,
+        id_Choix          Int ,
+        id_Filiere        Int ,
+        PRIMARY KEY (id_user )
+)ENGINE=InnoDB;
 
---
--- Structure de la table `filiere`
---
 
-CREATE TABLE IF NOT EXISTS `filiere` (
-  `id_filiere` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_filiere` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_filiere`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#------------------------------------------------------------
+# Table: Stages
+#------------------------------------------------------------
 
--- --------------------------------------------------------
+CREATE TABLE Stages(
+        id_Stages   int (11) Auto_increment  NOT NULL ,
+        NbPoste     Int ,
+        maitreStage Varchar (25) ,
+        dateDebut   Date ,
+        dateFin     Date ,
+        id_Filiere  Int ,
+        id_Service  Int ,
+        PRIMARY KEY (id_Stages )
+)ENGINE=InnoDB;
 
---
--- Structure de la table `groupe`
---
 
-CREATE TABLE IF NOT EXISTS `groupe` (
-  `id_groupe` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle_groupe` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_groupe`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#------------------------------------------------------------
+# Table: Choix
+#------------------------------------------------------------
 
--- --------------------------------------------------------
+CREATE TABLE Choix(
+        id_Choix   int (11) Auto_increment  NOT NULL ,
+        estAccepte Bool ,
+        rang       Int ,
+        PRIMARY KEY (id_Choix )
+)ENGINE=InnoDB;
 
---
--- Structure de la table `service`
---
 
-CREATE TABLE IF NOT EXISTS `service` (
-  `id_service` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_service` varchar(30) NOT NULL,
-  `id_etablissement` int(11) NOT NULL,
-  PRIMARY KEY (`id_service`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#------------------------------------------------------------
+# Table: Service
+#------------------------------------------------------------
 
--- --------------------------------------------------------
+CREATE TABLE Service(
+        id_Service       int (11) Auto_increment  NOT NULL ,
+        NomService       Varchar (25) ,
+        id_Etablissement Int ,
+        PRIMARY KEY (id_Service )
+)ENGINE=InnoDB;
 
---
--- Structure de la table `stage`
---
 
-CREATE TABLE IF NOT EXISTS `stage` (
-  `id_stage` int(11) NOT NULL AUTO_INCREMENT,
-  `nbPoste_stage` int(11) NOT NULL,
-  `tuteur_stage` varchar(30) NOT NULL,
-  `id_service` int(11) NOT NULL,
-  `id_filiere` int(11) NOT NULL,
-  PRIMARY KEY (`id_stage`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#------------------------------------------------------------
+# Table: Etablissement
+#------------------------------------------------------------
 
--- --------------------------------------------------------
+CREATE TABLE Etablissement(
+        id_Etablissement int (11) Auto_increment  NOT NULL ,
+        NomEtablissement Varchar (25) ,
+        PRIMARY KEY (id_Etablissement )
+)ENGINE=InnoDB;
 
---
--- Structure de la table `user`
---
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_user` varchar(30) NOT NULL,
-  `prenom_user` varchar(30) NOT NULL,
-  `email_user` varchar(50) NOT NULL,
-  `mdp_user` varchar(25) NOT NULL,
-  `telephone_user` varchar(15) NOT NULL,
-  `anneeConcours_user` int(11) NOT NULL,
-  `nbSemestre_user` int(11) NOT NULL,
-  `id_groupe` int(11) NOT NULL,
-  PRIMARY KEY (`id_user`),
-  KEY `id_groupe` (`id_groupe`),
-  KEY `id_groupe_2` (`id_groupe`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#------------------------------------------------------------
+# Table: Filiere
+#------------------------------------------------------------
+
+CREATE TABLE Filiere(
+        id_Filiere int (11) Auto_increment  NOT NULL ,
+        NomFiliere Varchar (25) ,
+        PRIMARY KEY (id_Filiere )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Questions
+#------------------------------------------------------------
+
+CREATE TABLE Questions(
+        id_Question int (11) Auto_increment  NOT NULL ,
+        Libelle     Char (25) ,
+        PRIMARY KEY (id_Question )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Reponse
+#------------------------------------------------------------
+
+CREATE TABLE Reponse(
+        id_reponse          int (11) Auto_increment  NOT NULL ,
+        commentaire_Reponse Varchar (25) ,
+        PRIMARY KEY (id_reponse )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: User_Evaluation
+#------------------------------------------------------------
+
+CREATE TABLE User_Evaluation(
+        id_Evaluation Int NOT NULL ,
+        id_user       Int NOT NULL ,
+        PRIMARY KEY (id_Evaluation ,id_user )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: contient
+#------------------------------------------------------------
+
+CREATE TABLE contient(
+        id_Evaluation Int NOT NULL ,
+        id_Question   Int NOT NULL ,
+        id_reponse    Int NOT NULL ,
+        PRIMARY KEY (id_Evaluation ,id_Question ,id_reponse )
+)ENGINE=InnoDB;
+
+ALTER TABLE Evaluation ADD CONSTRAINT FK_Evaluation_id_Stages FOREIGN KEY (id_Stages) REFERENCES Stages(id_Stages);
+ALTER TABLE User ADD CONSTRAINT FK_User_id_Groupe FOREIGN KEY (id_Groupe) REFERENCES Groupe(id_Groupe);
+ALTER TABLE User ADD CONSTRAINT FK_User_id_Choix FOREIGN KEY (id_Choix) REFERENCES Choix(id_Choix);
+ALTER TABLE User ADD CONSTRAINT FK_User_id_Filiere FOREIGN KEY (id_Filiere) REFERENCES Filiere(id_Filiere);
+ALTER TABLE Stages ADD CONSTRAINT FK_Stages_id_Filiere FOREIGN KEY (id_Filiere) REFERENCES Filiere(id_Filiere);
+ALTER TABLE Stages ADD CONSTRAINT FK_Stages_id_Service FOREIGN KEY (id_Service) REFERENCES Service(id_Service);
+ALTER TABLE Service ADD CONSTRAINT FK_Service_id_Etablissement FOREIGN KEY (id_Etablissement) REFERENCES Etablissement(id_Etablissement);
+ALTER TABLE User_Evaluation ADD CONSTRAINT FK_User_Evaluation_id_Evaluation FOREIGN KEY (id_Evaluation) REFERENCES Evaluation(id_Evaluation);
+ALTER TABLE User_Evaluation ADD CONSTRAINT FK_User_Evaluation_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
+ALTER TABLE contient ADD CONSTRAINT FK_contient_id_Evaluation FOREIGN KEY (id_Evaluation) REFERENCES Evaluation(id_Evaluation);
+ALTER TABLE contient ADD CONSTRAINT FK_contient_id_Question FOREIGN KEY (id_Question) REFERENCES Questions(id_Question);
+ALTER TABLE contient ADD CONSTRAINT FK_contient_id_reponse FOREIGN KEY (id_reponse) REFERENCES Reponse(id_reponse);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
