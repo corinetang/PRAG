@@ -3,8 +3,9 @@
 
 
 function connexion () {
-	
 	$presentation = "";
+	$email = isset($_POST['email'])?$_POST['email']:"";
+	$pass = isset($_POST['pass'])?$_POST['pass']:"";
 
 	require ('View/connexion.tpl');
 }
@@ -28,7 +29,6 @@ function ajax_connect () {
 			echo ($_SESSION['utilisateur']);
 		}
 		else {echo("KO");}
-		}
 	}
 	else {
 		inscription();
