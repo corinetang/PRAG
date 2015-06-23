@@ -62,6 +62,8 @@ CREATE TABLE User(
         moyenneClassement_user Int ,
         dateDeNaissance_user   Date ,
         RangClassement_user    Int ,
+        mail_user              Varchar (25) ,
+        numtel_user            Int ,
         id_Groupe              Int ,
         id_Filiere             Int ,
         PRIMARY KEY (id_user )
