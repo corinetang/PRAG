@@ -30,8 +30,8 @@ USE `siphif`;
 #------------------------------------------------------------
 
 CREATE TABLE Groupe(
-        id_Groupe int (11) Auto_increment  NOT NULL ,
-        libelle   Varchar (25) ,
+        id_Groupe      int (11) Auto_increment  NOT NULL ,
+        libelle_groupe Varchar (25) ,
         PRIMARY KEY (id_Groupe )
 )ENGINE=InnoDB;
 
@@ -41,9 +41,9 @@ CREATE TABLE Groupe(
 #------------------------------------------------------------
 
 CREATE TABLE Evaluation(
-        id_Evaluation int (11) Auto_increment  NOT NULL ,
-        Valide        Bool ,
-        id_Stages     Int ,
+        id_Evaluation     int (11) Auto_increment  NOT NULL ,
+        Valide_evaluation Bool ,
+        id_Stage          Int ,
         PRIMARY KEY (id_Evaluation )
 )ENGINE=InnoDB;
 
@@ -53,35 +53,34 @@ CREATE TABLE Evaluation(
 #------------------------------------------------------------
 
 CREATE TABLE User(
-        id_user           int (11) Auto_increment  NOT NULL ,
-        Identifiant       Varchar (25) ,
-        nom               Varchar (25) ,
-        prenom            Varchar (25) ,
-        mdp               Varchar (25) ,
-        NbSemestre        Int ,
-        moyenneClassement Int ,
-        dateDeNaissance   Date ,
-        RangClassement    Int ,
-        id_Groupe         Int ,
-        id_Choix          Int ,
-        id_Filiere        Int ,
+        id_user                int (11) Auto_increment  NOT NULL ,
+        identifiant_user       Varchar (25) ,
+        nom_user               Varchar (25) ,
+        prenom_user            Varchar (25) ,
+        mdp_user               Varchar (25) ,
+        NbSemestre_user        Int ,
+        moyenneClassement_user Int ,
+        dateDeNaissance_user   Date ,
+        RangClassement_user    Int ,
+        id_Groupe              Int ,
+        id_Filiere             Int ,
         PRIMARY KEY (id_user )
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Stages
+# Table: Stage
 #------------------------------------------------------------
 
-CREATE TABLE Stages(
-        id_Stages   int (11) Auto_increment  NOT NULL ,
-        NbPoste     Int ,
-        maitreStage Varchar (25) ,
-        dateDebut   Date ,
-        dateFin     Date ,
-        id_Filiere  Int ,
-        id_Service  Int ,
-        PRIMARY KEY (id_Stages )
+CREATE TABLE Stage(
+        id_Stage        int (11) Auto_increment  NOT NULL ,
+        NbPoste_stage   Int ,
+        maitre_stage    Varchar (25) ,
+        dateDebut_stage Date ,
+        dateFin_stage   Date ,
+        id_Filiere      Int ,
+        id_Service      Int ,
+        PRIMARY KEY (id_Stage )
 )ENGINE=InnoDB;
 
 
@@ -90,9 +89,11 @@ CREATE TABLE Stages(
 #------------------------------------------------------------
 
 CREATE TABLE Choix(
-        id_Choix   int (11) Auto_increment  NOT NULL ,
-        estAccepte Bool ,
-        rang       Int ,
+        id_Choix         int (11) Auto_increment  NOT NULL ,
+        estAccepte_choix Bool ,
+        rang_choix       Int ,
+        id_user          Int ,
+        id_Stage         Int ,
         PRIMARY KEY (id_Choix )
 )ENGINE=InnoDB;
 
@@ -103,7 +104,7 @@ CREATE TABLE Choix(
 
 CREATE TABLE Service(
         id_Service       int (11) Auto_increment  NOT NULL ,
-        NomService       Varchar (25) ,
+        nom_service      Varchar (25) ,
         id_Etablissement Int ,
         PRIMARY KEY (id_Service )
 )ENGINE=InnoDB;
@@ -114,8 +115,8 @@ CREATE TABLE Service(
 #------------------------------------------------------------
 
 CREATE TABLE Etablissement(
-        id_Etablissement int (11) Auto_increment  NOT NULL ,
-        NomEtablissement Varchar (25) ,
+        id_Etablissement  int (11) Auto_increment  NOT NULL ,
+        nom_etablissement Varchar (25) ,
         PRIMARY KEY (id_Etablissement )
 )ENGINE=InnoDB;
 
@@ -125,8 +126,8 @@ CREATE TABLE Etablissement(
 #------------------------------------------------------------
 
 CREATE TABLE Filiere(
-        id_Filiere int (11) Auto_increment  NOT NULL ,
-        NomFiliere Varchar (25) ,
+        id_Filiere  int (11) Auto_increment  NOT NULL ,
+        nom_filiere Varchar (25) ,
         PRIMARY KEY (id_Filiere )
 )ENGINE=InnoDB;
 
@@ -136,8 +137,8 @@ CREATE TABLE Filiere(
 #------------------------------------------------------------
 
 CREATE TABLE Questions(
-        id_Question int (11) Auto_increment  NOT NULL ,
-        Libelle     Char (25) ,
+        id_Question      int (11) Auto_increment  NOT NULL ,
+        Libelle_question Char (25) ,
         PRIMARY KEY (id_Question )
 )ENGINE=InnoDB;
 
@@ -148,7 +149,7 @@ CREATE TABLE Questions(
 
 CREATE TABLE Reponse(
         id_reponse          int (11) Auto_increment  NOT NULL ,
-        commentaire_Reponse Varchar (25) ,
+        commentaire_reponse Varchar (25) ,
         PRIMARY KEY (id_reponse )
 )ENGINE=InnoDB;
 
@@ -165,28 +166,29 @@ CREATE TABLE User_Evaluation(
 
 
 #------------------------------------------------------------
-# Table: contient
+# Table: Question_Reponse
 #------------------------------------------------------------
 
-CREATE TABLE contient(
+CREATE TABLE Question_Reponse(
         id_Evaluation Int NOT NULL ,
         id_Question   Int NOT NULL ,
         id_reponse    Int NOT NULL ,
         PRIMARY KEY (id_Evaluation ,id_Question ,id_reponse )
 )ENGINE=InnoDB;
 
-ALTER TABLE Evaluation ADD CONSTRAINT FK_Evaluation_id_Stages FOREIGN KEY (id_Stages) REFERENCES Stages(id_Stages);
+ALTER TABLE Evaluation ADD CONSTRAINT FK_Evaluation_id_Stage FOREIGN KEY (id_Stage) REFERENCES Stage(id_Stage);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Groupe FOREIGN KEY (id_Groupe) REFERENCES Groupe(id_Groupe);
-ALTER TABLE User ADD CONSTRAINT FK_User_id_Choix FOREIGN KEY (id_Choix) REFERENCES Choix(id_Choix);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Filiere FOREIGN KEY (id_Filiere) REFERENCES Filiere(id_Filiere);
-ALTER TABLE Stages ADD CONSTRAINT FK_Stages_id_Filiere FOREIGN KEY (id_Filiere) REFERENCES Filiere(id_Filiere);
-ALTER TABLE Stages ADD CONSTRAINT FK_Stages_id_Service FOREIGN KEY (id_Service) REFERENCES Service(id_Service);
+ALTER TABLE Stage ADD CONSTRAINT FK_Stage_id_Filiere FOREIGN KEY (id_Filiere) REFERENCES Filiere(id_Filiere);
+ALTER TABLE Stage ADD CONSTRAINT FK_Stage_id_Service FOREIGN KEY (id_Service) REFERENCES Service(id_Service);
+ALTER TABLE Choix ADD CONSTRAINT FK_Choix_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
+ALTER TABLE Choix ADD CONSTRAINT FK_Choix_id_Stage FOREIGN KEY (id_Stage) REFERENCES Stage(id_Stage);
 ALTER TABLE Service ADD CONSTRAINT FK_Service_id_Etablissement FOREIGN KEY (id_Etablissement) REFERENCES Etablissement(id_Etablissement);
 ALTER TABLE User_Evaluation ADD CONSTRAINT FK_User_Evaluation_id_Evaluation FOREIGN KEY (id_Evaluation) REFERENCES Evaluation(id_Evaluation);
 ALTER TABLE User_Evaluation ADD CONSTRAINT FK_User_Evaluation_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
-ALTER TABLE contient ADD CONSTRAINT FK_contient_id_Evaluation FOREIGN KEY (id_Evaluation) REFERENCES Evaluation(id_Evaluation);
-ALTER TABLE contient ADD CONSTRAINT FK_contient_id_Question FOREIGN KEY (id_Question) REFERENCES Questions(id_Question);
-ALTER TABLE contient ADD CONSTRAINT FK_contient_id_reponse FOREIGN KEY (id_reponse) REFERENCES Reponse(id_reponse);
+ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_Evaluation FOREIGN KEY (id_Evaluation) REFERENCES Evaluation(id_Evaluation);
+ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_Question FOREIGN KEY (id_Question) REFERENCES Questions(id_Question);
+ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_reponse FOREIGN KEY (id_reponse) REFERENCES Reponse(id_reponse);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
