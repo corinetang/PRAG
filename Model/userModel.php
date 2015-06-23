@@ -92,7 +92,7 @@
 
 	function ajout_BD($nom, $prenom, $email, $mdp, $nbSemestre_user){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("INSERT INTO user(mdp_user, nom_user, prenom_user,mail_user, NbSemestre_user) 
+	    $add = $bd->prepare("INSERT INTO user(nom_user, prenom_user, NbSemestre_user,mail_user,mdp_user,numtel_user,id_Filiere) 
 							VALUES(:mdp, :nom, :prenom, :email, :nbSemestre_user)");
 	    $add->bindParam(':mdp', $mdp);
 		$add->bindParam(':nom', $nom);

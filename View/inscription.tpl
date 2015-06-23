@@ -1,7 +1,7 @@
 <div> 
 	<div  id="dialog-form"  title="Inscription">
 		<fieldset>
-			<form method="post" id="inscription" action= "index.php?control=user&action=inscription" enctype="multipart/form-data">
+			<form method="post" id="inscription" action= "index.php?control=user&action=ajax_inscription" enctype="multipart/form-data">
 				<label for="Nom">Nom</label>
 				<input type="text" name="Nom" value=""><br>
 				<label for="Prenom">Prenom</label>

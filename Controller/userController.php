@@ -4,7 +4,7 @@
 
 function connexion () {
 	$presentation = "";
-	$email = isset($_POST['identifiant'])?$_POST['identifiant']:"";
+	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
 
 	require ('View/connexion.tpl');
@@ -16,7 +16,7 @@ function inscription() {
 }
 
 function recuperation() {
-	$email = isset($_POST['email'])?$_POST['email']:"";
+	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	require ('View/recuperation.tpl');
 }
 
@@ -33,11 +33,29 @@ function ajax_connect () {
 			$_SESSION['utilisateur']= $identifiant;	
 			echo ($_SESSION['utilisateur']);
 		}
-		else {echo("KO");}
+		else {
+		/*echo("KO");*/
 	}
-	else {
+	}
+	/*else {
 		ajout('','',$identifiant,$pass,'');
-	} 
+	} */
+}
+
+function ajax_inscription() {
+	$nom = isset($_POST['Nom'])?$_POST['Nom']:"";
+	$Prenom = isset($_POST['Prenom'])?$_POST['Prenom']:"";
+	$NbSemestre = isset($_POST['NbSemestre'])?$_POST['NbSemestre']:"";
+	$Mail = isset($_POST['Mail'])?$_POST['Mail']:"";
+	$Password = isset($_POST['Password'])?$_POST['Password']:"";
+	$ValidationPassword = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
+	$Telephone = isset($_POST['Telephone'])?$_POST['Telephone']:"";
+	$Filiere = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+
+	require ('Model/userModel.php');
+
+	ajout('','',$identifiant,$pass,'');
+
 }
 
 ?>
