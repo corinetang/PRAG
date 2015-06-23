@@ -13,7 +13,7 @@
 
 	/*$pass_hache = sha1($password); */
 	
-	/*$req = "SELECT * FROM user WHERE email_user ='$email'  AND mpd_user ='$password'";
+	/*$req = "SELECT * FROM user WHERE mail_user ='$email'  AND mpd_user ='$password'";
 	$res = mysql_query ($req, $link)or die ("erreur de requete :" . $req);
 	
 	if(mysql_num_rows ($res) == 0) {
@@ -60,7 +60,7 @@
 
 	function authentification_BD($login, $mdp){ // Fonction privée (ne sert que pour découper le code avec la fonction authentification)
 	    require('ConfigSQL.php');
-	    $result = $bd->prepare('SELECT * FROM user WHERE email_user = ? AND mdp_user = ?');
+	    $result = $bd->prepare('SELECT * FROM user WHERE identifiant_user = ? AND mdp_user = ?');
 	    $result->bindvalue(1, $login);
 	    $result->bindvalue(2, $mdp);
 	    $result->execute();
@@ -92,7 +92,7 @@
 
 	function ajout_BD($nom, $prenom, $email, $mdp, $nbSemestre_user){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("INSERT INTO user(mdp_user, nom_user, prenom_user, email_user,nbSemestre_user) 
+	    $add = $bd->prepare("INSERT INTO user(mdp_user, nom_user, prenom_user,mail_user, NbSemestre_user) 
 							VALUES(:mdp, :nom, :prenom, :email, :nbSemestre_user)");
 	    $add->bindParam(':mdp', $mdp);
 		$add->bindParam(':nom', $nom);
@@ -148,9 +148,9 @@
 	
 	function change_password_BD($password_new){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("UPDATE user SET mdp_user = :password_new WHERE idclient = :id_user");
+	    $add = $bd->prepare("UPDATE user SET mdp_user = :password_new WHERE id_user = :id_user");
 	    $add->bindParam(':password_new', $password_new);
-		$add->bindParam(':idclient', $_SESSION['id']);
+		$add->bindParam(':id_user', $_SESSION['id']);
 		
 	    return ($add->execute());
 	}#End change_password_BD
@@ -159,9 +159,9 @@
 	
 	function verif_password_BD($password_act){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("SELECT * FROM user WHERE idclient = :idclient AND mdp_user = :password_act");
+	    $add = $bd->prepare("SELECT * FROM user WHERE id_user = :idclient AND mdp_user = :password_act");
 	    $add->bindParam(':password_act', $password_act);
-		$add->bindParam(':idclient', $_SESSION['id']);
+		$add->bindParam(':id_user', $_SESSION['id']);
 		$add->execute();
 		if($add->rowCount()==0)
 			return false;
@@ -171,7 +171,20 @@
 
 	#=======================================================================================================
 
-	
+	function getUserFiliere(){
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("SELECT * FROM filiere f
+	    					LEFT JOIN user u ON f.id_filiere = u.id_filiere
+	    					AND id_user = :id_user");
+	    $add->bindParam(':id_filiere', $password_act);
+		$add->bindParam(':id_user', $_SESSION['id']);
+		$add->execute();
+		$res = $add->fetch();
+
+		return json_encode($res);
+	}#End getUserFiliere
+
+	#=========================================================================================================
 
 
 

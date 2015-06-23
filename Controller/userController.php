@@ -7,7 +7,7 @@ function connexion () {
 	$email = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
 
-	require ('View/inscription.tpl');
+	require ('View/connexion.tpl');
 }
 
 function inscription() {
@@ -29,14 +29,14 @@ function ajax_connect () {
 
 	//Controle des infos saisies--------------------------------------------------
 	if (isset($_POST['Connexion'])){
-		if (authentification($email,$pass)) {
-			$_SESSION['utilisateur']= $email;	
+		if (authentification($identifiant,$pass)) {
+			$_SESSION['utilisateur']= $identifiant;	
 			echo ($_SESSION['utilisateur']);
 		}
 		else {echo("KO");}
 	}
 	else {
-		ajout('','',$email,$pass,'');
+		ajout('','',$identifiant,$pass,'');
 	} 
 }
 
