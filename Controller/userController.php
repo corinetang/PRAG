@@ -4,10 +4,10 @@
 
 function connexion () {
 	$presentation = "";
-	$email = isset($_POST['email'])?$_POST['email']:"";
+	$email = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
 
-	require ('View/connexion.tpl');
+	require ('View/inscription.tpl');
 }
 
 function inscription() {
@@ -19,9 +19,10 @@ function recuperation() {
 	$email = isset($_POST['email'])?$_POST['email']:"";
 	require ('View/recuperation.tpl');
 }
+
 function ajax_connect () {
 	//Récupération des variables saisies dans le formulaire-----------------------------
-	$email = isset($_POST['email'])?$_POST['email']:"";
+	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
 
 	require ('Model/userModel.php');
@@ -38,4 +39,5 @@ function ajax_connect () {
 		ajout('','',$email,$pass,'');
 	} 
 }
+
 ?>

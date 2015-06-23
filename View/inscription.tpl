@@ -4,9 +4,9 @@
 			<form method="post" id="inscription" action= "index.php?control=user&action=inscription" enctype="multipart/form-data">
 				<label for="Nom">Nom</label>
 				<input type="text" name="Nom" value="Nom de l'interne"><br>
-				<label for="Prenom">Pr&eacutenom</label>
-				<input type="text" name="Prénom" value="Pr&eacutenom"><br>
-				<label for ="mail">Adresse email </label> 
+				<label for="Prenom">Prenom</label>
+				<input type="text" name="Prenom" value="Prenom"><br>
+				<!-- <label for ="mail">Adresse email </label> 
 				<input type="mail" name="Mail" value="Adresse mail"><br>
 				<label for="Sexe">Sexe</label>
 				<select name="Sexe">
@@ -38,7 +38,7 @@
 				<label for="password">V&eacuterificaton du mot de passe</label>
 				<input type="password" name="password" placeholder="Confirmer votre mot de passe">
 				<br>
-				<br>
+				<br> -->
 				<input type="submit" value="Inscription" name="Inscription" />
 			</form>
 		</fieldset>
