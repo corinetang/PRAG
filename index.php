@@ -1,6 +1,6 @@
 <?php
 session_start ();
-require("/Controller/header.php");
+require("/View/header.tpl");
 
 $control= isset($_GET['control'])?$_GET['control']:'user';
 $action= isset($_GET['action'])?$_GET['action']:'connexion';
