@@ -90,35 +90,40 @@
 	
 	/*** INSCRIPTION ***/
 
-	function ajout_BD($nom, $prenom, $email, $mdp, $nbSemestre_user){
+	function ajout_BD($nom, $prenom, $mdp, $nbSemestre_user, $dateDeNaissance_user, $email, $Numtel,$filiere){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("INSERT INTO user(nom_user, prenom_user, NbSemestre_user,mail_user,mdp_user,numtel_user,id_Filiere) 
-							VALUES(:mdp, :nom, :prenom, :email, :nbSemestre_user)");
+		$identifiant_user = $nom ."." . $prenom;
+	    $add = $bd->prepare("INSERT INTO user(identifiant_user, nom_user, prenom_user, mdp_user, NbSemestre_user, dateDeNaissance_user, mail_user, numtel_user, id_Filiere) 
+							VALUES(:identifiant_user,:nom, :prenom,:mdp, :nbSemestre_user , :dateDeNaissance_user,:email,:Numtel,:id_filiere)");
+	    $add->bindParam(':identifiant_user', $identifiant_user);
 	    $add->bindParam(':mdp', $mdp);
 		$add->bindParam(':nom', $nom);
 	    $add->bindParam(':prenom', $prenom);
 		$add->bindParam(':email', $email);
 	    $add->bindParam(':nbSemestre_user', $nbSemestre_user);
+	    $add->bindParam(':dateDeNaissance_user', $dateDeNaissance_user);
+	    $add->bindParam(':Numtel', $Numtel);
+	    $add->bindParam(':id_filiere', $filiere);
 
 	    return ($add->execute());
 	}#End ajout_BD
 
 	#=======================================================================================================
 
-	function ajout($nom, $prenom, $email, $mdp, $nbSemestre_user){
+	function ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere){
 		/*if(!verif_nom($nom))
 			return false;
 			
 		if(!verif_nom($prenom))
 			return false;*/
 			
-		if(!verif_email($email))
+		/*if(!verif_email($email))
 			return false;	
 					
 		if(!verif_psswd($mdp))
-			return false;
+			return false;*/
 
-		return ajout_BD($nom, $prenom, $email, $mdp, $nbSemestre_user);
+		return ajout_BD($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
 	}#End ajout
 
 	#=======================================================================================================

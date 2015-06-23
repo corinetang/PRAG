@@ -50,11 +50,14 @@ function ajax_inscription() {
 	$Password = isset($_POST['Password'])?$_POST['Password']:"";
 	$ValidationPassword = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
 	$Telephone = isset($_POST['Telephone'])?$_POST['Telephone']:"";
-	$Filiere = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+	//$Filiere = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+	$filiere = 1;
+	$dateDeNaissance_user = '13/05/1994';
+
 
 	require ('Model/userModel.php');
 
-	ajout('','',$identifiant,$pass,'');
+	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
 
 }
 
