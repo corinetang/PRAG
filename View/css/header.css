@@ -1,0 +1,11 @@
+.header {
+	height: 10%;
+}
+
+.navbar {
+	background-color: #3498db;
+}
+
+.navbar-nav>li>a {
+	color: #FFFFFF;	
+}
