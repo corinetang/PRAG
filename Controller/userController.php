@@ -57,16 +57,17 @@ function ajax_connect () {
  * Envoie les donnees inscription au model
  */
 function ajax_inscription() {
-	$nom = isset($_POST['Nom'])?$_POST['Nom']:"";
-	$Prenom = isset($_POST['Prenom'])?$_POST['Prenom']:"";
-	$NbSemestre = isset($_POST['NbSemestre'])?$_POST['NbSemestre']:"";
-	$Mail = isset($_POST['Mail'])?$_POST['Mail']:"";
-	$Password = isset($_POST['Password'])?$_POST['Password']:"";
-	$ValidationPassword = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
-	$Telephone = isset($_POST['Telephone'])?$_POST['Telephone']:"";
+	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
+	$Prenom                = isset($_POST['Prenom'])?$_POST['Prenom']:"";
+	$NbSemestre            = isset($_POST['NbSemestre'])?$_POST['NbSemestre']:"";
+	$Mail                  = isset($_POST['Mail'])?$_POST['Mail']:"";
+	$Password              = isset($_POST['Password'])?$_POST['Password']:"";
+	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
+	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
 	//$Filiere = isset($_POST['Filiere'])?$_POST['Filiere']:"";
-	$filiere = 1;
-	$dateDeNaissance_user = '13/05/1994';
+	$filiere               = 1;
+	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
+	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
 
 
 	require ('Model/userModel.php');

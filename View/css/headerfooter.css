@@ -21,7 +21,7 @@
   height: 60px;
   background-color: #337ab7;
 }
-.footer>p {
+.footer>.container>p {
     color: #FFFFFF;	
     text-align: center;
 }

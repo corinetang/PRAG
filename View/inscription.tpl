@@ -15,6 +15,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="Ddn" class="col-sm-2 control-label">Date de naissance</label>
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" name="Ddn">
+                    </div>
+                </div>                
+                <div class="form-group">
                     <label for="NbSemestre" class="col-sm-2 control-label">Nombre de semestre</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control" name="NbSemestre" placeholder="Nombre de Semestre Valides">
@@ -52,6 +58,12 @@
 					<option>IPR</option>
 					<option>Pharmacie</option>
 				</select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Groupe" class="col-sm-2 control-label">Êtes vous membre du SIPHIF ?</label>
+                    <div class="col-sm-5">
+                        <input type="checkbox" name="Groupe">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" value="Inscription" name="Inscription"> Inscription </button>
