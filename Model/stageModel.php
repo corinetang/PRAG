@@ -74,4 +74,19 @@
 	    return ($add->execute());
 	}#End updateStage
 
+	#=======================================================================================================
+	
+	function getStageByFiliere($idfiliere){
+	require('ConfigSQL.php');
+	    $add = $bd->prepare("SELECT * FROM stage s
+	    					LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
+	    					AND id_user = :id_user");
+	    $add->bindParam(':id_filiere', $idfiliere);
+		$add->bindParam(':id_user', $_SESSION['user'][0]['id_user']);
+		$add->execute();
+		$res = $add->fetchAll(PDO::FETCH_ASSOC);
+
+		return $res; 
+}#End getStageByFiliere
+
 ?>
