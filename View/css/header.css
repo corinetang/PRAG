@@ -9,3 +9,19 @@
 .navbar-nav>li>a {
 	color: #FFFFFF;	
 }
+
+.navbar-right>p {
+	color: #FFFFFF;	
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #337ab7;
+}
+.footer>p {
+    color: #FFFFFF;	
+    text-align: center;
+}

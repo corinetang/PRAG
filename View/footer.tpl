@@ -1,8 +1,6 @@
-	<div id=footer>
+	<footer class="footer">
 		<div class="container">
-			<ul>
-				<li> © Copyright 2015 SIPHIP.org</li>
-			</ul> 
+			<p class="text-muted">Copyright 2015 SIPHIP.org</p>
 		</div>
-	</div>
+	</footer>
 </html>
