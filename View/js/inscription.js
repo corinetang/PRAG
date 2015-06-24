@@ -12,8 +12,11 @@ jQuery(function(){
     });
 
     /*$(document).ready(function(){
-        $.ajax({url: "index.php?control=user&action=getListFilieres", success: function(result){
-            $("#div1").html(result);
+        $.ajax({url: "index.php?control=user&action=getListFilieres",
+                type: "POST",
+                success: function(result){
+                    $("#div1").html(result);
+                    console.log(result);
         }});
     });*/
 });

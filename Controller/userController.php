@@ -17,11 +17,6 @@ function showConnexion () {
  */
 function showInscription() {
 	
-	/*require ('Model/filiereModel.php');
-	$listFiliere = getFiliere();*/
-	/*var_dump(json_decode($listFiliere));
-	var_dump($listFiliere);exit;*/
-
 	require ('View/inscription.tpl');
 }
 
@@ -79,10 +74,11 @@ function inscription() {
 }
 
 /*function getListFilieres() {
-	require ('Model/userModel.php');
+	require ('Model/filiereModel.php');
 
 	$listFiliere = getFiliere();
 
+	return new response($listFiliere);
 	return $listFiliere;
 }*/
 
