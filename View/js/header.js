@@ -30,8 +30,15 @@ function initializeHeader(idRole) {
 		$('ul.utilisateur-option').removeClass('hide-option');
 		$('li.profil-option').removeClass('hide-option');
 		$('li.stage-option').removeClass('hide-option');
-		$('li.stage-voeux-option').removeClass('hide-option');		
+		$('li.stage-voeux-option').removeClass('hide-option');
+		$('li.stage-consultation-option').removeClass('hide-option');		
 	}
+    else{ // Visiteur
+        $('ul.utilisateur-option').removeClass('hide-option');
+		$('li.profil-option').removeClass('hide-option');
+		$('li.stage-option').removeClass('hide-option');
+		$('li.stage-voeux-option').removeClass('hide-option');
+    }
 }
 
 jQuery(function(){

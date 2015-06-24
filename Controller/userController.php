@@ -122,6 +122,11 @@ function showUsers() {
 	require ('View/gestionUsers.tpl');
 } 
 
+function deconnexion() {
+   
+}
 
-
+function showAnswers() {
+    require ('View/gestionAnswers.tpl');
+}
 ?>

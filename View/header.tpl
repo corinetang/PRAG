@@ -45,6 +45,7 @@
               <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index.php?control=user&action=showUsers">Gestion des utilisateurs</a></li>
+              <li><a href="index.php?control=user&action=showAnswers">Gestion des evaluations</a></li>
             <li><a href="index.php?control=import&action=showImportClassement">Import Classement</a></li>
             <li><a href="index.php?control=import&action=showImportStage">Import Stage</a></li>
           </ul>
@@ -53,7 +54,7 @@
      <ul class="nav navbar-nav navbar-right utilisateur-option hide-option">
          <p class="navbar-text">Utilisateur</p>
         <p class="navbar-text">Filiere</p>
-        <li><a href="#" class="change-at-focus">Deconnexion</a></li>
+        <li><a href="index.php?control=user&action=deconnexion" class="change-at-focus">Deconnexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
