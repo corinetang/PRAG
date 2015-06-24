@@ -175,9 +175,9 @@
 	    					 dateDeNaissance_user = ?,
 	    					 NbSemestre_user = ?,
 	    					 mail_user = ?,
-	    					 numtel_user = ?
-	    					 id_Filiere = ?,
-	    					 WHERE id_user = ? ");
+	    					 numtel_user = ?,
+	    					 id_Filiere = ?
+	    					 WHERE id_user = ?");
 	    $add->bindvalue(1, $nom_user);
 	    $add->bindvalue(2, $prenom_user);
 	    $add->bindvalue(3, $date_naiss);
