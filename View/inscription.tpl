@@ -1,20 +1,8 @@
-<script type="text/javascript">
+<head>
+    <script src="View/js/inscription.js"></script>
+</head>
 
-    // TODO : Faire les contrôles sur TOUT LES CHAMPS par rapport au format et au fait que le champ ne doit pas être VIDE !!!!!
-    jQuery(function(){
-        $("#ValidationPassword").focusout(function(){
-            var passwordVal  = $("#Password").val();
-            var checkVal     = $("#ValidationPassword").val();
-            
-            if(passwordVal != checkVal) {
-                $("#error-password").removeAttr('style');
-            }
-            else {
-                $("#error-password").css('display', 'none');
-            }
-        });
-    });
-</script>
+<!-- TODO : Faire les contrôles sur TOUT LES CHAMPS par rapport au format et au fait que le champ ne doit pas être VIDE !!!!! -->
 <div> 
 	<div id="dialog-form"  title="Inscription">
 		<fieldset>

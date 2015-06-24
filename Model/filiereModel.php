@@ -2,10 +2,14 @@
 
 	function getFiliere(){
 		require('ConfigSQL.php');
+			/*header('Content-Type: application/json; charset=utf-8');*/
 		    $add = $bd->prepare("SELECT * FROM filiere f");
 			$add->execute();
-			$res = $add->fetch();
-
+			$res = $add->fetchAll(PDO::FETCH_ASSOC);
+			/*var_dump(utf8_encode($res));*/
+			/*var_dump(json_encode($res));
+			var_dump(utf8_encode(json_encode($res)));exit;
+*/
 			return json_encode($res);
 	}#End getFiliere
 

@@ -8,7 +8,8 @@
 	<script type="text/javascript" src="View/js/libs/jquery-1.11.3.js"></script> 
 	<script src="View/js/libs/bootstrap.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
+  <!-- <meta http-equiv="Content-Type" content="application/json; charset=utf-8"/>
+ --></head>
 <nav class="navbar">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->

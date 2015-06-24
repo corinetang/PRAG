@@ -17,6 +17,11 @@ function showConnexion () {
  */
 function showInscription() {
 	
+	/*require ('Model/filiereModel.php');
+	$listFiliere = getFiliere();*/
+	/*var_dump(json_decode($listFiliere));
+	var_dump($listFiliere);exit;*/
+
 	require ('View/inscription.tpl');
 }
 
@@ -64,8 +69,7 @@ function inscription() {
 	$Password              = isset($_POST['Password'])?$_POST['Password']:"";
 	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
-	//$Filiere = isset($_POST['Filiere'])?$_POST['Filiere']:"";
-	$filiere               = 1;
+	$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
 	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
 
@@ -74,5 +78,13 @@ function inscription() {
 	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
 
 }
+
+/*function getListFilieres() {
+	require ('Model/userModel.php');
+
+	$listFiliere = getFiliere();
+
+	return $listFiliere;
+}*/
 
 ?>
