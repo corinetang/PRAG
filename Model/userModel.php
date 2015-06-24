@@ -148,9 +148,51 @@
 		return change_password_BD($password_new);
 	}#End change
 
+		#=======================================================================================================
+	
+	/*** MODIFICATION PROFIL ***/
+	function changeProfil($nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $filiere){
+
+		if(!verif_nom($nom_user))
+			return false;
+		if(!verif_nom($prenom_user))
+			return false;
+		if(!verif_email($email))
+			return false;
+
+
+		return update_user();
+	}#End change
+
 	#=======================================================================================================
 	
+
+	function update_user($id_user, $nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $filiere) {
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("UPDATE user 
+	    					 SET nom_user = ?,
+	    					 prenom_user = ?,
+	    					 dateDeNaissance_user = ?,
+	    					 NbSemestre_user = ?,
+	    					 mail_user = ?,
+	    					 numtel_user = ?
+	    					 id_Filiere = ?,
+	    					 WHERE id_user = ? ");
+	    $add->bindvalue(1, $nom_user);
+	    $add->bindvalue(2, $prenom_user);
+	    $add->bindvalue(3, $date_naiss);
+	    $add->bindvalue(4, $nbSemestre);
+	    $add->bindvalue(5, $email);
+	    $add->bindvalue(6, $Telephone);
+	    $add->bindvalue(7, $filiere, PDO::PARAM_INT);
+		$add->bindvalue(8, $id_user, PDO::PARAM_INT);
+		
+	    return ($add->execute());
+	}
+
 	
+	#=======================================================================================================
+
 	function change_password_BD($password_new){
 		require('ConfigSQL.php');
 	    $add = $bd->prepare("UPDATE user SET mdp_user = :password_new WHERE id_user = :id_user");

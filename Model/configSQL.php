@@ -7,7 +7,7 @@ $bd="siphif"; */
 $hote = "localhost";
 $dbName = "siphif";
 $username  = "root";
-$password = "";
+$password = "root";
 
 try {
 	$bd = new PDO('mysql:host='. $hote .';dbname=' . $dbName, $username, $password);

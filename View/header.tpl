@@ -31,7 +31,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profils<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Modifier</a></li>
+            <li><a href="index.php?control=user&action=showProfil">Modifier</a></li>
             <!-- <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li> -->
           </ul>

@@ -20,6 +20,13 @@ function showInscription() {
 	require ('View/inscription.tpl');
 }
 
+function showProfil() {
+	if (isset($_SESSION['utilisateur'])) {
+		require ('View/formProfil.tpl');	
+	}
+
+}
+
 /*
  * Affiche la page de recuperation de mot de passe
  */
@@ -75,10 +82,37 @@ function inscription() {
 
 }
 
+function profil() {
+	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
+	$Prenom                = isset($_POST['Prenom'])?$_POST['Prenom']:"";
+	$NbSemestre            = isset($_POST['NbSemestre'])?$_POST['NbSemestre']:"";
+	$Mail                  = isset($_POST['Mail'])?$_POST['Mail']:"";
+	$OldPassword		   = isset($_POST['OldPassword'])?$_POST['OldPassword']:"";
+	$NewPassword           = isset($_POST['Password'])?$_POST['Password']:"";
+	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
+	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
+	//$Filiere = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+	$filiere               = 1;
+	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
+	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
+
+	require ('Model/userModel.php');
+
+	if ($NewPassword != "" && $OldPassword != "") {
+		echo change($OldPassword, $NewPassword, $ValidationPassword);
+	}
+
+	// $_SESSION["user"][0]["id_user"]
+	update_user(1, $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $filiere);
+
+}
+
 function showUsers() {
 	require ('Model/userModel.php');
 	$jsonUsers = getAllUsers();
 	require ('View/gestionUsers.tpl');
 } 
+
+
 
 ?>
