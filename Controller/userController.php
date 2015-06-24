@@ -51,7 +51,7 @@ function connexion () {
 		}
 		else {
 		/*echo("KO");*/
-	}
+		}
 	}
 	/*else {
 		ajout('','',$identifiant,$pass,'');
@@ -71,7 +71,6 @@ function inscription() {
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
 	$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
-	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
 
 	require ('Model/userModel.php');
 
