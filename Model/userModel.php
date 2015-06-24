@@ -193,20 +193,18 @@
 
 	function create_id($nom,$prenom){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("SELECT * FROM user
-	    					 WHERE nom_user = :nom
-	    					 AND prenom_user = :prenom");
+	    $add = $bd->prepare("SELECT count(*) FROM user
+	    					 WHERE UPPER(nom_user) = UPPER(:nom)
+	    					 AND UPPER(prenom_user) = UPPER(:prenom)");
 	    $add->bindParam(':nom', $nom);
 	    $add->bindParam(':prenom', $prenom);
-	    $add->execute();
-	    $res = $add->rowCount();
+	    $res = $add->execute();
 	   
 	   #Gestion des identifiants (si homonymes)----------------------------------------------
 	    if ($res == 0) {
 	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom);
 	    } else {
-	    	$res = $res+1;
-	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res;
+	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res+1;
 	    }#End If
 		
 	    return $identifiant_user;
