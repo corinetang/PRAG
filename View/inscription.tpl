@@ -78,12 +78,6 @@
 				</select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="Groupe" class="col-sm-2 control-label">Êtes vous membre du SIPHIF ?</label>
-                    <div class="col-sm-5">
-                        <input type="checkbox" name="Groupe">
-                    </div>
-                </div>
                 <button type="submit" class="btn btn-primary" value="submit" name="submit-inscription" id="submit-inscription"> Inscription </button>
 			</form>
 		</fieldset>
