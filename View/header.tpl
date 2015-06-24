@@ -7,6 +7,7 @@
     					href="View/css/libs/bootstrap.min.css">
 	<script type="text/javascript" src="View/js/libs/jquery-1.11.3.js"></script> 
 	<script src="View/js/libs/bootstrap.min.js"></script>
+  <script src="View/js/header.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <!-- <meta http-equiv="Content-Type" content="application/json; charset=utf-8"/>
  --></head>
@@ -28,9 +29,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
-        <li><a href="#">Accueil</a></li>
+        <li><a href="#" class="change-at-focus">Accueil</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profils<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profils<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index.php?control=user&action=showProfil">Modifier</a></li>
             <!-- <li role="separator" class="divider"></li>
@@ -38,7 +39,7 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stages<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stages<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Liste de voeux</a></li>
             <li><a href="#">Consultation</a></li>
@@ -46,7 +47,7 @@
           </ul>
         </li>
         <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index.php?control=user&action=showUsers">Gestion des utilisateurs</a></li>
             <li><a href="index.php?control=import&action=showImportClassement">Import Classement</a></li>
@@ -57,7 +58,7 @@
      <ul class="nav navbar-nav navbar-right">
          <p class="navbar-text">Utilisateur</p>
         <p class="navbar-text">Filiere</p>
-        <li><a href="#">Connexion</a></li>
+        <li><a href="#" class="change-at-focus">Connexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
