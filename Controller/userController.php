@@ -71,12 +71,13 @@ function inscription() {
 	$Password              = isset($_POST['Password'])?$_POST['Password']:"";
 	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
-	$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+	//$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+ 	$Filiere = 1;
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
 
 	require ('Model/userModel.php');
 
-	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
+	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere);
 
 }
 
