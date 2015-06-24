@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `siphif`
 --
-CREATE DATABASE IF NOT EXISTS `siphif` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `siphif` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `siphif`;
 
 -- --------------------------------------------------------
