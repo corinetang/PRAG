@@ -47,7 +47,7 @@
                 <div class="form-group">
 				<label for="Filiere" class="col-sm-2 control-label">Filiere</label>
 				<div class="col-sm-5">
-                    <select class ="form-control" name="Filiere">
+                    <select class ="form-control col-sm-5" name="Filiere">
 					<option>Biologie</option>
 					<option>IPR</option>
 					<option>Pharmacie</option>
