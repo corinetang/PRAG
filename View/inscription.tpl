@@ -18,7 +18,7 @@
 <div> 
 	<div id="dialog-form"  title="Inscription">
 		<fieldset>
-			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=ajax_inscription" enctype="multipart/form-data">
+			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=inscription" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="Nom" class="col-sm-2 control-label">Nom</label>
                     <div class="col-sm-5">
