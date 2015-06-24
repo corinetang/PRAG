@@ -1,10 +1,10 @@
 <?php
-	require('/View/header.tpl');
+	require(dirname(__FILE__) .'/View/header.tpl');
 	if (isset($_SESSION['utilisateur'])) {
-		require('/View/menuConnectee.tpl');
+		require(dirname(__FILE__) .'/View/menuConnectee.tpl');
 	}
 	else{
-		require('/View/menuVisiteur.tpl');
+		require(dirname(__FILE__) .'/View/menuVisiteur.tpl');
 	}
 ?>	
 		
