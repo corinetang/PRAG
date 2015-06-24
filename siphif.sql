@@ -118,6 +118,7 @@ CREATE TABLE Service(
 CREATE TABLE Etablissement(
         id_Etablissement  int (11) Auto_increment  NOT NULL ,
         nom_etablissement Varchar (25) ,
+        id_DES            Int ,
         PRIMARY KEY (id_Etablissement )
 )ENGINE=InnoDB;
 
