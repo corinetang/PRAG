@@ -14,4 +14,12 @@ function showImportStage() {
 	require ('View/importStage.tpl');
 }
 
+/*
+ * Import du fichier classement côté serveur
+ */
+function importerClassement() {
+		
+}
+
+
 ?>
