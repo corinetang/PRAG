@@ -191,6 +191,8 @@ ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_Evaluation FO
 ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_Question FOREIGN KEY (id_Question) REFERENCES Questions(id_Question);
 ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_reponse FOREIGN KEY (id_reponse) REFERENCES Reponse(id_reponse);
 
+INSERT INTO Filiere (nom_filiere) VALUES ('Biologie médicale','Innovation Pharmaceutique et Recherche','Pharmacie hospitalière');
+INSERT INTO Groupe (libelle_groupe) VALUES ('Interne','Adhérent','Admin');
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
