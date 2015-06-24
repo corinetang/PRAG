@@ -21,5 +21,11 @@ function importerClassement() {
 		
 }
 
+/*
+ * Import du fichier stage côté serveur
+ */
+function importerStage() {
+		
+}
 
 ?>
