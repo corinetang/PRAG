@@ -25,3 +25,7 @@
     color: #FFFFFF;	
     text-align: center;
 }
+
+.hide-option {
+  display: none !important;
+}
