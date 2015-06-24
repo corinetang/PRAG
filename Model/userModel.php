@@ -92,7 +92,7 @@
 
 	function ajout_BD($nom, $prenom, $mdp, $nbSemestre_user, $dateDeNaissance_user, $email, $Numtel,$filiere){
 		require('ConfigSQL.php');
-		$identifiant_user = $nom ."." . $prenom;
+		$identifiant_user = create_id($nom,$prenom);
 	    $add = $bd->prepare("INSERT INTO user(identifiant_user, nom_user, prenom_user, mdp_user, NbSemestre_user, dateDeNaissance_user, mail_user, numtel_user, id_Filiere) 
 							VALUES(:identifiant_user,:nom, :prenom,:mdp, :nbSemestre_user , :dateDeNaissance_user,:email,:Numtel,:id_filiere)");
 	    $add->bindParam(':identifiant_user', $identifiant_user);
@@ -191,7 +191,25 @@
 
 	#=========================================================================================================
 
+	function create_id($nom,$prenom){
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("SELECT count(*) FROM user
+	    					 WHERE UPPER(nom_user) = UPPER(:nom)
+	    					 AND UPPER(prenom_user) = UPPER(:prenom)");
+	    $add->bindParam(':nom', $nom);
+	    $add->bindParam(':prenom', $prenom);
+	    $res = $add->execute();
+	   
+	   #Gestion des identifiants (si homonymes)----------------------------------------------
+	    if ($res == 0) {
+	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom);
+	    } else {
+	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res;
+	    }#End If
+		
+	    return $identifiant_user;
 
+	}#End ofcreate_id
 
 
 
