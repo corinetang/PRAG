@@ -18,7 +18,18 @@ function showImportStage() {
  * Import du fichier classement côté serveur
  */
 function importerClassement() {
-		
+
+	// UPLOAD DU FICHIER CSV, vérification et insertion en BASE
+		if($_FILES["file"]["type"] != "application/vnd.ms-excel"){
+			die("Ce n'est pas un fichier de type .csv");
+		}
+		elseif(is_uploaded_file($_FILES['file']['tmp_name'])){
+			require('Model/importModel.php');
+			importClassement();
+		}
+		else{
+			die("Vous ne devriez pas être là");
+		}
 }
 
 /*

@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `siphif`
 --
-CREATE DATABASE IF NOT EXISTS `siphif` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `siphif` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `siphif`;
 
 -- --------------------------------------------------------
@@ -118,6 +118,7 @@ CREATE TABLE Service(
 CREATE TABLE Etablissement(
         id_Etablissement  int (11) Auto_increment  NOT NULL ,
         nom_etablissement Varchar (25) ,
+        id_DES            Int ,
         PRIMARY KEY (id_Etablissement )
 )ENGINE=InnoDB;
 
@@ -155,6 +156,18 @@ CREATE TABLE Reponse(
 )ENGINE=InnoDB;
 
 
+
+#------------------------------------------------------------
+# Table: DES
+#------------------------------------------------------------
+
+CREATE TABLE DES(
+        id_DES      int (11) Auto_increment  NOT NULL ,
+        libelle_DES Varchar (25) ,
+        PRIMARY KEY (id_DES )
+)ENGINE=InnoDB;
+
+
 #------------------------------------------------------------
 # Table: User_Evaluation
 #------------------------------------------------------------
@@ -185,6 +198,7 @@ ALTER TABLE Stage ADD CONSTRAINT FK_Stage_id_Service FOREIGN KEY (id_Service) RE
 ALTER TABLE Choix ADD CONSTRAINT FK_Choix_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
 ALTER TABLE Choix ADD CONSTRAINT FK_Choix_id_Stage FOREIGN KEY (id_Stage) REFERENCES Stage(id_Stage);
 ALTER TABLE Service ADD CONSTRAINT FK_Service_id_Etablissement FOREIGN KEY (id_Etablissement) REFERENCES Etablissement(id_Etablissement);
+ALTER TABLE Etablissement ADD CONSTRAINT FK_Etablissement_id_DES FOREIGN KEY (id_DES) REFERENCES DES(id_DES);
 ALTER TABLE User_Evaluation ADD CONSTRAINT FK_User_Evaluation_id_Evaluation FOREIGN KEY (id_Evaluation) REFERENCES Evaluation(id_Evaluation);
 ALTER TABLE User_Evaluation ADD CONSTRAINT FK_User_Evaluation_id_user FOREIGN KEY (id_user) REFERENCES User(id_user);
 ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_Evaluation FOREIGN KEY (id_Evaluation) REFERENCES Evaluation(id_Evaluation);

@@ -64,8 +64,8 @@
 	    $result->bindvalue(1, $login);
 	    $result->bindvalue(2, $mdp);
 	    $result->execute();
-	    $donnee = $result->fetch();
-		$_SESSION['id'] = $donnee['id_user'];
+	    $donnee = $result->fetchAll(PDO::FETCH_ASSOC);
+		$_SESSION['user'] = $donnee;
 	    $result->closeCursor();
 	    return !empty($donnee);
 	}#End authentification_BD

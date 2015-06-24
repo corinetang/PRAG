@@ -4,9 +4,9 @@
 		require('ConfigSQL.php');
 		    $add = $bd->prepare("SELECT * FROM filiere f");
 			$add->execute();
-			$res = $add->fetch();
+			$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
-			return json_encode($res);
+			return $res;
 	}#End getFiliere
 
 	#=======================================================================================================
