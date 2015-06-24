@@ -12,7 +12,6 @@ function initializeHeader(idRole) {
 	accueil-option
 	profil-option
 	*/
-	console.log("idRole", idRole);
 	if (idRole === 3) { // Admin
 		$('ul.utilisateur-option').removeClass('hide-option');
 		$('li.accueil-option').removeClass('hide-option');
