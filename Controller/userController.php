@@ -97,10 +97,12 @@ function profil() {
 	require ('Model/userModel.php');
 
 	if ($NewPassword != "" && $OldPassword != "") {
-		echo change($OldPassword, $NewPassword, $ValidationPassword);
+		change($OldPassword, $NewPassword, $ValidationPassword);
 	}
 
-	echo update_user($_SESSION["user"][0]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $filiere);
+	update_user($_SESSION["user"][0]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $filiere);
+
+	
 
 }
 

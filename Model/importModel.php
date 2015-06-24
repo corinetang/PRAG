@@ -14,28 +14,37 @@
 			$handle = fopen($_FILES['file']['tmp_name'], "r");
 			$data = fgetcsv($handle, 1000, ";"); //Remove if CSV file does not have column headings
 			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-				$att0 = $data[0];
-				$att1 = $data[1];
-				$att2 = $data[2];
-				$att3 = $data[3];
+				$nom = $data[0];
+				$prenom = $data[1];
+				$dateN = $data[2];
+				$classement = $data[3];
 
-				echo $att0 . "-" . $att1. "-" . $att2. "-" . $att3;
+				$date = explode("/", $dateN);
+
+				$newDate = $date[2] . "-" . $date[1] . "-" .  $date[0];
+
+
+				echo $nom . "-" . $prenom. "-" . $newDate. "-" . $classement;
 				
 				$add = $bd->prepare('UPDATE user
 									SET RangClassement_user = ?
 									WHERE nom_user = ? 
-									AND prenom_user= ?');
+									AND prenom_user= ?
+									AND dateDeNaissance_user=?');
 				
-				$add->bindValue(2, $att0);
-				$add->bindValue(3, $att1);
-				//$add->bindValue(4, strtotime($att2)); AND dateDeNaissance_user=?
-				$add->bindValue(1, $att3);
+				$add->bindValue(2, $nom);
+				$add->bindValue(3, $prenom);
+				$add->bindValue(4, $newDate); 
+				$add->bindValue(1, $classement);
 
 				$add->execute();
-				var_dump($add);
-
-				//echo " : " . $b . "     -     ";
 			}#End while
+	}
+
+
+	function importStages(){
+
+
 	}
 
 ?>

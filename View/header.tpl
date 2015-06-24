@@ -14,6 +14,7 @@
         initializeHeader(idRole);
     };
 </script>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <nav class="navbar">
@@ -24,15 +25,16 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="accueil-option"><a href="#">Accueil</a></li>
-        <li class="profil-option hide-option"class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil<span class="caret"></span></a>
+        <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
+        <li><a href="#" class="accueil-option change-at-focus">Accueil</a></li>
+        <li class="dropdown profil-option hide-option">
+          <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profils<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index.php?control=user&action=showProfil">Modifier</a></li>
           </ul>
         </li>
         <li class="dropdown stage-option hide-option">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stages<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stages<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="stage-voeux-option hide-option"><a href="#">Liste de voeux</a></li>
             <li class="stage-consultation-option hide-option"><a href="#">Consultation</a></li>
@@ -40,7 +42,7 @@
           </ul>
         </li>
         <li class="dropdown admin-option hide-option">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index.php?control=user&action=showUsers">Gestion des utilisateurs</a></li>
             <li><a href="index.php?control=import&action=showImportClassement">Import Classement</a></li>
@@ -51,7 +53,7 @@
      <ul class="nav navbar-nav navbar-right utilisateur-option hide-option">
          <p class="navbar-text">Utilisateur</p>
         <p class="navbar-text">Filiere</p>
-        <li><a href="#">Deconnexion</a></li>
+        <li><a href="#" class="change-at-focus">Deconnexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

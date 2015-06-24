@@ -59,7 +59,7 @@ CREATE TABLE User(
         prenom_user            Varchar (25) ,
         mdp_user               Varchar (25) ,
         NbSemestre_user        Int ,
-        dateDeNaissance_user   Varchar (9) ,
+        dateDeNaissance_user   Varchar (10) ,
         RangClassement_user    Int ,
         mail_user              Varchar (25) ,
         numtel_user            Int ,

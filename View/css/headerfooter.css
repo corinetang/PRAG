@@ -19,6 +19,7 @@
   bottom: 0;
   width: 100%;
   height: 60px;
+  /* trouver une couleur identique au header !!!!!!!!! */
   background-color: #337ab7;
 }
 .footer>.container>p {
