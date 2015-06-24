@@ -198,20 +198,31 @@
 	    					 AND UPPER(prenom_user) = UPPER(:prenom)");
 	    $add->bindParam(':nom', $nom);
 	    $add->bindParam(':prenom', $prenom);
-	    $res = $add->execute();
+	    $add->execute();
+	    $res = $add->fetch();
 	   
 	   #Gestion des identifiants (si homonymes)----------------------------------------------
-	    if ($res == 0) {
+	    if ($res[0] == 0 ) {
 	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom);
 	    } else {
-	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res+1;
+	    	$res[0] = $res[0];
+	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res[0];
 	    }#End If
 		
 	    return $identifiant_user;
 
 	}#End ofcreate_id
 
+	#=========================================================================================================
 
+	function getAllUsers(){
+		require('ConfigSQL.php');
+		    $add = $bd->prepare("SELECT * FROM user u");
+			$add->execute();
+			$res = $add->fetch();
+
+			return json_encode($res);
+	}#End of getAllUsers
 
 
 ?>

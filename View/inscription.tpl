@@ -6,7 +6,7 @@
 <div> 
 	<div id="dialog-form"  title="Inscription">
 		<fieldset>
-			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=ajax_inscription" enctype="multipart/form-data">
+			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=inscription" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="Nom" class="col-sm-2 control-label">Nom</label>
                     <div class="col-sm-5">
@@ -64,12 +64,6 @@
 					<option>IPR</option>
 					<option>Pharmacie</option>
 				</select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="Groupe" class="col-sm-2 control-label">Êtes vous membre du SIPHIF ?</label>
-                    <div class="col-sm-5">
-                        <input type="checkbox" name="Groupe">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" value="submit" name="submit-inscription" id="submit-inscription"> Inscription </button>

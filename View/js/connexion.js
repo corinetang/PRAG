@@ -1,5 +1,5 @@
 function connection() {
-		$.ajax({
+	$.ajax({
 		url : $('#f1').attr('action'),  /*action="index.php?control=user&action=connect"*/
 		type : $('#f1').attr('method'), /*method="POST"*/
 		data : $('#f1').serialize(), /*paramétrage de la requète  : sérialisation des valeurs saisies dans le formulaire*/
