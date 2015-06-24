@@ -1,7 +1,9 @@
 
 <?php
 
-
+/*
+ * Affiche la page de connexion
+ */
 function connexion () {
 	$presentation = "";
 	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
@@ -10,16 +12,25 @@ function connexion () {
 	require ('View/connexion.tpl');
 }
 
+/*
+ * Affiche la page inscription
+ */
 function inscription() {
 	
 	require ('View/inscription.tpl');
 }
 
+/*
+ * Affiche la page de recuperation de mot de passe
+ */
 function recuperation() {
 	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	require ('View/recuperation.tpl');
 }
 
+/*
+ * Envoie les donnees de connexion au serveur
+ */
 function ajax_connect () {
 	//Récupération des variables saisies dans le formulaire-----------------------------
 	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
@@ -42,6 +53,9 @@ function ajax_connect () {
 	} */
 }
 
+/*
+ * Envoie les donnees inscription au model
+ */
 function ajax_inscription() {
 	$nom = isset($_POST['Nom'])?$_POST['Nom']:"";
 	$Prenom = isset($_POST['Prenom'])?$_POST['Prenom']:"";
