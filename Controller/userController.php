@@ -69,7 +69,6 @@ function ajax_inscription() {
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
 	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
 
-
 	require ('Model/userModel.php');
 
 	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
