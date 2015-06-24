@@ -5,7 +5,7 @@
 <div id="wrap"> 
 	<div id="connexion-div"  title="Connexion">
 	<fieldset>
-		<form class="form-signin" method="post" action="index.php?control=user&action=ajax_connect">
+		<form class="form-signin" method="post" action="index.php?control=user&action=connexion">
 			<div>
 				<input type="text" name="identifiant" class="form-control" placeholder="Identifiant" required autofocus>
                 <br>
