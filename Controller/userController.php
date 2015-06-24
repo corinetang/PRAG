@@ -75,4 +75,10 @@ function inscription() {
 
 }
 
+function showUsers() {
+	require ('Model/userModel.php');
+	$jsonUsers = getAllUsers();
+	require ('View/gestionUsers.tpl');
+} 
+
 ?>
