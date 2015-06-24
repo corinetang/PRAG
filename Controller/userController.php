@@ -4,7 +4,7 @@
 /*
  * Affiche la page de connexion
  */
-function connexion () {
+function showConnexion () {
 	$presentation = "";
 	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
@@ -15,7 +15,7 @@ function connexion () {
 /*
  * Affiche la page inscription
  */
-function inscription() {
+function showInscription() {
 	
 	require ('View/inscription.tpl');
 }
@@ -31,7 +31,7 @@ function recuperation() {
 /*
  * Envoie les donnees de connexion au serveur
  */
-function ajax_connect () {
+function connexion () {
 	//Récupération des variables saisies dans le formulaire-----------------------------
 	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
@@ -56,7 +56,7 @@ function ajax_connect () {
 /*
  * Envoie les donnees inscription au model
  */
-function ajax_inscription() {
+function inscription() {
 	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
 	$Prenom                = isset($_POST['Prenom'])?$_POST['Prenom']:"";
 	$NbSemestre            = isset($_POST['NbSemestre'])?$_POST['NbSemestre']:"";
