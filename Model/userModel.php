@@ -213,7 +213,16 @@
 
 	}#End ofcreate_id
 
+	#=========================================================================================================
 
+	function getAllUsers(){
+		require('ConfigSQL.php');
+		    $add = $bd->prepare("SELECT * FROM user u");
+			$add->execute();
+			$res = $add->fetch();
+
+			return json_encode($res);
+	}#End of getAllUsers
 
 
 ?>
