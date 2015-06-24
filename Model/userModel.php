@@ -204,7 +204,7 @@
 	    if ($res == 0) {
 	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom);
 	    } else {
-	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res;
+	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res+1;
 	    }#End If
 		
 	    return $identifiant_user;
