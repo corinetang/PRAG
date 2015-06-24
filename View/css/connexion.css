@@ -1,13 +1,8 @@
 @charset "utf-8";
 
-.body {
-    background-image:url(view/logo.png);
-    background-attachment:fixed;
-}
-
 .form-signin {
   max-width: 330px;
-  padding: 20% 0 0 0;
+  padding: 2% 0 0 0;
   margin: 0 auto;
     vertical-align:bottom;
     text-align: center;
@@ -21,4 +16,21 @@
   box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
+}
+
+img {
+    width:200px;
+    height:200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+}
+
+div#wrap{
+    background-color: #e9f2f9;
+    height: auto;
+}
+body{
+    background-color: #e9f2f9;
 }
