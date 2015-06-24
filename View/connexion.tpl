@@ -15,9 +15,9 @@
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit" value="Connexion" name="Connexion">Connexion</button>
             <div class="row">
-  <div class="col-md-4"><a href="index.php?control=import&action=inscription">Inscription</a></div>
+  <div class="col-md-4"><a href="index.php?control=user&action=inscription">Inscription</a></div>
   <div class="col-md-1"></div>
-  <div class="col-md-7"><a href="index.php?control=import&action=recuperation">Mot de passe oubli&eacute ?</a></div>
+  <div class="col-md-7"><a href="index.php?control=user&action=recuperation">Mot de passe oubli&eacute ?</a></div>
 </div>
 		</form>
 	</fieldset>
