@@ -71,12 +71,13 @@ function inscription() {
 	$Password              = isset($_POST['Password'])?$_POST['Password']:"";
 	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
-	$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+	//$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+ 	$Filiere = 1;
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
 
 	require ('Model/userModel.php');
 
-	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
+	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere);
 
 }
 
@@ -89,8 +90,7 @@ function profil() {
 	$NewPassword           = isset($_POST['Password'])?$_POST['Password']:"";
 	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
-	//$Filiere = isset($_POST['Filiere'])?$_POST['Filiere']:"";
-	$filiere               = 1;
+	$filiere 			   = isset($_POST['Filiere'])?$_POST['Filiere']:"";
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
 	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
 
@@ -100,8 +100,7 @@ function profil() {
 		echo change($OldPassword, $NewPassword, $ValidationPassword);
 	}
 
-	// $_SESSION["user"][0]["id_user"]
-	update_user(1, $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $filiere);
+	echo update_user($_SESSION["user"][0]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $filiere);
 
 }
 
