@@ -1,5 +1,6 @@
 <head>
     <script src="View/js/formProfil.js"></script>
+    <link rel="stylesheet" type="text/css" href="View/css/formProfil.css " />
 </head>
 <div> 
 	<div id="dialog-form"  title="Profil">

@@ -86,8 +86,8 @@ function inscription() {
    /*---------------------------------------------------------------
    *
   *     FONCTION DE HASHAGE
- *
-*/------------------------------------------------------------------
+ *---------------------------------------------------------------
+*/
 // Fonction de hashage de mot de passe avec l'algo Blowfish
 function bcrypt_hass_password($value, $options = array()){
     $cost = isset($options['rounds']) ? $options['rounds'] : 10;
