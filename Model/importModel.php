@@ -62,7 +62,8 @@
 				addDes($des);
 				addEtablissement($etablissement);
 				addService($service);
-
+				addDesEtablissement($des,$etablissement);
+				addStage($service,$chef,$poste);
 			}#End while
 
 	}#End importStages
@@ -132,4 +133,45 @@
 		$res->execute();
 
 	}#End addDes
+	#===================================================================================================
+
+	function addDesEtablissement($des, $etablissement){
+		require('configSQL.php');
+		$add = $bd->prepare("SELECT id_DES From des WHERE libelle_DES = ?");
+	    $add->bindValue(1, $des);
+		$add->execute();
+		$res = $add->fetch();
+		$idDes = $res[0];
+
+		$add2 = $bd->prepare("SELECT id_Etablissement From etablissement WHERE nom_Etablissement = ?");
+	    $add2->bindValue(1, $etablissement);
+		$add2->execute();
+		$res2 = $add2->fetch();
+		$idEtablissement = $res2[0];
+
+	    $add3 = $bd->prepare("	INSERT IGNORE INTO des_etablissement(id_DES,id_Etablissement)
+	    						VALUES  (?,?) ");
+	    $add3->bindValue(1, $idDes);
+	    $add3->bindValue(2, $idEtablissement);
+		$add3->execute();
+
+	}#End addDesEtablissement
+
+	function addStage($service,$chef,$poste){
+		require('configSQL.php');
+		$add = $bd->prepare("SELECT id_Service From service WHERE nom_service = ?");
+	    $add->bindValue(1, $service);
+		$add->execute();
+		$res = $add->fetch();
+		$idService = $res[0];
+
+		echo $service . ":" . $idService . ' - ';
+
+		$add2 = $bd->prepare("	INSERT INTO stage(NbPoste_stage,maitre_stage,id_Service)
+	    						VALUES (?,?,?)");
+	    $add2->bindValue(1, $poste);
+	   	$add2->bindValue(2, $chef);
+	    $add2->bindValue(3, $service);
+		$add2->execute();
+	}
 ?>
