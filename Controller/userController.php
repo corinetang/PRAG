@@ -48,7 +48,8 @@ function connexion () {
 
 	//Controle des infos saisies--------------------------------------------------
 	if (isset($_POST['Connexion'])){
-		if (authentification($identifiant,$pass)) {
+		$hash_pass = bcrypt_hass_password($pass);
+		if (authentification($identifiant,$hash_pass)) {
 			header("Location: index.php");
 		}
 		else {
@@ -88,11 +89,12 @@ function inscription() {
 */
 // Fonction de hashage de mot de passe avec l'algo Blowfish
 function bcrypt_hass_password($value, $options = array()){
-    $cost = isset($options['rounds']) ? $options['rounds'] : 10;
-    $hash = password_hash($value, PASSWORD_BCRYPT, array('cost' => $cost));
-    if ($hash === false) {
-        throw new Exception("Bcrypt hashing n'est pas supporte.");
-    }
+    // $cost = isset($options['rounds']) ? $options['rounds'] : 10;
+    // $hash = password_hash($value, PASSWORD_BCRYPT, array('cost' => $cost));
+    // if ($hash === false) {
+    //     throw new Exception("Bcrypt hashing n'est pas supporte.");
+    // }
+    $hash = sha1($value);
     return $hash;
 }
 
