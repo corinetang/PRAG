@@ -26,9 +26,7 @@ function showInscription() {
 }
 
 function showProfil() {
-	if (isset($_SESSION['utilisateur'])) {
-		require ('View/formProfil.tpl');	
-	}
+	require ('View/formProfil.tpl');	
 }
 
 function showAccueilConnect() {
