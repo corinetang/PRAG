@@ -24,7 +24,6 @@ function showProfil() {
 	if (isset($_SESSION['utilisateur'])) {
 		require ('View/formProfil.tpl');	
 	}
-
 }
 
 /*
@@ -75,11 +74,35 @@ function inscription() {
  	$Filiere = 1;
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
 
-	require ('Model/userModel.php');
+    // Hashage du mots de passe
+    $Password = bcrypt_hass_password($Password);
+	
+    require ('Model/userModel.php');
 
 	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere);
 
 }
+
+   /*---------------------------------------------------------------
+   *
+  *     FONCTION DE HASHAGE
+ *
+*/------------------------------------------------------------------
+// Fonction de hashage de mot de passe avec l'algo Blowfish
+function bcrypt_hass_password($value, $options = array()){
+    $cost = isset($options['rounds']) ? $options['rounds'] : 10;
+    $hash = password_hash($value, PASSWORD_BCRYPT, array('cost' => $cost));
+    if ($hash === false) {
+        throw new Exception("Bcrypt hashing n'est pas supporte.");
+    }
+    return $hash;
+}
+
+// Verifie le mot de pass
+function bcrypt_verify_password($value, $hashedValue){
+    return password_verify($value,$hashedValue);
+}
+
 
 function profil() {
 	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
@@ -95,7 +118,7 @@ function profil() {
 	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
 
 	require ('Model/userModel.php');
-
+    
 	if ($NewPassword != "" && $OldPassword != "") {
 		change($OldPassword, $NewPassword, $ValidationPassword);
 	}
