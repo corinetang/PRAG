@@ -106,7 +106,7 @@ CREATE TABLE Choix(
 
 CREATE TABLE Service(
         id_Service       int (11) Auto_increment  NOT NULL ,
-        nom_service      Varchar (25) ,
+        nom_service      Varchar (50) ,
         id_Etablissement Int ,
         PRIMARY KEY (id_Service )
 )ENGINE=InnoDB;
