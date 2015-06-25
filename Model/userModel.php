@@ -60,12 +60,20 @@
 
 	function authentification_BD($login, $mdp){ // Fonction privée (ne sert que pour découper le code avec la fonction authentification)
 	    require('ConfigSQL.php');
+
 	    $result = $bd->prepare('SELECT * FROM user WHERE identifiant_user = ? AND mdp_user = ?');
 	    $result->bindvalue(1, $login);
 	    $result->bindvalue(2, $mdp);
 	    $result->execute();
 	    $donnee = $result->fetchAll(PDO::FETCH_ASSOC);
+		
 		$_SESSION['user'] = $donnee;
+
+		//testing
+		// echo "authentification bd session : " ;
+		// echo print_r($_SESSION['user']);
+
+
 	    $result->closeCursor();
 	    return !empty($donnee);
 	}#End authentification_BD
@@ -171,6 +179,7 @@
 
 	function update_user($id_user, $nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $filiere) {
 		require('ConfigSQL.php');
+
 	    $add = $bd->prepare("UPDATE user 
 	    					 SET nom_user = ?,
 	    					 prenom_user = ?,
@@ -180,14 +189,17 @@
 	    					 numtel_user = ?,
 	    					 id_Filiere = ?
 	    					 WHERE id_user = ?");
+
+
 	    $add->bindvalue(1, $nom_user);
 	    $add->bindvalue(2, $prenom_user);
 	    $add->bindvalue(3, $date_naiss);
 	    $add->bindvalue(4, $nbSemestre);
 	    $add->bindvalue(5, $email);
 	    $add->bindvalue(6, $Telephone);
-	    $add->bindvalue(7, $filiere, PDO::PARAM_INT);
-		$add->bindvalue(8, $id_user, PDO::PARAM_INT);
+	    $add->bindvalue(7, $filiere);
+		$add->bindvalue(8, $id_user);
+
 		
 	    return ($add->execute());
 	}
