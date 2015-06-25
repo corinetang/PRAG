@@ -171,7 +171,7 @@
 	    						VALUES (?,?,?)");
 	    $add2->bindValue(1, $poste);
 	   	$add2->bindValue(2, $chef);
-	    $add2->bindValue(3, $service);
+	    $add2->bindValue(3, $idService);
 		$add2->execute();
 	}
 ?>
