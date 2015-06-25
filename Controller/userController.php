@@ -78,7 +78,14 @@ function inscription() {
 	
     require ('Model/userModel.php');
 
-	ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere);
+	if (ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere)) {
+		echo "<div class=\"alert alert-success\" role=\"alert\">Votre inscription a bien été prise en compte</div>";
+		header('Location: index.php');
+	}
+	else{
+		echo "<div class=\"alert alert-danger\" role=\"alert\">Une erreur a empêché votre inscription</div>";
+		header('Location: index.php');	
+	}
 
 }
 
