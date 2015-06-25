@@ -1,11 +1,5 @@
 <head>
 <script src="View/js/gsetionUsers.js"></script>
-<script type="text/javascript">
-    window.onload = function() {
-        var idRole = <?php echo $_SESSION["user"][0]["id_Groupe"]; ?>;
-        showUsers();
-    };
-</script>
 </head>
 
 <div id="gestionUsers">
