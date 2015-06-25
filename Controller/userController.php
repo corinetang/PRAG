@@ -101,8 +101,9 @@ function bcrypt_hass_password($value, $options = array()){
     // if ($hash === false) {
     //     throw new Exception("Bcrypt hashing n'est pas supporte.");
     // }
-    $hash = sha1($value);
-    return $hash;
+    // return $hash;
+
+    return $value;
 }
 
 // Verifie le mot de pass
