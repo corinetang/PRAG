@@ -26,6 +26,10 @@ function showProfil() {
 	}
 }
 
+function showAccueilConnect() {
+	require ('View/pageAccueilConnect.tpl');	
+}
+
 /*
  * Affiche la page de recuperation de mot de passe
  */
@@ -47,16 +51,12 @@ function connexion () {
 	//Controle des infos saisies--------------------------------------------------
 	if (isset($_POST['Connexion'])){
 		if (authentification($identifiant,$pass)) {
-			$_SESSION['utilisateur']= $identifiant;	
-			echo ($_SESSION['utilisateur']);
+			header("Location: index.php");
 		}
 		else {
-		/*echo("KO");*/
+			header("Location: index.php");
 		}
 	}
-	/*else {
-		ajout('','',$identifiant,$pass,'');
-	} */
 }
 
 /*

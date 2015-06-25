@@ -10,8 +10,14 @@
   <script src="View/js/header.js"></script>
   <script type="text/javascript">
     window.onload = function() {
-        // var idRole = <?php echo $_SESSION["user"][0]["id_Groupe"]; ?>;
-        // initializeHeader(idRole);
+      var user = <?php echo print_r($_SESSION["user"][0]["id_Groupe"]); ?>;
+      console.log('user', user);
+      var idRole = <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']))
+        echo $_SESSION["user"][0]["id_Groupe"];
+      else 
+        echo -1;
+       ?>;
+      initializeHeader(idRole);
     };
 </script>
 
