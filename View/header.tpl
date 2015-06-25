@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
-        <li><a href="#" class="accueil-option change-at-focus">ACCUEIL</a></li>
+        <li><a href="index.php" class="accueil-option change-at-focus">ACCUEIL</a></li>
         <li class="dropdown profil-option hide-option">
           <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profils<span class="caret"></span></a>
           <ul class="dropdown-menu">

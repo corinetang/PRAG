@@ -33,6 +33,7 @@ function showAccueilConnect() {
 	require ('View/pageAccueilConnect.tpl');	
 }
 
+
 /*
  * Affiche la page de recuperation de mot de passe
  */
@@ -53,10 +54,12 @@ function connexion () {
 
 	//Controle des infos saisies--------------------------------------------------
 	if (isset($_POST['Connexion'])){
-		$hash_pass = bcrypt_hass_password($pass);
-		if (authentification($identifiant,$hash_pass)) {
-			header("Location: index.php");
-		}
+        $donnee = array(); 
+		$donnee = authentification_BD($identifiant,$pass);
+        if(bcrypt_verify_password($pass,$donnee['mdp_user'])){
+            $_SESSION['user'] = $donnee;
+            header("Location: index.php?control=user&action=showAccueilConnect");
+        }
 		else {
 			header("Location: index.php");
 		}
@@ -101,14 +104,12 @@ function inscription() {
 */
 // Fonction de hashage de mot de passe avec l'algo Blowfish
 function bcrypt_hass_password($value, $options = array()){
-    // $cost = isset($options['rounds']) ? $options['rounds'] : 10;
-    // $hash = password_hash($value, PASSWORD_BCRYPT, array('cost' => $cost));
-    // if ($hash === false) {
-    //     throw new Exception("Bcrypt hashing n'est pas supporte.");
-    // }
-    // return $hash;
-
-    return $value;
+    $cost = isset($options['rounds']) ? $options['rounds'] : 10;
+    $hash = password_hash($value, PASSWORD_BCRYPT, array('cost' => $cost));
+    if ($hash === false) {
+       throw new Exception("Bcrypt hashing n'est pas supporte.");
+    }
+    return $hash;
 }
 
 // Verifie le mot de pass

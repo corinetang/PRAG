@@ -61,21 +61,15 @@
 	function authentification_BD($login, $mdp){ // Fonction privée (ne sert que pour découper le code avec la fonction authentification)
 	    require('ConfigSQL.php');
 
-	    $result = $bd->prepare('SELECT * FROM user WHERE identifiant_user = ? AND mdp_user = ?');
-	    $result->bindvalue(1, $login);
-	    $result->bindvalue(2, $mdp);
+	    $result = $bd->prepare("SELECT * FROM user WHERE identifiant_user = :identifiant");
+	    $result->bindParam(':identifiant', $login);
 	    $result->execute();
-	    $donnee = $result->fetchAll(PDO::FETCH_ASSOC);
-		
-		$_SESSION['user'] = $donnee;
-
-		//testing
-		// echo "authentification bd session : " ;
-		// echo print_r($_SESSION['user']);
+	    $donnee = $result->fetch(PDO::FETCH_ASSOC);
+		// $_SESSION['user'] = $donnee;
 
 
 	    $result->closeCursor();
-	    return !empty($donnee);
+	    return $donnee;
 	}#End authentification_BD
 
 	#=======================================================================================================
