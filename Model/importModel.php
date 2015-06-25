@@ -60,7 +60,7 @@
 				$poste = $data[5];
 				
 				addDes($des);
-
+				addEtablissement($etablissement);
 				addService($service);
 
 			}#End while
@@ -111,5 +111,25 @@
 
 
 	}#End addService
+	#===================================================================================================
 
+	function addEtablissement($etablissement){
+		require('configSQL.php');
+
+	    $add = $bd->prepare("	INSERT IGNORE INTO etablissement
+	    						SET nom_etablissement = :etablissement");
+	    $add->bindParam(':etablissement', $etablissement);
+		$add->execute();
+
+		$res = $bd->prepare("	DELETE etablissement 
+								FROM etablissement 
+								LEFT OUTER JOIN 
+								( SELECT MIN(id_Etablissement) as id 
+									FROM etablissement 
+									GROUP BY nom_etablissement 
+								) AS table_1 ON etablissement.id_Etablissement = table_1.id 
+								WHERE table_1.id IS NULL");
+		$res->execute();
+
+	}#End addDes
 ?>
