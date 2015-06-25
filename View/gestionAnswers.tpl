@@ -20,7 +20,7 @@
     <br>
     <form class="form-horizontal" id="Form_Answer">
        <div class="form-group" id="answerBDD"> 
-           <!--- AFFICHAGE DES QUESTIONS PRESENTS SUR LA BASE DE DONNEE--->
+           <!--- AFFICHAGE DES QUESTIONS PRESENTS SUR LA BASE DE DONNEE -->
            </div>
   <div class="form-group" id="blockAnswer">
     <label for="exampleInputEmail1" class="col-sm-3 control-label">Question n°</label>
