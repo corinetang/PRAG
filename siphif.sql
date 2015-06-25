@@ -118,7 +118,7 @@ CREATE TABLE Service(
 
 CREATE TABLE Etablissement(
         id_Etablissement  int (11) Auto_increment  NOT NULL ,
-        nom_etablissement Varchar (35) ,
+        nom_etablissement Varchar (50) ,
         PRIMARY KEY (id_Etablissement )
 )ENGINE=InnoDB;
 
@@ -162,7 +162,7 @@ CREATE TABLE Reponse(
 
 CREATE TABLE DES(
         id_DES      int (11) Auto_increment  NOT NULL ,
-        libelle_DES Varchar (25) ,
+        libelle_DES Varchar (50) ,
         PRIMARY KEY (id_DES )
 )ENGINE=InnoDB;
 
