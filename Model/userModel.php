@@ -100,9 +100,10 @@
 
 	function ajout_BD($nom, $prenom, $mdp, $nbSemestre_user, $dateDeNaissance_user, $email, $Numtel,$filiere){
 		require('ConfigSQL.php');
+		$groupe = 1;
 		$identifiant_user = create_id($nom,$prenom);
-	    $add = $bd->prepare("INSERT INTO user(identifiant_user, nom_user, prenom_user, mdp_user, NbSemestre_user, dateDeNaissance_user, mail_user, numtel_user, id_Filiere) 
-							VALUES(:identifiant_user,:nom, :prenom,:mdp, :nbSemestre_user , :dateDeNaissance_user,:email,:Numtel,:id_filiere)");
+	    $add = $bd->prepare("INSERT INTO user(identifiant_user, nom_user, prenom_user, mdp_user, NbSemestre_user, dateDeNaissance_user, mail_user, numtel_user, id_Filiere,id_Groupe) 
+							VALUES(:identifiant_user,:nom, :prenom,:mdp, :nbSemestre_user , :dateDeNaissance_user,:email,:Numtel,:id_filiere,:id_groupe)");
 	    $add->bindParam(':identifiant_user', $identifiant_user);
 	    $add->bindParam(':mdp', $mdp);
 		$add->bindParam(':nom', $nom);
@@ -112,6 +113,7 @@
 	    $add->bindParam(':dateDeNaissance_user', $dateDeNaissance_user);
 	    $add->bindParam(':Numtel', $Numtel);
 	    $add->bindParam(':id_filiere', $filiere);
+	    $add->bindParam(':id_groupe', $groupe); //Par défaut un interne
 
 	    return ($add->execute());
 	}#End ajout_BD
