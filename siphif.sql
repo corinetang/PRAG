@@ -57,7 +57,7 @@ CREATE TABLE User(
         identifiant_user       Varchar (25) ,
         nom_user               Varchar (25) ,
         prenom_user            Varchar (25) ,
-        mdp_user               Varchar (25) ,
+        mdp_user               Varchar (100) ,
         NbSemestre_user        Int ,
         moyenneClassement_user Int ,
         dateDeNaissance_user   Varchar (11) ,
