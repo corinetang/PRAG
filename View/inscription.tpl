@@ -62,11 +62,11 @@
                 <div class="form-group">
 				<label for="Filiere" class="col-sm-3 control-label">Filiere</label>
                     <div class="col-sm-9">
-                 <select class ="form-control" name="Filiere">
-					<option>Biologie</option>
-					<option>IPR</option>
-					<option>Pharmacie</option>
-				</select>
+                         <select class ="form-control" name="Filiere">
+                            <?php foreach ($listFiliere as $filiere) { ?>
+                                <option value=<?php echo utf8_decode($filiere['id_Filiere']) ?>> <?php echo utf8_decode($filiere['nom_filiere']) ?> </option>
+                            <?php } ?>
+        				</select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" value="submit" name="submit-inscription" id="submit-inscription"> Inscription </button>

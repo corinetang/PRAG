@@ -6,6 +6,10 @@
 			$add->execute();
 			$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
+			/*foreach ($res as $r) {
+				($r['nom_filiere']);
+			}*/
+			
 			return $res;
 	}#End getFiliere
 

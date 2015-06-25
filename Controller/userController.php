@@ -16,12 +16,19 @@ function showConnexion () {
  * Affiche la page inscription
  */
 function showInscription() {
-	
+
+	require ('Model/filiereModel.php');
+	$listFiliere = getFiliere();
+
+	/*var_dump($listFiliere);exit;*/
+
 	require ('View/inscription.tpl');
 }
 
 function showProfil() {
-	require ('View/formProfil.tpl');	
+	if (isset($_SESSION['utilisateur'])) {
+		require ('View/formProfil.tpl');	
+	}
 }
 
 function showAccueilConnect() {
@@ -112,8 +119,6 @@ function bcrypt_verify_password($value, $hashedValue){
 
 
 function profil() {
-
-	
 	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
 	$Prenom                = isset($_POST['Prenom'])?$_POST['Prenom']:"";
 	$NbSemestre            = isset($_POST['NbSemestre'])?$_POST['NbSemestre']:"";
@@ -122,12 +127,9 @@ function profil() {
 	$NewPassword           = isset($_POST['Password'])?$_POST['Password']:"";
 	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
-	$filiere = 1;
-	//$filiere 			   = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+	$filiere 			   = isset($_POST['Filiere'])?$_POST['Filiere']:"";
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
 	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
-
-
 
 	require ('Model/userModel.php');
     
@@ -135,19 +137,11 @@ function profil() {
 		change($OldPassword, $NewPassword, $ValidationPassword);
 	}
 
-	echo update_user($_SESSION["user"][0]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $filiere);
+	update_user($_SESSION["user"][0]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $filiere);
+
+	
 
 }
-
-/*function getListFilieres() {
-	require ('Model/filiereModel.php');
-
-	$listFiliere = getFiliere();
-
-	return new response($listFiliere);
-	return $listFiliere;
-}*/
-
 
 function showUsers() {
 	require ('Model/userModel.php');
