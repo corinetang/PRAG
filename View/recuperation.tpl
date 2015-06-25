@@ -7,7 +7,7 @@
     <p>Sur cette page, vous pourrez récupere votre mot de passe en nous inscrivant votre adresse mail utilisé lors de votre inscription<p>
 	<div id="dialog-form"  title="Recuperation">
 	<fieldset>
-		<form class="form-horizontal" id="f1" method="post" action="index.php?control=user&action=ajax_connect">
+		<form class="form-horizontal" id="f1" method="post" action="index.php?control=user&action=envoiMail">
                 <div class="form-group">
                     <label for="Nom" class="col-sm-3 control-label">Votre adresse mail</label>
                     <div class="col-sm-5">
