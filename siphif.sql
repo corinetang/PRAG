@@ -79,6 +79,7 @@ CREATE TABLE Stage(
         NbPoste_stage   Int ,
         dateDebut_stage Date ,
         dateFin_stage   Date ,
+        maitre_stage     Varchar (50) ,
         id_Filiere      Int ,
         id_Service      Int ,
         PRIMARY KEY (id_Stage )
