@@ -61,6 +61,8 @@
 				
 				addDes($des);
 
+				addService($service);
+
 			}#End while
 
 	}#End importStages
@@ -70,12 +72,44 @@
 	function addDes($des){
 		require('configSQL.php');
 
-	    $add = $bd->prepare("	INSERT INTO des d (libelle_DES)
-	    						VALUES (:des)
-								IGNORE DUPLICATES");
+	    $add = $bd->prepare("	INSERT IGNORE INTO des
+	    						SET libelle_DES = :des");
 	    $add->bindParam(':des', $des);
 		$add->execute();
 
+		$res = $bd->prepare("	DELETE des 
+								FROM des 
+								LEFT OUTER JOIN 
+								( SELECT MIN(id_DES) as id 
+									FROM des 
+									GROUP BY libelle_DES 
+								) AS table_1 ON des.id_DES = table_1.id 
+								WHERE table_1.id IS NULL");
+		$res->execute();
+
 	}#End addDes
+
+	#===================================================================================================
+
+	function addService($service){
+		require('configSQL.php');
+
+	    $add = $bd->prepare("	INSERT IGNORE INTO service
+	    						SET nom_service = :service");
+	    $add->bindParam(':service', $service);
+		$add->execute();
+
+		$res = $bd->prepare("	DELETE service 
+								FROM service 
+								LEFT OUTER JOIN 
+								( SELECT MIN(id_Service) as id 
+									FROM service 
+									GROUP BY nom_service 
+								) AS table_1 ON service.id_Service = table_1.id 
+								WHERE table_1.id IS NULL");
+		$res->execute();
+
+
+	}#End addService
 
 ?>
