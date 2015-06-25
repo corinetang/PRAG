@@ -61,6 +61,8 @@
 				
 				addDes($des);
 
+				addService($service);
+
 			}#End while
 
 	}#End importStages
@@ -85,8 +87,29 @@
 								WHERE table_1.id IS NULL");
 		$res->execute();
 
-		var_dump($add);
-
 	}#End addDes
+
+	#===================================================================================================
+
+	function addService($service){
+		require('configSQL.php');
+
+	    $add = $bd->prepare("	INSERT IGNORE INTO service
+	    						SET nom_service = :service");
+	    $add->bindParam(':service', $service);
+		$add->execute();
+
+		$res = $bd->prepare("	DELETE service 
+								FROM service 
+								LEFT OUTER JOIN 
+								( SELECT MIN(id_Service) as id 
+									FROM service 
+									GROUP BY nom_service 
+								) AS table_1 ON service.id_Service = table_1.id 
+								WHERE table_1.id IS NULL");
+		$res->execute();
+
+
+	}#End addService
 
 ?>
