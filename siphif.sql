@@ -59,7 +59,7 @@ CREATE TABLE User(
         prenom_user            Varchar (25) ,
         mdp_user               Varchar (100) ,
         NbSemestre_user        Int ,
-        dateDeNaissance_user   Varchar (10) ,
+        dateDeNaissance_user   Varchar (11) ,
         RangClassement_user    Int ,
         mail_user              Varchar (25) ,
         numtel_user            Int ,
@@ -118,7 +118,6 @@ CREATE TABLE Service(
 CREATE TABLE Etablissement(
         id_Etablissement  int (11) Auto_increment  NOT NULL ,
         nom_etablissement Varchar (25) ,
-        id_DES            Int ,
         PRIMARY KEY (id_Etablissement )
 )ENGINE=InnoDB;
 
@@ -190,6 +189,16 @@ CREATE TABLE Question_Reponse(
         PRIMARY KEY (id_Evaluation ,id_Question ,id_reponse )
 )ENGINE=InnoDB;
 
+#------------------------------------------------------------
+# Table: DES_Etablissement
+#------------------------------------------------------------
+
+CREATE TABLE DES_Etablissement(
+        id_DES           Int NOT NULL ,
+        id_Etablissement Int NOT NULL ,
+        PRIMARY KEY (id_DES ,id_Etablissement )
+)ENGINE=InnoDB;
+
 ALTER TABLE Evaluation ADD CONSTRAINT FK_Evaluation_id_Stage FOREIGN KEY (id_Stage) REFERENCES Stage(id_Stage);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Groupe FOREIGN KEY (id_Groupe) REFERENCES Groupe(id_Groupe);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Filiere FOREIGN KEY (id_Filiere) REFERENCES Filiere(id_Filiere);
@@ -204,6 +213,8 @@ ALTER TABLE User_Evaluation ADD CONSTRAINT FK_User_Evaluation_id_user FOREIGN KE
 ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_Evaluation FOREIGN KEY (id_Evaluation) REFERENCES Evaluation(id_Evaluation);
 ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_Question FOREIGN KEY (id_Question) REFERENCES Questions(id_Question);
 ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_reponse FOREIGN KEY (id_reponse) REFERENCES Reponse(id_reponse);
+ALTER TABLE DES_Etablissement ADD CONSTRAINT FK_DES_Etablissement_id_DES FOREIGN KEY (id_DES) REFERENCES DES(id_DES);
+ALTER TABLE DES_Etablissement ADD CONSTRAINT FK_DES_Etablissement_id_Etablissement FOREIGN KEY (id_Etablissement) REFERENCES Etablissement(id_Etablissement);
 
 INSERT INTO Filiere (nom_filiere) VALUES ('Biologie médicale');
 INSERT INTO Filiere (nom_filiere) VALUES ('Innovation Pharmaceutique et Recherche');
