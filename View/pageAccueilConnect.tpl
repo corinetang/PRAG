@@ -24,7 +24,7 @@
     <br>
         <div class="list-group" id="AffichageStage2">
             <span class="list-group-item disabled" id="AffichageStage2">Information sur votre stage</span>
-            <div id="informationStage2">
+            <div class="portlet" id="informationStage2">
             <dl id="DESStage">
                 <dt>DES</dt>
                 <dd>bla bla bla</dd>
