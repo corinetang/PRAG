@@ -1,5 +1,5 @@
 <head>
-<script src="View/js/gsetionUsers.js"></script>
+<script src="View/js/geetionUsers.js"></script>
 </head>
 
 <div id="gestionUsers">

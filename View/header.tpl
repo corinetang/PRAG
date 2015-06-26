@@ -40,7 +40,7 @@
         <li class="dropdown stage-option hide-option">
           <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stages<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="stage-voeux-option hide-option"><a href="#">Liste de voeux</a></li>
+            <li class="stage-voeux-option hide-option"><a href="index.php?control=stage&action=showVoeux">Liste de voeux</a></li>
             <li class="stage-consultation-option hide-option"><a href="#">Consultation</a></li>
             <li class="stage-evaluation-option hide-option"><a href="#">Evaluation</a></li>
           </ul>

@@ -1,0 +1,21 @@
+div#AffichageStage{
+border-width:1px;
+  border-style:inset;
+  border-color:grey;
+    width: 50%;
+    MARGIN: 0 0 0 10%;
+}
+
+dl{
+    text-align: left;
+  padding: 0 0 0 10%;   
+}
+
+dl#DESStage {
+  padding-top: 1%;
+}
+
+span.list-group-item.disabled {
+  font-weight: bold;
+    letter-spacing: 2px;
+}
