@@ -15,8 +15,8 @@
 
 		$res = $add->fetch();
 
-		return json_encode($res);*/
-	}#End getStageFiliere
+		return json_encode($res);
+	}*/#End getStageFiliere
 
 	#=======================================================================================================
 
