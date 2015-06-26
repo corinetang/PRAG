@@ -9,14 +9,14 @@
 	<script src="View/js/libs/bootstrap.min.js"></script>
   <script src="View/js/header.js"></script>
   <script type="text/javascript">
-    window.onload = function() {
-      var idRole = <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']))
-        echo $_SESSION["user"][0]["id_Groupe"];
-      else 
-        echo -1;
-       ?>;
-      initializeHeader(idRole);
-    };
+    // window.onload = function() {
+    //   var idRole = <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']))
+    //     echo $_SESSION["user"][0]["id_Groupe"];
+    //   else 
+    //     echo -1;
+    //    ?>;
+    //   initializeHeader(idRole);
+    // };
 </script>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>

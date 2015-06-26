@@ -1,43 +1,53 @@
 <head>
-<script type="text/javascript">
-    function addVoeux() {
-        var block = document.getElementById("blockAnswer").cloneNode(true);
-        document.getElementById("answerBDD").appendChild(block);
-    }
-    
-    function missVoeux() {
-        $(this).parents("blockAnswer").remove();
-    }
-</script>
+  <link rel="stylesheet" type="text/css" 
+                       href="View/css/listVoeux.css " /> 
+  <script src="View/js/listVoeux.js"></script>
 </head>
 
 <div id="listVoeux">
-    <h1>Pré-choix des stages</h1>
+    <h1>Choix des stages</h1>
     <br>
-    <div class="col-lg-3">
-<div class="input-group">
-  <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hopital <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <?php foreach ($listEtablissement as $etablissement) { ?>
-                                <option value=<?php echo utf8_decode($etablissement['id_Etablissement']) ?>> <?php echo utf8_decode($etablissement['nom_etablissement']) ?> </option>
-                            <?php } ?>
-        </ul>
-      </div>
-  <input type="text" class="form-control" aria-label="Hopital / Structure">
-</div> </div>
+    <h2> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h2>
+    <table class="table table-striped" id="table-choice">
+        <thead>
+          <th>Id</th>
+          <th>DES</th>
+          <th>Etablissement</th>
+          <th>Service</th>
+          <th>Nombre de poste</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <?php foreach ($stages as $stage) { ?>
+            <tr>
+              <td class="stage-id"><?php echo $stage['id_Stage'] ?></td>
+              <td class="stage-des">DES</td>
+              <td class="stage-etablissement">Etablissement</td>
+              <td class="stage-service">Service</td>
+              <td class="stage-nb-poste"><?php echo $stage['NbPoste_stage'] ?></td>
+              <td>
+                <button type="button" class="btn btn-default btn-lg btn-choice-move">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+              </td>
+              <td></td>
+            </tr>
+          <?php } ?>
+        </tbody>
+    </table><br>
 
-<div class="input-group">
-  <input type="text" class="form-control" aria-label="Choix du poste">
-  <div class="input-group-btn">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-  </div>
-</div>
+    <h2> Stage selectionnés </h2>
+    <table class="table table-striped" id="table-result">
+      <thead>
+        <th>Id</th>
+        <th>DES</th>
+        <th>Etablissement</th>
+        <th>Service</th>
+        <th>Nombre de poste</th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
 </div>
