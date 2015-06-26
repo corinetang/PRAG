@@ -43,6 +43,8 @@ function importerClassement() {
  * Import du fichier stage côté serveur
  */
 function importerStage() {
+		$Filiere = isset($_POST['Filiere'])?$_POST['Filiere']:"";
+	
 		// UPLOAD DU FICHIER CSV, vérification et insertion en BASE
 		if($_FILES["file"]["type"] != "application/vnd.ms-excel"){
 			die("Ce n'est pas un fichier de type .csv");
@@ -50,7 +52,7 @@ function importerStage() {
 
 		elseif(is_uploaded_file($_FILES['file']['tmp_name'])){
 			require('Model/importModel.php');
-			importStages();
+			importStages($filiere);
 		}
 		else{
 			die("Vous ne devriez pas être là");
