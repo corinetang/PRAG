@@ -63,8 +63,8 @@
 				addEtablissement($etablissement);
 				addService($service);
 				addDesEtablissement($des,$etablissement);
-				$idFiliere = getIdFiliere($filiere);
-				addStage($service,$chef,$poste,$idFiliere);
+				//$idFiliere = getIdFiliere($filiere);
+				addStage($service,$chef,$poste,$filiere);
 					
 			}#End while
 

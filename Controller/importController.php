@@ -52,7 +52,7 @@ function importerStage() {
 
 		elseif(is_uploaded_file($_FILES['file']['tmp_name'])){
 			require('Model/importModel.php');
-			importStages($filiere);
+			importStages($Filiere);
 		}
 		else{
 			die("Vous ne devriez pas être là");
