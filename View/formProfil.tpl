@@ -3,39 +3,37 @@
     <link rel="stylesheet" type="text/css" href="View/css/formProfil.css " />
 </head>
 <div> 
-
-    <?php echo isset($_SESSION['user']); ?>
 	<div id="dialog-form"  title="Profil">
 		<fieldset>
 			<form class="form-horizontal" method="post" id="profil" action="index.php?control=user&action=profil" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="Nom" class="col-sm-2 control-label">Nom</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="Nom" value=<?php echo $_SESSION["user"][0]["nom_user"]; ?>>
+                        <input type="text" class="form-control" name="Nom" value=<?php echo $_SESSION["user"]["nom_user"]; ?>>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Prenom" class="col-sm-2 control-label">Pr&eacute;nom</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="Prenom" value=<?php echo $_SESSION["user"][0]["prenom_user"]; ?>>
+                        <input type="text" class="form-control" name="Prenom" value=<?php echo $_SESSION["user"]["prenom_user"]; ?>>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Ddn" class="col-sm-2 control-label">Date de naissance</label>
                     <div class="col-sm-5">
-                        <input type="date" class="form-control" name="Ddn" value=<?php echo $_SESSION["user"][0]["dateDeNaissance_user"]; ?>>
+                        <input type="date" class="form-control" name="Ddn" value=<?php echo $_SESSION["user"]["dateDeNaissance_user"]; ?>>
                     </div>
                 </div>                
                 <div class="form-group">
                     <label for="NbSemestre" class="col-sm-2 control-label">Nombre de semestre</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="NbSemestre" placeholder="Nombre de Semestre Valides" value=<?php echo $_SESSION["user"][0]["NbSemestre_user"]; ?>>
+                        <input type="text" class="form-control" name="NbSemestre" placeholder="Nombre de Semestre Valides" value=<?php echo $_SESSION["user"]["NbSemestre_user"]; ?>>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-5">
-                        <input type="email" class="form-control" id="inputEmail3" name="Email" placeholder="Adresse Email" value=<?php echo $_SESSION["user"][0]["mail_user"]; ?>>
+                        <input type="email" class="form-control" id="inputEmail3" name="Email" placeholder="Adresse Email" value=<?php echo $_SESSION["user"]["mail_user"]; ?>>
                     </div>
                 </div>
                 <div class="form-group">
@@ -60,7 +58,7 @@
                 <div class="form-group">
                     <label for="Telephone" class="col-sm-2 control-label">T&eacute;l&eacute;phone</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="Telephone" value=<?php echo $_SESSION["user"][0]["numtel_user"]; ?>>
+                        <input type="text" class="form-control" name="Telephone" value=<?php echo $_SESSION["user"]["numtel_user"]; ?>>
                     </div>
                 </div>
                 <div class="form-group">

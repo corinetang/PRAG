@@ -26,7 +26,11 @@ function showInscription() {
 }
 
 function showProfil() {
+
+	require("Model/kint/Kint.class.php");
 	require ('View/formProfil.tpl');	
+
+
 }
 
 function showAccueilConnect() {
@@ -54,7 +58,8 @@ function connexion () {
 
 	//Controle des infos saisies--------------------------------------------------
 	if (isset($_POST['Connexion'])){
-        if(authentification_BD($identifiant,$pass)){
+		$auth = authentification_BD($identifiant,$pass);
+        if($auth){
             header("Location: index.php?control=user&action=showAccueilConnect");
         }
 		else {
@@ -95,7 +100,7 @@ function profil() {
 	$Prenom                = isset($_POST['Prenom'])?$_POST['Prenom']:"";
 	$NbSemestre            = isset($_POST['NbSemestre'])?$_POST['NbSemestre']:"";
 	$Mail                  = isset($_POST['Mail'])?$_POST['Mail']:"";
-	$OldPassword		   = isset($_POST['OldPassword'])?$_POST['OldPassword']:"";
+	$OldPassword		   = isset($_POST['oldPassword'])?$_POST['oldPassword']:"";
 	$NewPassword           = isset($_POST['Password'])?$_POST['Password']:"";
 	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
@@ -103,15 +108,23 @@ function profil() {
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
 	$groupe_user           = isset($_POST['Groupe'])?$_POST['Groupe']:"";
 
+	$_SESSION["user"]["nom_user"] = $nom;
+	$_SESSION["user"]["prenom_user"] = $Prenom;
+	$_SESSION["user"]["NbSemestre_user"] = $NbSemestre;
+	$_SESSION["user"]["mail_user"] = $Mail;
+	$_SESSION["user"]["numtel_user"] = $Telephone;
+	$_SESSION["user"]["dateDeNaissance_user"] = $dateDeNaissance_user;
+
+
 	require ('Model/userModel.php');
-    
-	if ($NewPassword != "" && $OldPassword != "") {
-		change($OldPassword, $NewPassword, $ValidationPassword);
+
+	if ($NewPassword != "" && $OldPassword != "" && $NewPassword == $ValidationPassword) {
+		change_password_BD($NewPassword);
+		$_SESSION["user"]["mdp_user"] = $NewPassword;
 	}
 
-	update_user($_SESSION["user"][0]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $filiere);
+	update_user($_SESSION["user"]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, 1);
 
-	
 
 }
 

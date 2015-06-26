@@ -45,6 +45,7 @@
 		$_SESSION['user'] = $donnee;
 
 
+
 	    $result->closeCursor();
 	    return $donnee;
 	}#End authentification_BD
@@ -60,6 +61,8 @@
 		
 		if(!authentification_BD($login, $mdp))
 			return false;
+
+
 		
 		return true;
 	}#End authentification
@@ -127,6 +130,7 @@
 		if($password_new != $password_conf)
 			return false;
 
+
 		return change_password_BD($password_new);
 	}#End change
 
@@ -181,9 +185,10 @@
 
 	function change_password_BD($password_new){
 		require('ConfigSQL.php');
+		$hash = sha1($password_new);
 	    $add = $bd->prepare("UPDATE user SET mdp_user = :password_new WHERE id_user = :id_user");
-	    $add->bindParam(':password_new', $password_new);
-		$add->bindParam(':id_user', $_SESSION['id']);
+	    $add->bindParam(':password_new', $hash);
+		$add->bindParam(':id_user', $_SESSION['user']['id_user']);
 		
 	    return ($add->execute());
 	}#End change_password_BD
