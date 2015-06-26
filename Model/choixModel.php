@@ -45,4 +45,22 @@
 	    return ($add->execute());
 	}#End updateChoix
 
+	#=======================================================================================================
+
+	function getChoixByIdStage($id_stage,$id_user){
+		require('configSQL.php');
+
+		$add = $bd->prepare("SELECT * From stage 
+							WHERE id_user = ?
+							AND id_Stage = ?");
+	    $add->bindValue(1, $id_user);
+	    $add->bindValue(2, $id_stage);
+		$add->execute();
+		$res = $add->fetch();
+
+		return $res;
+	}#End getChoixByIdStage
+
+	#=======================================================================================================
+
 ?>
