@@ -4,6 +4,8 @@
  * Affiche la page de import classement
  */
 function showImportClassement() {
+	require ('Model/filiereModel.php');
+	$listFiliere = getFiliere();
 	require ('View/importClassement.tpl');
 }
 
