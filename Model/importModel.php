@@ -63,8 +63,10 @@
 				addEtablissement($etablissement);
 				addService($service);
 				addDesEtablissement($des,$etablissement);
-				addStage($service,$chef,$poste);
-				searchFiliere($_FILES['file']['name']);
+				$filiere = searchFiliere($_FILES['file']['name']);
+				$idFiliere = getIdFiliere($filiere);
+				addStage($service,$chef,$poste,$idFiliere);
+					
 			}#End while
 
 	}#End importStages
@@ -160,7 +162,7 @@
 
 	#===================================================================================================
 
-	function addStage($service,$chef,$poste){
+	function addStage($service,$chef,$poste,$filiere){
 		require('configSQL.php');
 		$add = $bd->prepare("SELECT id_Service From service WHERE nom_service = ?");
 	    $add->bindValue(1, $service);
@@ -170,11 +172,12 @@
 
 		//echo $service . ":" . $idService . ' - ';
 
-		$add2 = $bd->prepare("	INSERT INTO stage(NbPoste_stage,maitre_stage,id_Service)
-	    						VALUES (?,?,?)");
+		$add2 = $bd->prepare("	INSERT INTO stage(NbPoste_stage,maitre_stage,id_Service,id_Filiere)
+	    						VALUES (?,?,?,?)");
 	    $add2->bindValue(1, $poste);
 	   	$add2->bindValue(2, $chef);
 	    $add2->bindValue(3, $idService);
+	    $add2->bindValue(4, $filiere);
 		$add2->execute();
 	}#End addStage
 
@@ -187,14 +190,14 @@
 
 		while ($res = $add->fetch(PDO::FETCH_ASSOC)) {
 			if (strpos($namefiliere, $res['nom_filiere'])) {
-				addFiliere($res['nom_filiere']);
+				return $res['nom_filiere'];
 			}#End If
 		}#End while
 	}#End searchFiliere
 
 	#===================================================================================================
 
-	function addFiliere($nomFiliere){
+	function getIdFiliere($nomFiliere){
 		require('configSQL.php');
 
 		$add = $bd->prepare("SELECT id_Filiere From filiere WHERE nom_filiere = ?");
@@ -203,9 +206,12 @@
 		$res = $add->fetch();
 		$idFiliere = $res[0];
 
-		$add2 = $bd->prepare("INSERT IGNORE INTO stage(id_Filiere)
-	    						VALUES  (?) ");
+		return $idFiliere;
+
+		/*$add2 = $bd->prepare("INSERT INTO stage(id_Filiere)
+	    						VALUES  (?)
+	    						HAVING id_Stage = (MAX(id_Stage))");
 	    $add2->bindValue(1, $idFiliere);
-		$add2->execute();
-	}#End addFiliere
+		$add2->execute();*/
+	}#End getIdFiliere
 ?>
