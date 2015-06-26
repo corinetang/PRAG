@@ -69,7 +69,7 @@
 	    $add->bindParam(':dateFin_stage', $dateFin_stage);
 	    $add->bindParam(':id_Filiere', $id_Filiere);
 	    $add->bindParam(':id_Service', $id_Service);
-	    $add->bindParam(':id_Stage', $id_Stage)
+	    $add->bindParam(':id_Stage', $id_Stage);
 		
 	    return ($add->execute());
 	}#End updateStage
