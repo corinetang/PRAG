@@ -1,5 +1,5 @@
 <?php
-	
+	require '/kint/Kint.class.php';
 	#=======================================================================================================
 
 	/*** IMPORTE LE CLASSEMENT EN CV ET MET A JOUR LES USERS ***/
@@ -48,7 +48,7 @@
 		// CONNEXION à la base //
 		require('configSQL.php');
 
-			
+			//d($_FILES);
 			//Process the CSV file
 			$handle = fopen($_FILES['file']['tmp_name'], "r");
 			$data = fgetcsv($handle, 1000, ";"); //Remove if CSV file does not have column headings
@@ -64,6 +64,7 @@
 				addService($service);
 				addDesEtablissement($des,$etablissement);
 				addStage($service,$chef,$poste);
+				searchFiliere($_FILES['file']['name']);
 			}#End while
 
 	}#End importStages
@@ -157,6 +158,8 @@
 
 	}#End addDesEtablissement
 
+	#===================================================================================================
+
 	function addStage($service,$chef,$poste){
 		require('configSQL.php');
 		$add = $bd->prepare("SELECT id_Service From service WHERE nom_service = ?");
@@ -165,7 +168,7 @@
 		$res = $add->fetch();
 		$idService = $res[0];
 
-		echo $service . ":" . $idService . ' - ';
+		//echo $service . ":" . $idService . ' - ';
 
 		$add2 = $bd->prepare("	INSERT INTO stage(NbPoste_stage,maitre_stage,id_Service)
 	    						VALUES (?,?,?)");
@@ -173,5 +176,36 @@
 	   	$add2->bindValue(2, $chef);
 	    $add2->bindValue(3, $idService);
 		$add2->execute();
-	}
+	}#End addStage
+
+	#===================================================================================================
+
+	function searchFiliere($namefiliere){
+		require('configSQL.php');
+		$add = $bd->prepare("SELECT * From filiere");
+		$add->execute();
+
+		while ($res = $add->fetch(PDO::FETCH_ASSOC)) {
+			if (strpos($namefiliere, $res['nom_filiere'])) {
+				addFiliere($res['nom_filiere']);
+			}#End If
+		}#End while
+	}#End searchFiliere
+
+	#===================================================================================================
+
+	function addFiliere($nomFiliere){
+		require('configSQL.php');
+
+		$add = $bd->prepare("SELECT id_Filiere From filiere WHERE nom_filiere = ?");
+	    $add->bindValue(1, $nomFiliere);
+		$add->execute();
+		$res = $add->fetch();
+		$idFiliere = $res[0];
+
+		$add2 = $bd->prepare("INSERT IGNORE INTO stage(id_Filiere)
+	    						VALUES  (?) ");
+	    $add2->bindValue(1, $idFiliere);
+		$add2->execute();
+	}#End addFiliere
 ?>
