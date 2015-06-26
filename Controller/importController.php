@@ -5,6 +5,7 @@
  */
 function showImportClassement() {
 	require ('Model/filiereModel.php');
+	
 	$listFiliere = getFiliere();
 	require ('View/importClassement.tpl');
 }
@@ -13,6 +14,9 @@ function showImportClassement() {
  * Affiche la page de import stage
  */
 function showImportStage() {	
+	require ('Model/filiereModel.php');
+	
+	$listFiliere = getFiliere();
 	require ('View/importStage.tpl');
 }
 
