@@ -76,7 +76,7 @@
 
 	#=======================================================================================================
 
-	function getStageByFiliere($idfiliere){
+	function getStagesByFiliere($idfiliere){
 	require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT * FROM stage s
 	    					LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
