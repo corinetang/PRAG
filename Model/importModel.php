@@ -44,7 +44,7 @@
 	#===================================================================================================
 
 
-	function importStages(){
+	function importStages($filiere){
 		// CONNEXION à la base //
 		require('configSQL.php');
 
@@ -63,7 +63,6 @@
 				addEtablissement($etablissement);
 				addService($service);
 				addDesEtablissement($des,$etablissement);
-				$filiere = searchFiliere($_FILES['file']['name']);
 				$idFiliere = getIdFiliere($filiere);
 				addStage($service,$chef,$poste,$idFiliere);
 					
