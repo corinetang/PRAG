@@ -81,7 +81,7 @@
 	    $add = $bd->prepare("SELECT * FROM stage s
 	    					LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
 	    					AND s.id_Filiere = :id_Filiere");
-	    $add->bindParam(':id_filiere', $idfiliere);
+	    $add->bindParam(':id_Filiere', $idfiliere);
 		$add->execute();
 		$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
