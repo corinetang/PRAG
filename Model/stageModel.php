@@ -4,7 +4,7 @@
 	#=======================================================================================================
 	
 	/*** RECUPERE TOUS LES STAGES D'UNE FILIERE ***/
-	function getStageFiliere($id_Filiere){
+	/*function getStageFiliere($id_Filiere){
 		require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT * FROM stage s
 	    					 LEFT JOIN filiere f
@@ -15,7 +15,7 @@
 
 		$res = $add->fetch();
 
-		return json_encode($res);
+		return json_encode($res);*/
 	}#End getStageFiliere
 
 	#=======================================================================================================
