@@ -8,6 +8,7 @@ body {
 
 nav.navbar {
 	background-color: #3498db;
+    top: 0;
 }
 
 .navbar-nav>li>a {
