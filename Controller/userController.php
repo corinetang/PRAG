@@ -54,10 +54,7 @@ function connexion () {
 
 	//Controle des infos saisies--------------------------------------------------
 	if (isset($_POST['Connexion'])){
-        $donnee = array(); 
-		$donnee = authentification_BD($identifiant,$pass);
-        if(bcrypt_verify_password($pass,$donnee['mdp_user'])){
-            $_SESSION['user'] = $donnee;
+        if(authentification_BD($identifiant,$pass)){
             header("Location: index.php?control=user&action=showAccueilConnect");
         }
 		else {
@@ -77,12 +74,8 @@ function inscription() {
 	$Password              = isset($_POST['Password'])?$_POST['Password']:"";
 	$ValidationPassword    = isset($_POST['ValidationPassword'])?$_POST['ValidationPassword']:"";
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
-	//$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
- 	$Filiere = 1;
+	$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
-
-    // Hashage du mots de passe
-    $Password = bcrypt_hass_password($Password);
 	
     require ('Model/userModel.php');
 
@@ -96,27 +89,6 @@ function inscription() {
 	}
 
 }
-
-   /*---------------------------------------------------------------
-   *
-  *     FONCTION DE HASHAGE
- *---------------------------------------------------------------
-*/
-// Fonction de hashage de mot de passe avec l'algo Blowfish
-function bcrypt_hass_password($value, $options = array()){
-    $cost = isset($options['rounds']) ? $options['rounds'] : 10;
-    $hash = password_hash($value, PASSWORD_BCRYPT, array('cost' => $cost));
-    if ($hash === false) {
-       throw new Exception("Bcrypt hashing n'est pas supporte.");
-    }
-    return $hash;
-}
-
-// Verifie le mot de pass
-function bcrypt_verify_password($value, $hashedValue){
-    return password_verify($value,$hashedValue);
-}
-
 
 function profil() {
 	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";

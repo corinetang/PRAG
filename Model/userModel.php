@@ -1,30 +1,4 @@
 <?php
-
-/*function connexion_bd() {
-	$email = isset($_POST['email'])?$_POST['email']:"tapez votre email";
-	$password = isset($_POST['pass'])?$_POST['pass']:"tapez votre pass";
-	
-	require ('./Model/configSQL.php');
-	$link = mysql_connect($hote, $login, $pass)
-				or die ("erreur de connexion :" . mysql_error());
-			mysql_select_db($bd)
-				or die ("erreur d\'acces a la base :" . $bd);
-				
-
-	/*$pass_hache = sha1($password); */
-	
-	/*$req = "SELECT * FROM user WHERE mail_user ='$email'  AND mpd_user ='$password'";
-	$res = mysql_query ($req, $link)or die ("erreur de requete :" . $req);
-	
-	if(mysql_num_rows ($res) == 0) {
-		return false;
-	}
-	
-	$user = mysql_fetch_assoc($res);
-	
-	return $user;*/
-
-
 	/**** VERIFICATION DU FORMAT ****/
 	
 	
@@ -60,12 +34,15 @@
 
 	function authentification_BD($login, $mdp){ // Fonction privée (ne sert que pour découper le code avec la fonction authentification)
 	    require('ConfigSQL.php');
+	    
+	    $password = sha1($mdp);
 
-	    $result = $bd->prepare("SELECT * FROM user WHERE identifiant_user = :identifiant");
+	    $result = $bd->prepare("SELECT * FROM user WHERE identifiant_user = :identifiant AND mdp_user = :password");
 	    $result->bindParam(':identifiant', $login);
+	    $result->bindParam(':password', $password);
 	    $result->execute();
 	    $donnee = $result->fetch(PDO::FETCH_ASSOC);
-		// $_SESSION['user'] = $donnee;
+		$_SESSION['user'] = $donnee;
 
 
 	    $result->closeCursor();
@@ -94,12 +71,13 @@
 
 	function ajout_BD($nom, $prenom, $mdp, $nbSemestre_user, $dateDeNaissance_user, $email, $Numtel,$filiere){
 		require('ConfigSQL.php');
+		$password = sha1($mdp);
 		$groupe = 1;
 		$identifiant_user = create_id($nom,$prenom);
 	    $add = $bd->prepare("INSERT INTO user(identifiant_user, nom_user, prenom_user, mdp_user, NbSemestre_user, dateDeNaissance_user, mail_user, numtel_user, id_Filiere,id_Groupe) 
 							VALUES(:identifiant_user,:nom, :prenom,:mdp, :nbSemestre_user , :dateDeNaissance_user,:email,:Numtel,:id_filiere,:id_groupe)");
 	    $add->bindParam(':identifiant_user', $identifiant_user);
-	    $add->bindParam(':mdp', $mdp);
+	    $add->bindParam(':mdp', $password);
 		$add->bindParam(':nom', $nom);
 	    $add->bindParam(':prenom', $prenom);
 		$add->bindParam(':email', $email);
