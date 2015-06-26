@@ -13,6 +13,19 @@
 			return $res;
 	}#End getFiliere
 
+	function getFiliereById($id){
+		require('ConfigSQL.php');
+		    $add = $bd->prepare("SELECT * FROM filiere f WHERE id_filiere = :id");
+		     	$add->bindParam(':id', $id);
+			$add->execute();
+			$res = $add->fetchAll(PDO::FETCH_ASSOC);
+
+			/*foreach ($res as $r) {
+				($r['nom_filiere']);
+			}*/
+			
+			return $res;
+	}#End getFiliereById
 	#=======================================================================================================
 
 	/*** AJOUT D'UNE NOUVELLE FILIERE ***/
