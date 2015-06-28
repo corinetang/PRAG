@@ -16,24 +16,23 @@ function showConnexion () {
  * Affiche la page inscription
  */
 function showInscription() {
-
 	require ('Model/filiereModel.php');
 	$listFiliere = getFiliere();
-
-	/*var_dump($listFiliere);exit;*/
 
 	require ('View/inscription.tpl');
 }
 
 function showProfil() {
-
 	require("Model/kint/Kint.class.php");
 	require ('View/formProfil.tpl');	
-
 
 }
 
 function showAccueilConnect() {
+    require ('Model/stageModel.php');
+		
+    $idUser = $_SESSION['user']['id_user'];
+    $Stages = getStagesByUser($idUser);
 	require ('View/pageAccueilConnect.tpl');	
 }
 
@@ -86,11 +85,13 @@ function inscription() {
 
 	if (ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere)) {
 		echo "<div class=\"alert alert-success\" role=\"alert\">Votre inscription a bien été prise en compte</div>";
-		header('Location: index.php');
+        sleep(5); 
+        echo '<script>window.location="index.php";</script>';
 	}
 	else{
 		echo "<div class=\"alert alert-danger\" role=\"alert\">Une erreur a empêché votre inscription</div>";
-		header('Location: index.php');	
+        sleep(5); 
+        echo '<script>window.location="index.php";</script>';
 	}
 
 }
@@ -130,7 +131,11 @@ function profil() {
 
 function showUsers() {
 	require ('Model/userModel.php');
-	$jsonUsers = getAllUsers();
+	$users = getAllUserFiliere();
+    
+    require ('Model/filiereModel.php');
+    $listFiliere = getFiliere();
+    
 	require ('View/gestionUsers.tpl');
 } 
 
@@ -139,7 +144,4 @@ function deconnexion() {
    require ('View/connexion.tpl');
 }
 
-function showAnswers() {
-    require ('View/gestionAnswers.tpl');
-}
 ?>

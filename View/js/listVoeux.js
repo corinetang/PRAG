@@ -1,3 +1,4 @@
+
 jQuery(function () {
     $(".btn-choice-move").click(function () {
 
@@ -32,6 +33,8 @@ jQuery(function () {
         $('#table-choice tbody:last').append(append_line);
         LoadMyJs('View/js/listVoeux.js');
     });
+    
+    $('#table-choice').dataTable().columnFilter();
 });
 
 function LoadMyJs(scriptName) {

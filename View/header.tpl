@@ -5,7 +5,12 @@
                        href="View/css/headerfooter.css " /> 
     <link rel="stylesheet" type="text/css"
     					href="View/css/libs/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+    					href="View/css/libs/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css"
+    					href="View/css/libs/jquery-ui.css">
 	<script type="text/javascript" src="View/js/libs/jquery-1.11.3.js"></script> 
+    <script type="text/javascript" src="View/js/libs/jquery-ui.js"></script> 
 	<script src="View/js/libs/bootstrap.min.js"></script>
   <script src="View/js/header.js"></script>
   <script type="text/javascript">
@@ -21,6 +26,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
+<body>
 <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -49,15 +55,19 @@
               <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index.php?control=user&action=showUsers">Gestion des utilisateurs</a></li>
-              <li><a href="index.php?control=user&action=showAnswers">Gestion des evaluations</a></li>
+              <li><a href="index.php?control=evaluation&action=showAnswers">Gestion des evaluations</a></li>
             <li><a href="index.php?control=import&action=showImportClassement">Import Classement</a></li>
             <li><a href="index.php?control=import&action=showImportStage">Import Stage</a></li>
           </ul>
         </li>
       </ul>
      <ul class="nav navbar-nav navbar-right utilisateur-option hide-option">
-         <p class="navbar-text">Utilisateur</p>
-        <p class="navbar-text">Filiere</p>
+         <p class="navbar-text">
+             <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"])) {
+                    echo $_SESSION["user"]["identifiant_user"];
+                }else {?> Identifiant <?php }?>
+         </p>
+        <p class="navbar-text"> Filiere</p>
         <li><a href="index.php?control=user&action=deconnexion" class="change-at-focus">Deconnexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
