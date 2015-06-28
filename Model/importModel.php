@@ -61,7 +61,7 @@
 				
 				addDes($des);
 				addEtablissement($etablissement);
-				addService($service);
+				addService($service,$etablissement);
 				addDesEtablissement($des,$etablissement);
 				//$idFiliere = getIdFiliere($filiere);
 				addStage($service,$chef,$poste,$filiere);
@@ -94,12 +94,19 @@
 
 	#===================================================================================================
 
-	function addService($service){
+	function addService($service,$etablissement){
 		require('configSQL.php');
 
-	    $add = $bd->prepare("	INSERT IGNORE INTO service
-	    						SET nom_service = :service");
-	    $add->bindParam(':service', $service);
+		$add2 = $bd->prepare("SELECT id_Etablissement From etablissement WHERE nom_Etablissement = ?");
+	    $add2->bindValue(1, $etablissement);
+		$add2->execute();
+		$res2 = $add2->fetch();
+		$idEtablissement = $res2[0];
+
+		$add = $bd->prepare("	INSERT IGNORE INTO service(nom_service,id_Etablissement)
+	    						VALUES (?,?)");
+	    $add->bindValue(1, $service);
+	    $add->bindValue(2, $idEtablissement);
 		$add->execute();
 
 		$res = $bd->prepare("	DELETE service 
@@ -107,7 +114,7 @@
 								LEFT OUTER JOIN 
 								( SELECT MIN(id_Service) as id 
 									FROM service 
-									GROUP BY nom_service 
+									GROUP BY nom_service,id_Etablissement 
 								) AS table_1 ON service.id_Service = table_1.id 
 								WHERE table_1.id IS NULL");
 		$res->execute();
