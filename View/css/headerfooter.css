@@ -1,5 +1,5 @@
 body {
-    text-align: center;    
+    text-align: center;
 }
 
 .header {
@@ -17,7 +17,7 @@ nav.navbar {
 }
 
 .navbar-right>p {
-	color: #FFFFFF;	
+	color: #FFFFFF;
 }
 
 .footer {
@@ -29,7 +29,7 @@ nav.navbar {
   background-color: #337ab7;
 }
 .footer>.container>p {
-    color: #FFFFFF;	
+    color: #FFFFFF;
     text-align: center;
     padding: 2% 0 0 0;
 }
@@ -41,6 +41,6 @@ h1{
 }
 
 .hide-option {
-  /*display: none !important;*/
+  display: none !important;
 }
 
