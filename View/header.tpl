@@ -8,6 +8,11 @@
 	<script type="text/javascript" src="View/js/libs/jquery-1.11.3.js"></script> 
 	<script src="View/js/libs/bootstrap.min.js"></script>
   <script src="View/js/header.js"></script>
+  <script src="View/js/libs/jquery-ui.js"></script>
+
+  <!-- @TODO Script must move to listVoeux.tpl  -->
+  <script src="View/js/listVoeux.js" id="myscript"></script>
+
   <script type="text/javascript">
     // window.onload = function() {
     //   var idRole = <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']))

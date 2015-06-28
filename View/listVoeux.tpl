@@ -1,7 +1,6 @@
 <head>
   <link rel="stylesheet" type="text/css" 
                        href="View/css/listVoeux.css " /> 
-  <script src="View/js/listVoeux.js"></script>
 </head>
 
 <div id="listVoeux">
@@ -39,6 +38,7 @@
     <h2> Stage selectionnés </h2>
     <table class="table table-striped" id="table-result">
       <thead>
+        <th>Rang</th>
         <th>Id</th>
         <th>DES</th>
         <th>Etablissement</th>
@@ -47,7 +47,7 @@
         <th></th>
         <th></th>
       </thead>
-      <tbody>
+      <tbody id="sortable">
       </tbody>
     </table>
 </div>
