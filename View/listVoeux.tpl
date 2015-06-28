@@ -1,21 +1,23 @@
 <head>
   <link rel="stylesheet" type="text/css" 
                        href="View/css/listVoeux.css " /> 
-  <script type="text/javascript" src="View/js/listVoeux.js"></script>
+    <script type="text/javascript" src="View/js/listVoeux.js"></script>
 </head>
 
 <div id="listVoeux">
     <h1>Choix des stages</h1>
     <br>
     <h2> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h2>
-    <table class="table table-striped" id="table-choice" class="display" cellspacing="0" width="100%">
+    <table class="tablesorter" id="table_choice">
         <thead>
+            <tr>
           <th>Id</th>
           <th>DES</th>
           <th>Etablissement</th>
           <th>Service</th>
           <th>Nombre de poste</th>
           <th></th>
+                </tr>
         </thead>
         <tbody>
           <?php foreach ($stages as $stage) { ?>
@@ -34,7 +36,8 @@
             </tr>
           <?php } ?>
         </tbody>
-    </table><br>
+    </table>
+ <br>
 
     <h2> Stage selectionnés </h2>
     <table class="table table-striped" id="table-result">

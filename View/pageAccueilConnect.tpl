@@ -6,10 +6,10 @@
     <h1>Bonjour <?php echo $_SESSION["user"]["prenom_user"] ?> ! </h1><br>
     <div class="list-group" id="AffichageStage">
            <?php if ($Stages == null) { ?>
-        <div class="alert alert-info" role="alert">Vous n'avez pas de stages à votre actif !</div>
+       <div class="alert alert-info" role="alert"><h3>Désolé ! </h3>Vous n'avez pas de stage à votre actif !</div>
        <?php  }
         else{
-        foreach ($Stages as $stage) { ?>
+            foreach ($Stages as $stage) { ?>
       <h3><span class="list-group-item disabled" id="AffichageStage1">Information sur votre dernier stage</span></h3>
         <div id="informationStage1">
             <dl id="DESStage">

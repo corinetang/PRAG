@@ -50,8 +50,7 @@ jQuery(function () {
 	});
     
     $('.input-group input[required], .input-group textarea[required], .input-group select[required]').trigger('change');
-    
-    
 });
+    
 });
 

@@ -1,6 +1,5 @@
 jQuery(function ($) {
     $(function () {
-
         var addFormGroup = function (event) {
             event.preventDefault();
 
@@ -41,6 +40,5 @@ jQuery(function ($) {
 
         $(document).on('click', '.btn-add', addFormGroup);
         $(document).on('click', '.btn-remove', removeFormGroup);
-
     });
 });

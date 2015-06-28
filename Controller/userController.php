@@ -59,10 +59,14 @@ function connexion () {
 	if (isset($_POST['Connexion'])){
 		$auth = authentification_BD($identifiant,$pass);
         if($auth){
-            header("Location: index.php?control=user&action=showAccueilConnect");
+            echo('<div class="alert alert-success" role="alert">
+  <a href="index.php?control=user&action=showAccueilConnect" class=\"alert-link">Vous êtes connecté</a>
+</div>');
         }
 		else {
-			header("Location: index.php");
+            echo('<div class="alert alert-danger" role="alert">
+  <a href="index.php" class="alert-link">La connection n\'a pas abouti</a>
+</div>');
 		}
 	}
 }
@@ -84,14 +88,14 @@ function inscription() {
     require ('Model/userModel.php');
 
 	if (ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere)) {
-		echo "<div class=\"alert alert-success\" role=\"alert\">Votre inscription a bien été prise en compte</div>";
-        sleep(5); 
-        echo '<script>window.location="index.php";</script>';
+		echo ('<div class="alert alert-success" role="alert">
+  <a href="index.php" class="alert-link">Vous êtes maintenant insrit</a>
+</div>');
 	}
 	else{
-		echo "<div class=\"alert alert-danger\" role=\"alert\">Une erreur a empêché votre inscription</div>";
-        sleep(5); 
-        echo '<script>window.location="index.php";</script>';
+		echo ('<div class="alert alert-danger" role="alert">
+  <a href="#" class="alert-link">Une erreur a empeché votre inscription</a>
+</div>');
 	}
 
 }
