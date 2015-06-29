@@ -152,7 +152,6 @@
 
 	#=======================================================================================================
 
-
 	function update_user($id_user, $nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $filiere) {
 		require('ConfigSQL.php');
 
@@ -176,6 +175,33 @@
 	    $add->bindvalue(7, $filiere);
 		$add->bindvalue(8, $id_user);
 
+	    return ($add->execute());
+	}
+
+	#=======================================================================================================
+
+	function update_membre($id_user, $nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $id_groupe) {
+		require('ConfigSQL.php');
+
+	    $add = $bd->prepare("UPDATE user
+	    					 SET nom_user = ?,
+	    					 prenom_user = ?,
+	    					 dateDeNaissance_user = ?,
+	    					 NbSemestre_user = ?,
+	    					 mail_user = ?,
+	    					 numtel_user = ?,
+	    					 id_Groupe = ?,
+	    					 WHERE id_user = ?");
+
+
+	    $add->bindvalue(1, $nom_user);
+	    $add->bindvalue(2, $prenom_user);
+	    $add->bindvalue(3, $date_naiss);
+	    $add->bindvalue(4, $nbSemestre);
+	    $add->bindvalue(5, $email);
+	    $add->bindvalue(6, $Telephone);
+	    $add->bindvalue(7, $id_groupe);
+		$add->bindvalue(8, $id_user);
 
 	    return ($add->execute());
 	}

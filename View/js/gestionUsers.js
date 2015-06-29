@@ -14,15 +14,33 @@ function supprimerMembre(idUser) {
     });
 }
 
-function editMembre(idUser) {
-    var libelleQuestion = $("#edit-libelle-" + idQuestion).val();
+function editMembre() {
+  var membreData = $('#membre-edit').data();
+  var idUser = membreData['idUser'];
+  var nomUser = $('#membre-nom').val();
+  var prenomUser = $('#membre-prenom').val();
+  var nbSemestreUser = $('#membre-semestre').val();
+  var ddnUser = $('#membre-ddn').val();
+  var mailUser = $('#membre-mail').val();
+  var numTelUser = $('#membre-telephone').val();
 
-    $.ajax({
-       url : 'index.php?control=question&action=editQuestion',
-       type : 'POST',
-       data : 'id_question=' + idQuestion + "&libelle_question=" + libelleQuestion
-    });
-    location.reload();
+  var groupeUser;
+  if (document.getElementById("membre-siphif").checked == true) {
+    groupeUser = 2;
+  } else {
+    groupeUser = 1;
+  }
+
+  $.ajax({
+     url : 'index.php?control=user&action=changeMembre',
+     type : 'POST',
+     data : 'IdUser=' + idUser + "&Nom=" + nomUser + "&Prenom=" + prenomUser
+     + "&NbSemestre=" + nbSemestreUser + "&Mail=" + mailUser
+     + "&Telephone=" + numTelUser +  "&Ddn=" + ddnUser +  "&Groupe=" + groupeUser,
+     success: function() {
+      location.reload();
+     }
+  });
 }
 
 function initUserModal(idUser, nomUser, prenomUser, nbSemestreUser, ddnUser, mailUser, numTelUser, idGroupe) {
@@ -37,4 +55,5 @@ function initUserModal(idUser, nomUser, prenomUser, nbSemestreUser, ddnUser, mai
   } else {
     document.getElementById("membre-siphif").checked = false;
   }
+  $('#membre-edit').data('idUser', idUser);
 }

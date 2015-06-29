@@ -94,7 +94,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputEmail3" name="Email" placeholder="Adresse Email" id="membre-mail">
+                        <input type="email" class="form-control" id="membre-mail" name="Email" placeholder="Adresse Email">
                     </div>
                 </div>
                 <div class="form-group">
@@ -113,7 +113,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary" onClick="editMembre()">Sauvegarder</button>
+        <button type="button" id="membre-edit" class="btn btn-primary" onClick="editMembre()">Sauvegarder</button>
       </div>
     </div>
   </div>
