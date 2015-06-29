@@ -10,6 +10,7 @@ function showConnexion () {
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
 
 	require ('View/connexion.tpl');
+
 }
 
 /*
