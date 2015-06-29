@@ -1,7 +1,3 @@
-body{
-     background-color: #f2f3f4;
-}
-
 div#dialog-form{
     margin: 1em auto;
     width: 80%;
@@ -12,19 +8,8 @@ div#form-group{
    text-align: center;
 }
 
-div#dialog-form label{
-   text-align: left;
-}
-
 label#col-sm-3 control-label{
  text-align: justify;
-}
-
-h1{
-   text-align: left;
-    padding: 3% 0 0 6%;
-    font-weight:bold;
-    font-family: "initial";
 }
 
 .input-group-addon.primary {

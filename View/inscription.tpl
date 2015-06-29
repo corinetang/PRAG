@@ -5,10 +5,12 @@
 
 <!-- TODO : Faire les contrôles sur TOUT LES CHAMPS par rapport au format et au fait que le champ ne doit pas être VIDE !!!!! -->
 <div id="inscription"> 
+     <h1>Inscrivez-vous dès maintenant !</h1>
+    <br>
 	<div id="dialog-form"  title="Inscription">
 			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=inscription" enctype="multipart/form-data">
                 	<fieldset>
-                        <legend>Inscrivez-vous dès maintenant !</legend>
+                       
                 <!--- NOM --->
                 <div class="form-group">
                     <label for="Nom" class="col-md-4 control-label">Nom</label>
@@ -45,7 +47,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
                     <div class="col-md-4">
-                        <input type="email" class="form-control input-md" id="inputEmail3" name="Email" placeholder="Adresse Email">
+                        <input type="email" class="form-control input-md" id="inputEmail3" name="mail" placeholder="Adresse Email">
                     </div>
                 </div>
                 

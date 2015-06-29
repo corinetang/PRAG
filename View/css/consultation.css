@@ -1,0 +1,11 @@
+div#Consultation {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h3#ui-id-1 {
+  background-color: #2BBE83;
+    border-color: #2BBE83;
+  color: black;
+}

@@ -27,9 +27,9 @@
           <?php foreach ($stages as $stage) { ?>
             <tr>
               <td><?php echo $stage['id_Stage'] ?></td>
-              <td>DES</td>
-              <td>Etablissement</td>
-              <td>Service</td>
+              <td><?php echo $stage['id_Stage']?></td>
+              <td><?php echo $stage['id_Stage']?></td>
+              <td><?php echo $stage['id_Stage']?></td>
               <td><?php echo $stage['NbPoste_stage'] ?></td>
               <td>
                 <button type="button" class="btn btn-default btn-lg btn-choice-move">
@@ -38,7 +38,7 @@
               </td>
               <td></td>
             </tr>
-          <?php } ?>
+          <?php }; ?>
         </tbody>
     </table>
  <br>

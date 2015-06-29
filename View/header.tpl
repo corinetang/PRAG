@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css"
-                       href="View/css/headerfooter.css " />
     <link rel="stylesheet" type="text/css"
     					href="View/css/libs/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+                       href="View/css/headerfooter.css " />
 	<script type="text/javascript" src="View/js/libs/jquery-1.11.3.js"></script>
 	<script src="View/js/libs/bootstrap.min.js"></script>
   <script src="View/js/header.js"></script>
@@ -21,10 +21,12 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
+<div id="container">
+    <div id="header">
 <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Logo</a>
+     <img src="View/css/images/logo-siphif_Header.jpg" alt="logo-siphif_Heade" height="55" width="55">
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,3 +69,5 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+    </div>
+ <div id="content">
