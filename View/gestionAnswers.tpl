@@ -1,36 +1,42 @@
 <head>
-<script src="View/js/gestionAnswers.js"></script>
-    <link rel="stylesheet" type="text/css" href="View/css/gestionAnswers.css " />
+<script type="text/javascript">
+    function addAnswer() {
+        var block = document.getElementById("blockAnswer").cloneNode(true);
+        document.getElementById("answerBDD").appendChild(block);
+    }
+    
+    function missAnswer() {
+        $(this).parents("blockAnswer").remove();
+    }
+    
+    function editAnswer() {
+        // ENREGISTRE L'ELEMENT DANS LA BASE DE DONNEE
+    }
+</script>
 </head>
 
 <div id="gestionAnswers">
     <h1>Gestion des evaluations</h1>
     <br>
-    <div class="form-group" id="answerBDD"> 
-        <table class="table table-striped" id="tableau_gestionUsers">
-            <thead>
-                <tr >
-                    <th data-dynatable-sorts= "Alpha">Questions  présentes dans les évaluations</th>
-                </tr>
-            </thead>
-        <tbody>
-             <?php foreach ($questions as $question) { ?>
-            <tr>
-                <td><?php echo $question['Libelle_question'] ?></td>
-            </tr>
-            <?php }; ?>
-        </tbody>
-        </table>
-    </div>
-    <form id="Form_Answer" action="index.php?control=evaluation&action=addAnswer" method="post" action="index.php?control=user&action=inscription" enctype="multipart/form-data">
-        <div class="form-group multiple-form-group" data-max=5 id="blockAnswerEdit">
-	<h4>Questions à ajouter</h4>
-        <div class="form-group input-group">
-					<input type="text" name="answerMultiple[]" class="form-control">
-						<span class="input-group-btn"><button type="button" class="btn btn-default btn-add">+
-						</button></span>
-				</div>
-    </div>
-    <button type="submit" class="btn btn-primary" name="valider">Enregistrer</button>
+    <form class="form-horizontal" id="Form_Answer">
+       <div class="form-group" id="answerBDD"> 
+           <!--- AFFICHAGE DES QUESTIONS PRESENTS SUR LA BASE DE DONNEE -->
+           </div>
+  <div class="form-group" id="blockAnswer">
+    <label for="exampleInputEmail1" class="col-sm-3 control-label">Question n°</label>
+      <div class="col-sm-7">
+          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Votre Question"></div>
+      
+      <button type="button" class="btn btn-default btn-lg" onClick="addAnswer()">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</button>
+      <button type="button" class="btn btn-default btn-lg" onClick="missAnswer()">
+  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+</button>
+      <button type="button" class="btn btn-default btn-lg" onClick="editAnswer()">
+  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+</button>
+  </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
 </form>
 </div>
