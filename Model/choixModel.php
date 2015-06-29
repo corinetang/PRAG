@@ -45,4 +45,36 @@
 	    return ($add->execute());
 	}#End updateChoix
 
+	#========================================================================================================
+
+	/*** Supprimer un choix ***/
+	function removeChoix($id_user, $id_Stage) {
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("DELETE FROM Choix 
+	    					 WHERE id_user = ?
+	    					 AND id_Stage = ?");
+
+	    $add->bindValue(1, $id_user);
+	    $add->bindValue(2, $id_Stage);
+
+	    return ($add->execute());
+	}
+
+	#=========================================================================================================
+
+	/*** Mettre a jour le rang d'un choix ***/
+	function updateRank($id_user, $id_Stage, $rank) {
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("UPDATE Choix 
+	    					 SET rang_choix = ?
+	    					 WHERE id_user = ?
+	    					 AND id_Stage = ?");
+
+	    $add->bindValue(1, $rank);
+	    $add->bindValue(2, $id_user);
+	    $add->bindValue(3, $id_Stage);
+
+	    return ($add->execute());
+	}
+
 ?>

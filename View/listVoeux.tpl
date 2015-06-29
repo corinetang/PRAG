@@ -1,10 +1,11 @@
 <head>
   <link rel="stylesheet" type="text/css" 
                        href="View/css/listVoeux.css " /> 
+  <script src="View/js/listVoeux.js" id="myscript"></script>
 </head>
 
 <div id="listVoeux">
-    <h1>Choix des stages</h1>
+    <h1>Choix des stages</h1><span id="userId" style="display:none;"><?php echo $_SESSION['user']['id_user'] ?></span>
     <br>
     <h2> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h2>
     <table class="table table-striped" id="table-choice">
@@ -25,7 +26,7 @@
               <td class="stage-service">Service</td>
               <td class="stage-nb-poste"><?php echo $stage['NbPoste_stage'] ?></td>
               <td>
-                <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>)">
+                <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
               </td>
@@ -48,6 +49,22 @@
         <th></th>
       </thead>
       <tbody id="sortable">
+        <?php foreach ($choosenStages as $choosenStage) { ?>
+          <tr id="<?php echo $choosenStage['id_Stage'] ?>">
+            <td class="stage-rank"><?php echo $choosenStage['rang_choix'] ?></td>
+            <td class="stage-id"><?php echo $choosenStage['id_Stage'] ?></td>
+            <td class="stage-des">DES</td>
+            <td class="stage-etablissement">Etablissement</td>
+            <td class="stage-service">Service</td>
+            <td class="stage-nb-poste"><?php echo $choosenStage['NbPoste_stage'] ?></td>
+            <td>
+              <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $choosenStage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+              </button>
+            </td>
+            <td><a ref=#><button type="button" class="btn btn-info"> Resultat</button></td>
+          </tr>
+        <?php } ?>
       </tbody>
     </table>
 </div>

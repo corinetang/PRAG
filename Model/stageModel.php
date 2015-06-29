@@ -77,7 +77,7 @@
 	#=======================================================================================================
 
 	function getStagesByFiliere($idfiliere){
-	require('ConfigSQL.php');
+		require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT * FROM stage s
 	    					LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
 	    					AND s.id_Filiere = :id_Filiere");
@@ -86,6 +86,43 @@
 		$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
 		return $res; 
-}#End getStageByFiliere
+	}#End getStageByFiliere
 
+	#========================================================================================================
+
+	function getStagesByFiliereAndUserChoices($idfiliere, $iduser){
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("SELECT s.*, c.rang_choix FROM stage s
+	    					LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
+	    					INNER JOIN choix c ON c.id_Stage = s.id_Stage
+	    					AND s.id_Filiere = :id_Filiere
+	    					AND c.id_user = :id_user
+	    					ORDER BY c.rang_choix");
+	    $add->bindParam(':id_Filiere', $idfiliere);
+	    $add->bindParam(':id_user', $iduser);
+		$add->execute();
+		$res = $add->fetchAll(PDO::FETCH_ASSOC);
+
+		return $res; 
+	}
+
+	#==========================================================================================================
+
+	function getStagesByFiliereAndUserNotChoices($idfiliere, $iduser){
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("SELECT *
+							FROM stage a
+							WHERE a.id_Stage NOT IN (SELECT s.id_Stage FROM stage s
+							LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
+							INNER JOIN choix c ON c.id_Stage = s.id_Stage
+							AND s.id_Filiere = :id_Filiere
+							AND c.id_user = :id_user)");
+
+	    $add->bindParam(':id_Filiere', $idfiliere);
+	    $add->bindParam(':id_user', $iduser);
+		$add->execute();
+		$res = $add->fetchAll(PDO::FETCH_ASSOC);
+
+		return $res; 
+	}
 ?>
