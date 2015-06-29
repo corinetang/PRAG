@@ -16,23 +16,22 @@ function showVoeux () {
 		require ('Model/stageModel.php');
 		$stages = getStagesByFiliere($id_filiere);
 	}
-
 	require ('View/listVoeux.tpl');
 }
 
 function showStages() {
 
-	if (isset($_SESSION['user'])) {
+	// if (isset($_SESSION['user'])) {
 
-		// Recuperation du nom de filière
-		require ('Model/filiereModel.php');
-		$id_filiere = $_SESSION['user']['id_Filiere'];
-		$filiere = getFiliereById($id_filiere);
+	// 	// Recuperation du nom de filière
+	// 	require ('Model/filiereModel.php');
+	// 	$id_filiere = $_SESSION['user']['id_Filiere'];
+	// 	$filiere = getFiliereById($id_filiere);
 
-		require ('Model/stageModel.php');
-		$idStageActuel = getUserStage($_SESSION['user']['id_user']);
-		$stageActuel = getStage($idStageActuel);
-	}
+	// 	require ('Model/stageModel.php');
+	// 	$idStageActuel = getUserStage($_SESSION['user']['id_user']);
+	// 	$stageActuel = getStage($idStageActuel);
+	// }
 
 	require ('View/listStages.tpl');
 }
@@ -61,8 +60,11 @@ function showEval() {
 
 }
 
-// function eval() {
-
-// }
+/*
+ * Affiche la page des consultation
+ */
+function showConsultation() {
+    require ('View/consultation.tpl');
+}
 
 ?>

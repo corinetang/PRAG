@@ -10,31 +10,31 @@ function showConnexion () {
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
 
 	require ('View/connexion.tpl');
+
 }
 
 /*
  * Affiche la page inscription
  */
 function showInscription() {
-
 	require ('Model/filiereModel.php');
 	$listFiliere = getFiliere();
-
-	/*var_dump($listFiliere);exit;*/
 
 	require ('View/inscription.tpl');
 }
 
 function showProfil() {
-
 	require("Model/kint/Kint.class.php");
-	require ('View/formProfil.tpl');	
-
+	require ('View/formProfil.tpl');
 
 }
 
 function showAccueilConnect() {
-	require ('View/pageAccueilConnect.tpl');	
+    require ('Model/stageModel.php');
+
+    $idUser = $_SESSION['user']['id_user'];
+    $Stages = getStagesByUser($idUser);
+	require ('View/pageAccueilConnect.tpl');
 }
 
 
@@ -57,13 +57,15 @@ function connexion () {
 	require ('Model/userModel.php');
 
 	//Controle des infos saisies--------------------------------------------------
-	if (isset($_POST['Connexion'])){
+	if (isset($_POST['Connexion'])) {
 		$auth = authentification_BD($identifiant,$pass);
         if($auth){
-            header("Location: index.php?control=user&action=showAccueilConnect");
+            header("Location: index.php");
         }
 		else {
-			header("Location: index.php");
+            echo('<div class="alert alert-danger" role="alert">
+  <a href="index.php" class="alert-link">La connection n\'a pas abouti</a>
+</div>');
 		}
 	}
 }
@@ -81,16 +83,18 @@ function inscription() {
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
 	$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
-	
+
     require ('Model/userModel.php');
 
 	if (ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere)) {
-		echo "<div class=\"alert alert-success\" role=\"alert\">Votre inscription a bien été prise en compte</div>";
-		header('Location: index.php');
+		echo ('<div class="alert alert-success" role="alert">
+  <a href="index.php" class="alert-link">Vous êtes maintenant insrit</a>
+</div>');
 	}
 	else{
-		echo "<div class=\"alert alert-danger\" role=\"alert\">Une erreur a empêché votre inscription</div>";
-		header('Location: index.php');	
+		echo ('<div class="alert alert-danger" role="alert">
+  <a href="#" class="alert-link">Une erreur a empeché votre inscription</a>
+</div>');
 	}
 
 }
@@ -130,16 +134,16 @@ function profil() {
 
 function showUsers() {
 	require ('Model/userModel.php');
-	$jsonUsers = getAllUsers();
-	require ('View/gestionUsers.tpl');
-} 
+	$users = getAllUserFiliere();
 
-function deconnexion() {
-   session_destroy();
-   require ('View/connexion.tpl');
+    require ('Model/filiereModel.php');
+    $listFiliere = getFiliere();
+
+	require ('View/gestionUsers.tpl');
 }
 
-function showAnswers() {
-    require ('View/gestionAnswers.tpl');
+function deconnexion() {
+	session_destroy();
+   	header("Location: index.php");
 }
 ?>

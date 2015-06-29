@@ -1,9 +1,20 @@
-body {
-    text-align: center;    
+*{
+-moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+html{
+ margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 .header {
 	height: 10%;
+}
+nav{
+    background-color: #f2f3f4;
 }
 
 nav.navbar {
@@ -17,19 +28,24 @@ nav.navbar {
 }
 
 .navbar-right>p {
-	color: #FFFFFF;	
+	color: #FFFFFF;
 }
 
 .footer {
-  position: fixed;
+    text-align: center;
+  position: absolute;
   bottom: 0;
+    left:0;
+    right:0;
+    margin: 0;
   width: 100%;
-  height: 9%;
+  height: 50px;
+
   /* trouver une couleur identique au header !!!!!!!!! */
   background-color: #337ab7;
 }
 .footer>.container>p {
-    color: #FFFFFF;	
+    color: #FFFFFF;
     text-align: center;
     padding: 2% 0 0 0;
 }
@@ -38,9 +54,14 @@ h1{
     text-align: left;
     padding: 1% 0 0 7%;
     font-weight:bold;
+    font-family: serif;
+    font-weight: 400;
 }
 
 .hide-option {
-  /*display: none !important;*/
+  display: none !important;
 }
 
+p.text-muted {
+  padding-top: 2%;
+}

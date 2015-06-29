@@ -140,7 +140,7 @@ CREATE TABLE Filiere(
 
 CREATE TABLE Questions(
         id_Question      int (11) Auto_increment  NOT NULL ,
-        Libelle_question Char (25) ,
+        Libelle_question Char (100) ,
         PRIMARY KEY (id_Question )
 )ENGINE=InnoDB;
 

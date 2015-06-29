@@ -1,9 +1,12 @@
+body{
+     background-color: #f2f3f4;
+}
 div#AffichageStage{
-border-width:1px;
-  border-style:inset;
-  border-color:grey;
-    width: 50%;
-    MARGIN: 0 0 0 10%;
+ border-color:grey;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5%;
 }
 
 dl{

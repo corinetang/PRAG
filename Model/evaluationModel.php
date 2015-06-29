@@ -1,4 +1,3 @@
-
 <?php
 
 function getUserStageEval($id_user, $id_Stage) {

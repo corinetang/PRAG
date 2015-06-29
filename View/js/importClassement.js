@@ -1,0 +1,3 @@
+$(function() {
+    $( "#Instruction" ).accordion();
+  });

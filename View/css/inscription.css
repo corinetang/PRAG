@@ -1,3 +1,7 @@
+body{
+     background-color: #f2f3f4;
+}
+
 div#dialog-form{
     margin: 1em auto;
     width: 80%;
@@ -5,20 +9,46 @@ div#dialog-form{
 }
 
 div#form-group{
-   text-align: center; 
+   text-align: center;
 }
 
 div#dialog-form label{
-   text-align: left; 
+   text-align: left;
 }
 
 label#col-sm-3 control-label{
- text-align: justify;   
+ text-align: justify;
 }
 
 h1{
    text-align: left;
     padding: 3% 0 0 6%;
     font-weight:bold;
-    font-family: "Lucida Handwriting";
+    font-family: "initial";
+}
+
+.input-group-addon.primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+}
+.input-group-addon.success {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 184, 92);
+    border-color: rgb(76, 174, 76);
+}
+.input-group-addon.info {
+    color: rgb(255, 255, 255);
+    background-color: rgb(57, 179, 215);
+    border-color: rgb(38, 154, 188);
+}
+.input-group-addon.warning {
+    color: rgb(255, 255, 255);
+    background-color: rgb(240, 173, 78);
+    border-color: rgb(238, 162, 54);
+}
+.input-group-addon.danger {
+    color: rgb(255, 255, 255);
+    background-color: rgb(217, 83, 79);
+    border-color: rgb(212, 63, 58);
 }

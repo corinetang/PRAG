@@ -1,3 +1,4 @@
+
 jQuery(function () {
     $(".btn-choice-move").click(function () {
 
