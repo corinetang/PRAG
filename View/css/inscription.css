@@ -5,15 +5,15 @@ div#dialog-form{
 }
 
 div#form-group{
-   text-align: center; 
+   text-align: center;
 }
 
 div#dialog-form label{
-   text-align: left; 
+   text-align: left;
 }
 
 label#col-sm-3 control-label{
- text-align: justify;   
+ text-align: justify;
 }
 
 h1{

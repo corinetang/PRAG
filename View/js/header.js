@@ -2,7 +2,6 @@
  * Initialize le header avec la gestion des roles
  */
 function initializeHeader(idRole) {
-	console.log('idRole', idRole);
 	if (idRole === 3) { // Admin
 		$('ul.utilisateur-option').removeClass('hide-option');
 

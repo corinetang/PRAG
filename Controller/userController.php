@@ -26,11 +26,8 @@ function showInscription() {
 }
 
 function showProfil() {
-
 	require("Model/kint/Kint.class.php");
 	require ('View/formProfil.tpl');
-
-
 }
 
 function showAccueilConnect() {
