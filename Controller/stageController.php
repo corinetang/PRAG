@@ -17,7 +17,6 @@ function showVoeux() {
 		$stages = getStagesByFiliereAndUserNotChoices($id_filiere, $_SESSION['user']['id_user']);
 		$choosenStages = getStagesByFiliereAndUserChoices($id_filiere, $_SESSION['user']['id_user']);
 	}
-
 	require ('View/listVoeux.tpl');
 }
 
@@ -28,7 +27,7 @@ function enregistrerVoeu() {
 
 	require ('Model/choixModel.php');
 	setChoix(false, $rank, $user_id, $stage_id);
-} 
+}
 
 function retirerVoeu() {
 	$user_id     = isset($_POST['user_id'])?$_POST['user_id']:"";
@@ -45,6 +44,20 @@ function updateRankVoeu() {
 
 	require ('Model/choixModel.php');
 	updateRank($user_id, $stage_id, $rank);
+}
+
+/*
+ * Affiche la page des évaluations
+ */
+function showEval() {
+    require ('View/evaluation.tpl');
+}
+
+/*
+ * Affiche la page des consultation
+ */
+function showConsultation() {
+    require ('View/consultation.tpl');
 }
 
 ?>
