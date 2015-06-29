@@ -190,7 +190,7 @@
 	    					 NbSemestre_user = ?,
 	    					 mail_user = ?,
 	    					 numtel_user = ?,
-	    					 id_Groupe = ?,
+	    					 id_Groupe = ?
 	    					 WHERE id_user = ?");
 
 
