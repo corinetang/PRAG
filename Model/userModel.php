@@ -276,7 +276,8 @@
 
 		$add = $bd->prepare("SELECT * From user u
 							JOIN choix c ON u.id_user = c.id_user
-							AND c.id_stage = ?");
+							AND c.id_stage = ?
+							ORDER BY u.NbSemestre_user DESC, u.RangClassement_user");
 	    $add->bindValue(1, $id_stage);
 		$add->execute();
 		$res = $add->fetch();

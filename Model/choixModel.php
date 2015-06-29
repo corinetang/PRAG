@@ -57,11 +57,28 @@
 	    $add->bindValue(1, $id_user);
 	    $add->bindValue(2, $id_stage);
 		$add->execute();
-		$res = $add->fetch();
 
 		return $res;
 	}#End getChoixByIdStage
 
 	#=======================================================================================================
+
+	function getRangByUser($id_user){
+		require('configSQL.php');
+
+		$add = $bd->prepare("SELECT c.rang_choix,c.id_Stage From choix c
+							WHERE c.id_user = ?
+							ORDER BY c.rang_choix ");
+	    $add->bindValue(1, $id_user);
+		$add->execute();
+		$res = $add->fetchAll(PDO::FETCH_ASSOC)();
+
+		return $res;
+	}#End getRangbyUser
+
+	#=======================================================================================================
+
+	
+
 
 ?>
