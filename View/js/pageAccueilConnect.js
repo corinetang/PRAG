@@ -12,4 +12,6 @@ jQuery(function(){
         .addClass( "ui-widget-header ui-corner-all" )
         .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
     });
+
+    $( "#AffichageStage" ).accordion();
 });

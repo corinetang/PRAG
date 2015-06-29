@@ -41,8 +41,8 @@
           <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stages<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="stage-voeux-option hide-option"><a href="index.php?control=stage&action=showVoeux">Liste de voeux</a></li>
-            <li class="stage-consultation-option hide-option"><a href="#">Consultation</a></li>
-            <li class="stage-evaluation-option hide-option"><a href="#">Evaluation</a></li>
+            <li class="stage-consultation-option hide-option"><a href="index.php?control=stage&action=showConsultation">Consultation</a></li>
+            <li class="stage-evaluation-option hide-option"><a href="index.php?control=stage&action=showEval">Evaluation</a></li>
           </ul>
         </li>
         <li class="dropdown admin-option hide-option">
@@ -56,8 +56,12 @@
         </li>
       </ul>
      <ul class="nav navbar-nav navbar-right utilisateur-option hide-option">
-         <p class="navbar-text">Utilisateur</p>
-        <p class="navbar-text">Filiere</p>
+         <p class="navbar-text">
+             <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"])) {
+                    echo $_SESSION["user"]["identifiant_user"];
+                }else {?> <?php }?>
+         </p>
+        <p class="navbar-text"> Filiere</p>
         <li><a href="index.php?control=user&action=deconnexion" class="change-at-focus">Deconnexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

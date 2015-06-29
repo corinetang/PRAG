@@ -1,55 +1,12 @@
 <head>
-    <link rel="stylesheet" type="text/css" 
-                       href="View/css/gestionUsers.css " />  
-    <script src="View/js/gestionUsers.js"></script>
-    <!-- DataTables CSS -->
-    <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
-  
-<!-- DataTables -->
-    <script type="text/javascript" charset="utf8" src="View/js/libs/jquery.dataTables.js"></script>
+    <script src="View/js/evaluation.js"></script>
 </head>
 
-<div id="gestionUsers">
-    <h1>Gestion des membres</h1>
+<div id="evaluation" onload="showModal">
+    <h1>Evaluation</h1>
     <br>
     <br>
     <br>
-    <table class="display" id="tableau_gestionUsers">
-        <thead>
-            <tr >
-                <th data-dynatable-sorts= "Alpha">Nom</th>
-                <th>Prenom</th>
-                <th>Identifiant</th>
-                <th>Filière</th>
-                <th>Date de naissance</th>
-                <th>Adresse mail</th>
-                <th>Téléphone</th>
-                <th>Membre du SIPHIF ?</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-             <?php foreach ($users as $user) { ?>
-            <tr>
-<!--            <td class="user-id"><?php echo $user['id_user'] ?></td>-->
-              <td><?php echo $user['nom_user'] ?></td>
-              <td><?php echo $user['prenom_user'] ?></td>
-              <td><?php echo $user['identifiant_user'] ?></td>
-                <td><?php echo $user['nom_filiere'] ?></td>
-              <td><?php echo $user['dateDeNaissance_user'] ?></td>
-                <td><?php echo $user['mail_user'] ?></td>
-                <td><?php echo $user['numtel_user'] ?></td>
-                <td><input type="checkbox"></td>
-                <td><button type="button" class="btn btn-danger" onClick="supprimerMembre()">
-  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-</button>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="button_edit">
-  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-</button></td>
-            </tr>
-            <?php }; ?>
-        </tbody>
-    </table>
     <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -113,8 +70,3 @@
   </div>
 </div>
 </div>
-    <script>
-        $(document).ready(function () {
-    $('#tableau_gestionUsers').DataTable();
-} );
-    </script>

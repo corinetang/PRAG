@@ -223,7 +223,18 @@
 	}#End getUserFiliere
 
 	#=========================================================================================================
+	function getAllUserFiliere(){
+		require('ConfigSQL.php');
+	    $add = $bd->prepare("SELECT * FROM user u 
+	    					LEFT JOIN filiere f ON f.id_filiere = u.id_filiere");
+		$add->execute();
+        $res = $add->fetchAll(PDO::FETCH_ASSOC);
+//		$res = $add->fetch();
+//		return json_encode($res);
+        return $res;
+	}#End getUserFiliere
 
+#=========================================================================================================
 	function create_id($nom,$prenom){
 		require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT count(*) FROM user
@@ -252,9 +263,10 @@
 		require('ConfigSQL.php');
 		    $add = $bd->prepare("SELECT * FROM user u");
 			$add->execute();
-			$res = $add->fetch();
-
-			return json_encode($res);
+			/*$res = $add->fetch();*/
+            $res = $add->fetchAll(PDO::FETCH_ASSOC);
+			/*return json_encode($res);*/
+            return $res;
 	}#End of getAllUsers
 
 	#=========================================================================================================

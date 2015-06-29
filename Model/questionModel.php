@@ -1,5 +1,4 @@
 <?php
-
     function getQuestions(){
         require('ConfigSQL.php');
             $add = $bd->prepare("SELECT * FROM Questions");
@@ -48,3 +47,4 @@
         return ($add->execute());
     }#End deleteQuestion
 ?>
+

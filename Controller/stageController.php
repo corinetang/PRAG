@@ -16,8 +16,20 @@ function showVoeux () {
 		require ('Model/stageModel.php');
 		$stages = getStagesByFiliere($id_filiere);
 	}
-
 	require ('View/listVoeux.tpl');
 }
 
+/*
+ * Affiche la page des évaluations
+ */
+function showEval() {
+    require ('View/evaluation.tpl');
+}
+
+/*
+ * Affiche la page des consultation
+ */
+function showConsultation() {
+    require ('View/consultation.tpl');
+}
 ?>

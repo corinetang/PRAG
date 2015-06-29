@@ -80,6 +80,7 @@
 	require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT * FROM stage s
 	    					LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
+                            LEFT JOIN Service serv ON serv.id_Service = s.id_Service
 	    					AND s.id_Filiere = :id_Filiere");
 	    $add->bindParam(':id_Filiere', $idfiliere);
 		$add->execute();
@@ -88,4 +89,17 @@
 		return $res; 
 }#End getStageByFiliere
 
+#=======================================================================================================
+    function getStagesByUser($idUser){
+        require('ConfigSQL.php');
+	    $add = $bd->prepare("SELECT * FROM Stage s
+	    					LEFT JOIN Choix c ON c.id_Stage = s.id_Stage
+                            LEFT JOIN Service serv ON serv.id_Service = s.id_Service
+	    					WHERE c.id_User = :id_User");
+	    $add->bindParam(':id_User', $idUser);
+		$add->execute();
+		$res = $add->fetchAll(PDO::FETCH_ASSOC);
+        
+		return $res; 
+    }#End getStagesByUser
 ?>
