@@ -1,14 +1,14 @@
 <?php
 	/**** VERIFICATION DU FORMAT ****/
-	
-	
+
+
 	function verif_nom($nom){
 		$patternNom = '#^[[:alnum:]_\-ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{3,30}$#';
 		return preg_match($patternNom, $nom);
 	}#End verif_nom
 
 	#=======================================================================================================
-	
+
 	function verif_email($email){
 		$patternEmail = '#^[a-zA-Z0-9.]{3,}@[a-z0-9]{2,}\.[a-z]{2,4}$#';
 		return preg_match($patternEmail, $email);
@@ -22,19 +22,19 @@
 	}#End verif_psswd
 
 	#=======================================================================================================
-	
+
 	function verif_niveau_etude($niveau_etude){
 		$pattern_niveau_etude = '#^[a-zA-Z0-9?\-\'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ ]{3,50}$#';
 		return preg_match($pattern_niveau_etude, $niveau_etude);
 	}#End verif_niveau_etude
 
 	#=======================================================================================================
-	
+
 	/**** AUTHENTIFICATION CLIENT ****/
 
 	function authentification_BD($login, $mdp){ // Fonction privée (ne sert que pour découper le code avec la fonction authentification)
 	    require('ConfigSQL.php');
-	    
+
 	    $password = sha1($mdp);
 
 	    $result = $bd->prepare("SELECT * FROM user WHERE identifiant_user = :identifiant AND mdp_user = :password");
@@ -58,18 +58,18 @@
 
 		if(!verif_psswd($mdp))
 			return false;*/
-		
+
 		if(!authentification_BD($login, $mdp))
 			return false;
 
 
-		
+
 		return true;
 	}#End authentification
 
 	#=======================================================================================================
-	
-	
+
+
 	/*** INSCRIPTION ***/
 
 	function ajout_BD($nom, $prenom, $mdp, $nbSemestre_user, $dateDeNaissance_user, $email, $Numtel,$filiere){
@@ -77,7 +77,7 @@
 		$password = sha1($mdp);
 		$groupe = 1;
 		$identifiant_user = create_id($nom,$prenom);
-	    $add = $bd->prepare("INSERT INTO user(identifiant_user, nom_user, prenom_user, mdp_user, NbSemestre_user, dateDeNaissance_user, mail_user, numtel_user, id_Filiere,id_Groupe) 
+	    $add = $bd->prepare("INSERT INTO user(identifiant_user, nom_user, prenom_user, mdp_user, NbSemestre_user, dateDeNaissance_user, mail_user, numtel_user, id_Filiere,id_Groupe)
 							VALUES(:identifiant_user,:nom, :prenom,:mdp, :nbSemestre_user , :dateDeNaissance_user,:email,:Numtel,:id_filiere,:id_groupe)");
 	    $add->bindParam(':identifiant_user', $identifiant_user);
 	    $add->bindParam(':mdp', $password);
@@ -98,13 +98,13 @@
 	function ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere){
 		/*if(!verif_nom($nom))
 			return false;
-			
+
 		if(!verif_nom($prenom))
 			return false;*/
-			
+
 		/*if(!verif_email($email))
-			return false;	
-					
+			return false;
+
 		if(!verif_psswd($mdp))
 			return false;*/
 
@@ -112,21 +112,21 @@
 	}#End ajout
 
 	#=======================================================================================================
-	
+
 	/*** MODIFICATION MDP ***/
 	function change($password_act, $password_new, $password_conf){
 		if(!verif_psswd($password_act))
 			return false;
-			
+
 		if(!verif_psswd($password_new))
 			return false;
-			
+
 		if(!verif_psswd($password_conf))
 			return false;
-		
+
 		if(!verif_password_BD($password_act))
 			return false;
-		
+
 		if($password_new != $password_conf)
 			return false;
 
@@ -135,7 +135,7 @@
 	}#End change
 
 		#=======================================================================================================
-	
+
 	/*** MODIFICATION PROFIL ***/
 	function changeProfil($nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $filiere){
 
@@ -151,12 +151,12 @@
 	}#End change
 
 	#=======================================================================================================
-	
+
 
 	function update_user($id_user, $nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $filiere) {
 		require('ConfigSQL.php');
 
-	    $add = $bd->prepare("UPDATE user 
+	    $add = $bd->prepare("UPDATE user
 	    					 SET nom_user = ?,
 	    					 prenom_user = ?,
 	    					 dateDeNaissance_user = ?,
@@ -176,11 +176,11 @@
 	    $add->bindvalue(7, $filiere);
 		$add->bindvalue(8, $id_user);
 
-		
+
 	    return ($add->execute());
 	}
 
-	
+
 	#=======================================================================================================
 
 	function change_password_BD($password_new){
@@ -189,12 +189,12 @@
 	    $add = $bd->prepare("UPDATE user SET mdp_user = :password_new WHERE id_user = :id_user");
 	    $add->bindParam(':password_new', $hash);
 		$add->bindParam(':id_user', $_SESSION['user']['id_user']);
-		
+
 	    return ($add->execute());
 	}#End change_password_BD
 
 	#=======================================================================================================
-	
+
 	function verif_password_BD($password_act){
 		require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT * FROM user WHERE id_user = :idclient AND mdp_user = :password_act");
@@ -225,7 +225,7 @@
 	#=========================================================================================================
 	function getAllUserFiliere(){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("SELECT * FROM user u 
+	    $add = $bd->prepare("SELECT * FROM user u
 	    					LEFT JOIN filiere f ON f.id_filiere = u.id_filiere");
 		$add->execute();
         $res = $add->fetchAll(PDO::FETCH_ASSOC);
@@ -244,7 +244,7 @@
 	    $add->bindParam(':prenom', $prenom);
 	    $add->execute();
 	    $res = $add->fetch();
-	   
+
 	   #Gestion des identifiants (si homonymes)----------------------------------------------
 	    if ($res[0] == 0 ) {
 	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom);
@@ -252,7 +252,7 @@
 	    	$res[0] = $res[0];
 	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res[0];
 	    }#End If
-		
+
 	    return $identifiant_user;
 
 	}#End ofcreate_id
@@ -284,5 +284,16 @@
 		return $res;
 	}#End getUserByIdStage
 
+	#=========================================================================================================
+
+	function deleteUser($id_user){
+        require('configSQL.php');
+        $add = $bd->prepare("DELETE
+                             FROM User
+                             WHERE id_user = ?");
+        $add->bindValue(1, $id_user);
+
+        return ($add->execute());
+	}#End deleteUser
 
 ?>

@@ -146,4 +146,11 @@ function deconnexion() {
 	session_destroy();
    	header("Location: index.php");
 }
+
+function removeUser() {
+	$id_user = isset($_POST['id_user'])?$_POST['id_user']:"";
+	require ('Model/userModel.php');
+
+	deleteUser($id_user);
+}
 ?>
