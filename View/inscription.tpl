@@ -80,7 +80,7 @@
                     <div class="col-md-4">
                          <select class ="form-control " name="Filiere">
                             <?php foreach ($listFiliere as $filiere) { ?>
-                                <option value=<?php echo utf8_decode($filiere['id_Filiere']) ?>> <?php echo utf8_decode($filiere['nom_filiere']) ?> </option>
+                                <option value=<?php echo utf8_decode($filiere['id_Filiere']) ?>> <?php echo $filiere['nom_filiere'] ?> </option>
                             <?php } ?>
         				</select>
                     </div>

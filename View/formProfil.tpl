@@ -2,7 +2,7 @@
     <script src="View/js/formProfil.js"></script>
     <link rel="stylesheet" type="text/css" href="View/css/formProfil.css " />
 </head>
-<div> 
+<div>
 	<div id="dialog-form"  title="Profil">
 		<fieldset>
             <legend>Modification des données</legend>
@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <label for="Nom" class="col-sm-2 control-label">Nom</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control input-md" name="Nom" value=<?php echo $_SESSION["user"][0]["nom_user"]; ?>>
+                        <input type="text" class="form-control input-md" name="Nom" value=<?php echo $_SESSION["user"]["nom_user"]; ?>>
                     </div>
                 </div>
                 <div class="form-group">
@@ -24,7 +24,7 @@
                     <div class="col-sm-5">
                         <input type="date" class="form-control input-md" name="Ddn" value=<?php echo $_SESSION["user"]["dateDeNaissance_user"]; ?>>
                     </div>
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="NbSemestre" class="col-sm-2 control-label">Nombre de semestre</label>
                     <div class="col-sm-5">

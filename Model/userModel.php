@@ -37,14 +37,14 @@
 
 	    $password = sha1($mdp);
 
-	    $result = $bd->prepare("SELECT * FROM user WHERE identifiant_user = :identifiant AND mdp_user = :password");
+	    $result = $bd->prepare("SELECT * FROM user u
+	    	LEFT JOIN filiere f ON f.id_filiere = u.id_filiere
+	    	WHERE identifiant_user = :identifiant AND mdp_user = :password");
 	    $result->bindParam(':identifiant', $login);
 	    $result->bindParam(':password', $password);
 	    $result->execute();
 	    $donnee = $result->fetch(PDO::FETCH_ASSOC);
 		$_SESSION['user'] = $donnee;
-
-
 
 	    $result->closeCursor();
 	    return $donnee;
