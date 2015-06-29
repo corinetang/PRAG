@@ -18,14 +18,14 @@
         </thead>
         <tbody>
           <?php foreach ($stages as $stage) { ?>
-            <tr>
+            <tr id="<?php echo $stage['id_Stage'] ?>">
               <td class="stage-id"><?php echo $stage['id_Stage'] ?></td>
               <td class="stage-des">DES</td>
               <td class="stage-etablissement">Etablissement</td>
               <td class="stage-service">Service</td>
               <td class="stage-nb-poste"><?php echo $stage['NbPoste_stage'] ?></td>
               <td>
-                <button type="button" class="btn btn-default btn-lg btn-choice-move">
+                <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>)">
                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
               </td>
