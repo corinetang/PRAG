@@ -63,7 +63,12 @@
                     echo $_SESSION["user"]["identifiant_user"];
                 }else {?> <?php }?>
          </p>
-        <p class="navbar-text"> Filiere</p>
+        <p class="navbar-text">
+          Filière :
+          <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"]))
+              echo $_SESSION["user"]['nom_filiere'];
+          ?>
+        </p>
         <li><a href="index.php?control=user&action=deconnexion" class="change-at-focus">Deconnexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
