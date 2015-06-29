@@ -257,5 +257,20 @@
 			return json_encode($res);
 	}#End of getAllUsers
 
+	#=========================================================================================================
+
+	function getUserByIdStage($id_stage){
+		require('configSQL.php');
+
+		$add = $bd->prepare("SELECT * From user u
+							JOIN choix c ON u.id_user = c.id_user
+							AND c.id_stage = ?");
+	    $add->bindValue(1, $id_stage);
+		$add->execute();
+		$res = $add->fetch();
+
+		return $res;
+	}#End getUserByIdStage
+
 
 ?>

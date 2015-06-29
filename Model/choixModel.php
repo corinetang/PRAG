@@ -45,4 +45,23 @@
 	    return ($add->execute());
 	}#End updateChoix
 
+	#=======================================================================================================
+
+	function getChoixByIdStage($id_stage,$id_user){
+		require('configSQL.php');
+
+		$add = $bd->prepare("SELECT * From stage s
+			LEFT JOIN user u ON u.id_Filiere = s.id_Filiere
+							WHERE id_user = ?
+							AND id_Stage = ?");
+	    $add->bindValue(1, $id_user);
+	    $add->bindValue(2, $id_stage);
+		$add->execute();
+		$res = $add->fetch();
+
+		return $res;
+	}#End getChoixByIdStage
+
+	#=======================================================================================================
+
 ?>
