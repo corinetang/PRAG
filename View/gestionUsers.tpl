@@ -2,6 +2,11 @@
     <link rel="stylesheet" type="text/css" 
                        href="View/css/gestionUsers.css " />  
     <script src="View/js/gestionUsers.js"></script>
+    <!-- DataTables CSS -->
+    <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
+  
+<!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="View/js/libs/jquery.dataTables.js"></script>
 </head>
 
 <div id="gestionUsers">
@@ -9,7 +14,7 @@
     <br>
     <br>
     <br>
-    <table class="table table-striped" id="tableau_gestionUsers">
+    <table class="display" id="tableau_gestionUsers">
         <thead>
             <tr >
                 <th data-dynatable-sorts= "Alpha">Nom</th>
@@ -108,3 +113,8 @@
   </div>
 </div>
 </div>
+    <script>
+        $(document).ready(function () {
+    $('#tableau_gestionUsers').DataTable();
+} );
+    </script>
