@@ -1,9 +1,4 @@
 jQuery(document).ready(function (){
-    $('#button_edit').click(function(e) {
-        var rows = $('#tableau_gestionUsers tbody tr').index(this);
-        var index = rows.cells.item(0).innerHTML;
-    });
-
     $('#myModal').on('shown.bs.modal', function () {
       $('#myInput').focus();
     });
@@ -20,14 +15,14 @@ function supprimerMembre(idUser) {
 }
 
 function editMembre(idUser) {
-    // var libelleQuestion = $("#edit-libelle-" + idQuestion).val();
+    var libelleQuestion = $("#edit-libelle-" + idQuestion).val();
 
-    // $.ajax({
-    //    url : 'index.php?control=question&action=editQuestion',
-    //    type : 'POST',
-    //    data : 'id_question=' + idQuestion + "&libelle_question=" + libelleQuestion
-    // });
-    // location.reload();
+    $.ajax({
+       url : 'index.php?control=question&action=editQuestion',
+       type : 'POST',
+       data : 'id_question=' + idQuestion + "&libelle_question=" + libelleQuestion
+    });
+    location.reload();
 }
 
 function initUserModal(idUser, nomUser, prenomUser, nbSemestreUser, ddnUser, mailUser, numTelUser, idGroupe) {
