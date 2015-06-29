@@ -26,15 +26,12 @@ function showInscription() {
 }
 
 function showProfil() {
-
 	require("Model/kint/Kint.class.php");
-	require ('View/formProfil.tpl');	
-
-
+	require ('View/formProfil.tpl');
 }
 
 function showAccueilConnect() {
-	require ('View/pageAccueilConnect.tpl');	
+	require ('View/pageAccueilConnect.tpl');
 }
 
 
@@ -57,14 +54,9 @@ function connexion () {
 	require ('Model/userModel.php');
 
 	//Controle des infos saisies--------------------------------------------------
-	if (isset($_POST['Connexion'])){
+	if (isset($_POST['Connexion'])) {
 		$auth = authentification_BD($identifiant,$pass);
-        if($auth){
-            header("Location: index.php?control=user&action=showAccueilConnect");
-        }
-		else {
-			header("Location: index.php");
-		}
+        header("Location: http://localhost:8888/PRAG/index.php");
 	}
 }
 
@@ -81,7 +73,7 @@ function inscription() {
 	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
 	$Filiere               = isset($_POST['Filiere'])?$_POST['Filiere']:"";
 	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
-	
+
     require ('Model/userModel.php');
 
 	if (ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere)) {
@@ -90,7 +82,7 @@ function inscription() {
 	}
 	else{
 		echo "<div class=\"alert alert-danger\" role=\"alert\">Une erreur a empêché votre inscription</div>";
-		header('Location: index.php');	
+		header('Location: index.php');
 	}
 
 }
@@ -132,14 +124,10 @@ function showUsers() {
 	require ('Model/userModel.php');
 	$jsonUsers = getAllUsers();
 	require ('View/gestionUsers.tpl');
-} 
-
-function deconnexion() {
-   session_destroy();
-   require ('View/connexion.tpl');
 }
 
-function showAnswers() {
-    require ('View/gestionAnswers.tpl');
+function deconnexion() {
+	session_destroy();
+   	header("Location: index.php");
 }
 ?>
