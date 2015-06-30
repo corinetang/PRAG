@@ -127,7 +127,7 @@
 		if(!verif_nom($Prenom))
 			return false;
 
-		if(!verif_email($email))
+		if(!verif_email($Mail))
 			return false;
 
 		if(!verif_psswd($mdp))
@@ -136,7 +136,7 @@
 		if(!verif_nbSemestre($NbSemestre))
 			return false;
 			
-		if(!verif_nbTelephone(Telephone))
+		if(!verif_nbTelephone($Telephone))
 			return false;
 
 		return ajout_BD($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
