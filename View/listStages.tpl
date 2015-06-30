@@ -1,7 +1,6 @@
 <head>
-  <!-- <link rel="stylesheet" type="text/css" 
-                       href="View/css/listStages.css " />  -->
-  <script src="View/js/listStages.js"></script>
+  <link rel="stylesheet" type="text/css" 
+                       href="View/css/listStages.css " /> 
 </head>
 
 <div id="listStages">
@@ -90,9 +89,6 @@
               <td class="stage-etablissement">Etablissement</td>
               <td class="stage-service">Service</td>
               <td>
-                <button type="button" class="btn btn-default btn-lg btn-choice-move">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
               </td>
               <td></td>
             </tr>
