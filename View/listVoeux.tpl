@@ -1,7 +1,7 @@
 <head>
   <link rel="stylesheet" type="text/css"
                        href="View/css/listVoeux.css " />
-    <script type="text/javascript" src="View/js/listVoeux.js"></script>
+    <script src="View/js/listVoeux.js" id="myscript"></script>
     <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
 </head>
 
@@ -9,16 +9,14 @@
     <h1>Choix des stages</h1><span id="userId" style="display:none;"><?php echo $_SESSION['user']['id_user'] ?></span>
     <br>
     <h2> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h2>
-    <table class="display" id="table_choice">
+    <table class="table table-striped" id="table-choice">
         <thead>
-            <tr>
           <th>Id</th>
           <th>DES</th>
           <th>Etablissement</th>
           <th>Service</th>
           <th>Nombre de poste</th>
           <th></th>
-                </tr>
         </thead>
         <tbody>
           <?php foreach ($stages as $stage) { ?>
@@ -37,8 +35,7 @@
             </tr>
           <?php } ?>
         </tbody>
-    </table>
- <br>
+    </table><br>
 
     <h2> Stage selectionnés </h2>
     <table class="table table-striped" id="table-result">
@@ -72,3 +69,4 @@
       </tbody>
     </table>
 </div>
+
