@@ -124,7 +124,7 @@
 		if(!verif_nom($nom))
 			return false;
 
-		if(!verif_nom($prenom))
+		if(!verif_nom($Prenom))
 			return false;
 
 		if(!verif_email($email))
