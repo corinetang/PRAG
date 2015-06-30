@@ -12,14 +12,14 @@
             return $res;
     }
 
-
     //récupérer réponse à la question
     function getReponseQuestion($id_Question, $id_Evaluation) {
         require('ConfigSQL.php');
             $add = $bd->prepare("SELECT * FROM Reponse r 
                                  LEFT JOIN Question_Reponse q ON r.id_reponse = q.id_reponse
-                                 WHERE q.id_Question = ?");
+                                 WHERE q.id_Question = ? AND q.id_Evaluation = ?");
             $add->bindvalue(1, $id_Question);
+            $add->bindvalue(2, $id_Evaluation);
             $add->execute();
             $res = $add->fetchAll(PDO::FETCH_ASSOC);
 

@@ -48,7 +48,7 @@
       </div>
       <div class="modal-body">
         <fieldset>
-      <form class="form-horizontal" >
+      <form class="form-horizontal" method="POST" action="index.php?control=question&action=repondre">
 
             <?php 
             foreach ($listQuestions as $Question) { ?>
@@ -56,20 +56,19 @@
                     <?php $Reponse = getReponseQuestion($Question['id_Question'], $Evaluation[0]['id_Evaluation']); ?>
                     <label for="Question" class="col-sm-3 control-label"> <?php echo $Question['Libelle_question']; ?> </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="reponse-<?php echo $Reponse[0]['id_reponse']; ?>">
-                        <?php $reponses[] = $Reponse[0]['id_reponse']; ?>
+                        <input type="text" class="form-control" name="reponse-<?php echo $Reponse[0]['id_reponse']; ?>" value=<?php echo $Reponse[0]['commentaire_reponse']; ?>>
                     </div>
               </div>
             <?php } ?>
 
+            <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
       </form>
     </fieldset>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" onClick="">Annuler</button>
-        <button type="submit" class="btn btn-primary" onClick="enregistrer(<?php echo json_encode($reponses); ?>)" >Enregistrer</button>
-        <button type="button" class="btn btn-primary">Enregistrer et Valider</button>
-      </div>
+      
     </div>
   </div>
 </div>
