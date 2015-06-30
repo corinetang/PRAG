@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+function initModalConsulation() {
+
+}
+=======
+=======
+>>>>>>> b6a72e13066bcaf9071987c2bd60c03377446448
  $(function() {
     $( "#accordion" ).accordion({
       event: "click hoverintent"
@@ -69,7 +77,11 @@
       });
     }
   };
+<<<<<<< HEAD
+>>>>>>> 272f00c87239639bbe1ac88fc3613a679ef857eb
+=======
 
 function initModalConsulation() {
 
 }
+>>>>>>> b6a72e13066bcaf9071987c2bd60c03377446448

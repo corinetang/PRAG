@@ -26,6 +26,7 @@ function initializeHeader(idRole) {
     else{ // Visiteur
     	$('li.accueil-option').removeClass('hide-option');
     }
+    $('.valid-edit-button').hide();
 }
 
 jQuery(function(){

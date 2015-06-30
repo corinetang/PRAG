@@ -1,7 +1,3 @@
-window.onload = function() {
-    $('.valid-edit-button').hide();
-}
-
 function addAnswer() {
     var libelleQuestion = $('#newQuestion').val();
     $.ajax({
