@@ -1,6 +1,6 @@
 
 <?php
-
+require 'Model/kint/Kint.class.php';
 /*
  * Affiche la page des pré-choix
  */
