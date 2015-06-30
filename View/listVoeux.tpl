@@ -22,9 +22,9 @@
           <?php foreach ($stages as $stage) { ?>
             <tr id="stage-<?php echo $stage['id_Stage'] ?>" >
               <td class="stage-id"><?php echo $stage['id_Stage'] ?></td>
-              <td class="stage-des">DES</td>
-              <td class="stage-etablissement">Etablissement</td>
-              <td class="stage-service">Service</td>
+              <td class="stage-des"><?php echo $stage['libelle_DES'] ?></td>
+              <td class="stage-etablissement"><?php echo $stage['nom_etablissement'] ?></td>
+              <td class="stage-service"><?php echo $stage['nom_service'] ?></td>
               <td class="stage-nb-poste"><?php echo $stage['NbPoste_stage'] ?></td>
               <td>
                 <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
@@ -54,9 +54,9 @@
           <tr id="<?php echo $choosenStage['id_Stage'] ?>">
             <td class="stage-rank"><?php echo $choosenStage['rang_choix'] ?></td>
             <td class="stage-id"><?php echo $choosenStage['id_Stage'] ?></td>
-            <td class="stage-des">DES</td>
-            <td class="stage-etablissement">Etablissement</td>
-            <td class="stage-service">Service</td>
+            <td class="stage-des"><?php echo $choosenStage['libelle_DES'] ?></td>
+            <td class="stage-etablissement"><?php echo $choosenStage['nom_etablissement'] ?></td>
+            <td class="stage-service"><?php echo $choosenStage['nom_service'] ?></td>
             <td class="stage-nb-poste"><?php echo $choosenStage['NbPoste_stage'] ?></td>
             <td>
               <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $choosenStage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
