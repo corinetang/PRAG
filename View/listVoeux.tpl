@@ -58,7 +58,7 @@
             <td class="stage-service"><?php echo $choosenStage['nom_service'] ?></td>
             <td class="stage-nb-poste"><?php echo $choosenStage['NbPoste_stage'] ?></td>
             <td>
-              <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $choosenStage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
+              <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="resultMove(<?php echo $choosenStage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
               </button>
             </td>
