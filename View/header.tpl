@@ -26,7 +26,7 @@
 <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-     <img src="View/css/images/logo-siphif_Header.jpg" alt="logo-siphif_Heade" height="55" width="55">
+     <img src="View/css/images/logo-siphif_Header.jpg" id="header" alt="logo-siphif_Heade" height="55px" width="55px">
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
