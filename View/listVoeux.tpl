@@ -11,7 +11,6 @@
     <h2> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h2>
     <table class="table table-striped" id="table-choice">
         <thead>
-          <th>Id</th>
           <th>DES</th>
           <th>Etablissement</th>
           <th>Service</th>
