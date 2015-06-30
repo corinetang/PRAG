@@ -2,8 +2,7 @@
   <link rel="stylesheet" type="text/css"
                        href="View/css/listVoeux.css " />
     <script type="text/javascript" src="View/js/listVoeux.js"></script>
-        <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
-    <script type="text/javascript" charset="utf8" src="View/js/libs/jquery.dataTables.js"></script>
+    <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
 </head>
 
 <div id="listVoeux">
@@ -23,12 +22,12 @@
         </thead>
         <tbody>
           <?php foreach ($stages as $stage) { ?>
-            <tr>
-              <td><?php echo $stage['id_Stage'] ?></td>
-              <td>DES</td>
-              <td>Etablissement</td>
-              <td>Service</td>
-              <td><?php echo $stage['NbPoste_stage'] ?></td>
+            <tr id="stage-<?php echo $stage['id_Stage'] ?>" >
+              <td class="stage-id"><?php echo $stage['id_Stage'] ?></td>
+              <td class="stage-des">DES</td>
+              <td class="stage-etablissement">Etablissement</td>
+              <td class="stage-service">Service</td>
+              <td class="stage-nb-poste"><?php echo $stage['NbPoste_stage'] ?></td>
               <td>
                 <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -73,8 +72,3 @@
       </tbody>
     </table>
 </div>
-    <script>
-        $(document).ready(function () {
-    $('#table_choice').DataTable();
-} );
-    </script>

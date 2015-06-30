@@ -16,8 +16,8 @@ jQuery(function () {
 });
 
 function choiceMove(id, idUser) {
-    var line        = document.getElementById(id);
-    var append_line = '<tr id="'+line.getElementsByClassName("stage-id")[0].innerHTML+
+    var line        = document.getElementById("stage-" + id);
+    var append_line = '<tr id="'+ line.getElementsByClassName("stage-id")[0].innerHTML+
                         '"><td class="stage-rank">'+
                         '</td><td class="stage-id">'+line.getElementsByClassName("stage-id")[0].innerHTML+
                         '</td><td class="stage-des">'+line.getElementsByClassName("stage-des")[0].innerHTML+
@@ -85,7 +85,7 @@ function attributeRank(table, idUser) {
         $.ajax({
            url : 'index.php?control=stage&action=updateRankVoeu',
            type : 'POST',
-           data : 'user_id='+idUser+ 
+           data : 'user_id='+idUser+
                     '&stage_id='+$(this).find('.stage-id').text()+
                     '&rank='+rank
         });
