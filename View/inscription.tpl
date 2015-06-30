@@ -53,7 +53,7 @@
                  <div class="form-group">
                     <label for="Password" class="col-md-4 control-label">Mot de passe</label>
                     <div class="col-md-4">
-                        <input type="password" class="form-control input-md" id="Password" name="Password" placeholder="Password">
+                        <input type="password" class="form-control input-md" id="Password" onblur="verifPassword(this)" name="Password" placeholder="Password">
                      </div>
                 </div>
                 <div class="alert alert-danger" style="display:none;" id="error-password">Attention : Votre mot de passe et votre confirmation de mot de passe sont différents</div>
@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label for="ValidationPassword" class="col-md-4 control-label">Confirmation de votre Mot de passe</label>
                     <div class="col-md-4">
-                        <input type="password" class="form-control input-md" id="ValidationPassword" name="ValidationPassword" placeholder="Confirmez votre mot de passe">
+                        <input type="password" class="form-control input-md" id="ValidationPassword" onblur="verifPassword(this)" name="ValidationPassword" placeholder="Confirmez votre mot de passe">
                      </div>
                 </div>
 
