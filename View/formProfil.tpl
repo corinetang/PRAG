@@ -10,15 +10,9 @@
 			<form class="form-horizontal" method="post" id="profil" action="index.php?control=user&action=profil" enctype="multipart/form-data" onsubmit="return valideForm(this)">
 <!--                NOM-->
                 <div class="form-group">
-<<<<<<< HEAD
                     <label for="Nom" class="col-sm-5 control-label">Nom</label>
                     <div class="col-sm-7">
                         <input type="text" class="form-control input-md" name="Nom" onblur="verifName(this)" value=<?php echo $_SESSION["user"]["nom_user"]; ?>>
-=======
-                    <label for="Nom" class="col-sm-2 control-label">Nom</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control input-md" name="Nom" value=<?php echo $_SESSION["user"]["nom_user"]; ?>>
->>>>>>> 3519951a000d1c48ed717a4add1d956190121073
                     </div>
                 </div>
                 
@@ -37,11 +31,9 @@
                         <input type="date" class="form-control input-md" name="Ddn" value=<?php echo $_SESSION["user"]["dateDeNaissance_user"]; ?>>
                     </div>
                 </div>
-<<<<<<< HEAD
-                
+
 <!--                NOMBRE SEMESTRE-->
-=======
->>>>>>> 3519951a000d1c48ed717a4add1d956190121073
+
                 <div class="form-group">
                     <label for="NbSemestre" class="col-sm-5 control-label">Nombre de semestre</label>
                     <div class="col-sm-7">
