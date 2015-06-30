@@ -1,10 +1,10 @@
 <head>
-	<link rel="stylesheet" type="text/css" 
+	<link rel="stylesheet" type="text/css"
                        href="View/css/importStage.css" />
 </head>
 <div id="InportStage">
      <h1>Import de la liste des stages</h1>
-    <div id="instruction">  
+    <div id="instruction">
         <div class="notice notice-info">
             <strong>Instruction</strong>
             <p>Sélectionnez la filiere</p>
@@ -19,7 +19,7 @@
         <div class="col-sm-9">
                 <select class ="form-control" name="Filiere">
                 <?php foreach ($listFiliere as $filiere) { ?>
-                        <option value=<?php echo utf8_decode($filiere['id_Filiere']) ?>> <?php echo utf8_decode($filiere['nom_filiere']) ?> </option>
+                        <option value=<?php echo utf8_decode($filiere['id_Filiere']) ?>> <?php echo $filiere['nom_filiere'] ?> </option>
                 <?php } ?>
         	</select>
         </div>
