@@ -81,6 +81,9 @@
 	    $add = $bd->prepare("SELECT * FROM stage s
 	    					LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
                             LEFT JOIN Service serv ON serv.id_Service = s.id_Service
+                            LEFT JOIN Etablissement e ON serv.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES_Etablissement deseta ON deseta.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES des ON des.id_DES = deseta.id_DES
 	    					AND s.id_Filiere = :id_Filiere");
 	    $add->bindParam(':id_Filiere', $idfiliere);
 		$add->execute();
@@ -125,7 +128,7 @@
 		$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
 		return $res;
-	}
+	} #End getStagesByFiliereAndUserNotChoices
 
 #=======================================================================================================
     function getStagesByUser($idUser){
