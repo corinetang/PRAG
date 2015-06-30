@@ -10,18 +10,12 @@
 			<form class="form-horizontal" method="post" id="profil" action="index.php?control=user&action=profil" enctype="multipart/form-data" onsubmit="return valideForm(this)">
 <!--                NOM-->
                 <div class="form-group">
-<<<<<<< HEAD
                     <label for="Nom" class="col-sm-5 control-label">Nom</label>
                     <div class="col-sm-7">
                         <input type="text" class="form-control input-md" name="Nom" onblur="verifName(this)" value=<?php echo $_SESSION["user"]["nom_user"]; ?>>
-=======
-                    <label for="Nom" class="col-sm-2 control-label">Nom</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control input-md" name="Nom" value=<?php echo $_SESSION["user"]["nom_user"]; ?>>
->>>>>>> 3519951a000d1c48ed717a4add1d956190121073
                     </div>
                 </div>
-                
+
 <!--                PRENOM-->
                 <div class="form-group">
                     <label for="Prenom" class="col-sm-5 control-label">Pr&eacute;nom</label>
@@ -29,7 +23,7 @@
                         <input type="text" class="form-control input-md" name="Prenom" onblur="verifName(this)" value=<?php echo $_SESSION["user"]["prenom_user"]; ?>>
                     </div>
                 </div>
-                
+
 <!--                DATE DE NAISSANCE-->
                 <div class="form-group">
                     <label for="Ddn" class="col-sm-5 control-label">Date de naissance</label>
@@ -37,18 +31,13 @@
                         <input type="date" class="form-control input-md" name="Ddn" value=<?php echo $_SESSION["user"]["dateDeNaissance_user"]; ?>>
                     </div>
                 </div>
-<<<<<<< HEAD
-                
-<!--                NOMBRE SEMESTRE-->
-=======
->>>>>>> 3519951a000d1c48ed717a4add1d956190121073
                 <div class="form-group">
                     <label for="NbSemestre" class="col-sm-5 control-label">Nombre de semestre</label>
                     <div class="col-sm-7">
                         <input type="text" class="form-control input-md" name="NbSemestre" onblur="verifNbSemestre(this)" placeholder="Nombre de Semestre Valides" value=<?php echo $_SESSION["user"]["NbSemestre_user"]; ?>>
                     </div>
                 </div>
-                
+
 <!--                ADRESSE EMAIL-->
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-5 control-label">Email</label>
@@ -56,7 +45,7 @@
                         <input type="email" class="form-control input-md" id="inputEmail3" name="mail" onblur="verifMail(this)" placeholder="Adresse Email" value=<?php echo $_SESSION["user"]["mail_user"]; ?>>
                     </div>
                 </div>
-                
+
 <!--                ANCIEN PASSWORD-->
                 <div class="form-group">
                     <label for="Password" class="col-sm-5 control-label">Ancien Mot de passe</label>
@@ -64,7 +53,7 @@
                         <input type="password" class="form-control input-md" id="oldPassword" name="oldPassword" placeholder="Ancien Mot de passe">
                      </div>
                 </div>
-                
+
 <!--                NOUVEAU PASSWORD-->
                  <div class="form-group">
                     <label for="Password" class="col-sm-5 control-label">Nouveau Mot de passe</label>
@@ -73,7 +62,7 @@
                      </div>
                 </div>
                 <div class="alert alert-danger" style="display:none;" id="error-password">Attention : Votre mot de passe et votre confirmation de mot de passe sont différents</div>
-                
+
 <!--                CONFIRMATION DU NOUVEAU MOT DE PASSE-->
                 <div class="form-group">
                     <label for="ValidationPassword" class="col-sm-5 control-label">Confirmation de votre nouveau Mot de passe</label>
@@ -81,7 +70,7 @@
                         <input type="password" class="form-control input-md" id="ValidationPassword" name="ValidationPassword" placeholder="Confirmez votre mot de passe">
                      </div>
                 </div>
-                
+
 <!--                NUMERO DE TELEPHONE-->
                 <div class="form-group">
                     <label for="Telephone" class="col-sm-5 control-label">T&eacute;l&eacute;phone</label>
@@ -89,7 +78,7 @@
                         <input type="text" class="form-control input-md" name="Telephone" onblur="verifNumTel(this)" value=<?php echo $_SESSION["user"]["numtel_user"]; ?>>
                     </div>
                 </div>
-                
+
 <!--                FILIERE-->
                 <div class="form-group">
 				<label for="Filiere" class="col-sm-5 control-label">Filiere</label>
