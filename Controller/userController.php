@@ -93,7 +93,7 @@ function inscription() {
 	}
 	else{
 		echo ('<div class="alert alert-danger" role="alert">
-  <a href="#" class="alert-link">Une erreur a empeché votre inscription</a>
+  <a href="index.php?control=user&action=showInscription" class="alert-link">Une erreur a empeché votre inscription</a>
 </div>');
 	}
 
