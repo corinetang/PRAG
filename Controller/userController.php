@@ -87,8 +87,8 @@ function inscription() {
     require ('Model/userModel.php');
 
 	if (ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere)) {
-		echo ('<div class="alert alert-success" role="alert">
-  <a href="index.php" class="alert-link">Vous êtes maintenant insrit</a>
+	echo ('<div class="alert alert-success" role="alert">
+  <a href="index.php" class="alert-link">Vous êtes maintenant inscrit !<br> Votre identifiant est: <strong>' $nom.$Prenom'<strong>.<br> Vous pouvez vous connecter en cliquant sur la bannière.</a>
 </div>');
 	}
 	else{
