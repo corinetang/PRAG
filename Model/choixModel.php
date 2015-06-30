@@ -103,7 +103,7 @@
 							ORDER BY c.rang_choix ");
 	    $add->bindValue(1, $id_user);
 		$add->execute();
-		$res = $add->fetchAll(PDO::FETCH_ASSOC)();
+		$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
 		return $res;
 	}#End getRangbyUser

@@ -62,10 +62,14 @@
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
               </button>
             </td>
-            <td><a ref=#><button type="button" class="btn btn-info"> Resultat</button></td>
+            <td>
+              <form method="post" action="index.php?control=classement&action=DisplayResultatPreChoix">
+                <input type="hidden" class="btn btn-info" name="stage_id" value="<?php echo $choosenStage['id_Stage'] ?>"> 
+                <input type="hidden" class="btn btn-info" name="user_id" value="<?php echo $_SESSION['user']['id_user'] ?>"> 
+                <input type="submit" class="btn btn-info" value="Resultat"/>
+              </form>
+            </td>
           </tr>
         <?php } ?>
-      </tbody>
-    </table>
-</div>
-
+          </tbody>
+          </table>
