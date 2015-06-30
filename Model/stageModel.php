@@ -96,8 +96,12 @@
 
 	function getStagesByFiliereAndUserChoices($idfiliere, $iduser){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("SELECT s.*, c.rang_choix FROM stage s
+	    $add = $bd->prepare("SELECT *, c.rang_choix FROM stage s
 	    					LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
+							LEFT JOIN Service serv ON serv.id_Service = s.id_Service
+                            LEFT JOIN Etablissement e ON serv.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES_Etablissement deseta ON deseta.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES des ON des.id_DES = deseta.id_DES
 	    					INNER JOIN choix c ON c.id_Stage = s.id_Stage
 	    					AND s.id_Filiere = :id_Filiere
 	    					AND c.id_user = :id_user
@@ -116,6 +120,10 @@
 		require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT *
 							FROM stage a
+							LEFT JOIN Service serv ON serv.id_Service = a.id_Service
+                            LEFT JOIN Etablissement e ON serv.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES_Etablissement deseta ON deseta.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES des ON des.id_DES = deseta.id_DES
 							WHERE a.id_Stage NOT IN (SELECT s.id_Stage FROM stage s
 							LEFT JOIN filiere f ON f.id_filiere = s.id_Filiere
 							INNER JOIN choix c ON c.id_Stage = s.id_Stage

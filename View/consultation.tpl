@@ -1,9 +1,20 @@
 <head>
-
+	<script type="text/javascript" charset="utf8" src="View/js/consultation.js"></script>
+	<script src="View/js/libs/jquery-ui.js"></script>
+    <link rel="stylesheet" href="View/css/consultation.css">
+	<link rel="stylesheet" href="View/css/libs/jquery-ui.css">
 </head>
 
 <div id="Consultation">
-    <h1>Consultation</h1>
+    <h1>Consultation</h1><br>
+	<div id="Filter" class="form-inline">
+		<select class="form-control input-sm" id="Filiere">
+
+		</select>
+		<select class="form-control input-sm" id="Hopital">
+
+		</select>
+		<select class="form-control input-sm" id="Poste">
 
     <h2> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h2>
     <table class="display" id="table_choice">

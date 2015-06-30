@@ -16,8 +16,8 @@ jQuery(function () {
 });
 
 function choiceMove(id, idUser) {
-    var line        = document.getElementById(id);
-    var append_line = '<tr id="'+line.getElementsByClassName("stage-id")[0].innerHTML+
+    var line        = document.getElementById("stage-" + id);
+    var append_line = '<tr id="'+ line.getElementsByClassName("stage-id")[0].innerHTML+
                         '"><td class="stage-rank">'+
                         '</td><td class="stage-id">'+line.getElementsByClassName("stage-id")[0].innerHTML+
                         '</td><td class="stage-des">'+line.getElementsByClassName("stage-des")[0].innerHTML+
@@ -30,18 +30,21 @@ function choiceMove(id, idUser) {
                         ')">'+
                             '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>'+
                             '</button>'+
-                            '</td><td><a ref=#><button type="button" class="btn btn-info"> Resultat</button></td></tr>';
+                            '</td><td><form method="post" action="index.php?control=classement&action=DisplayResultatPreChoix">'+
+                                '<input type="hidden" class="btn btn-info" name="stage_id" value="<?php echo $choosenStage[\'id_Stage\'] ?>">'+ 
+                                '<input type="hidden" class="btn btn-info" name="user_id" value="<?php echo $_SESSION[\'user\'][\'id_user\'] ?>">'+ 
+                                '<input type="submit" class="btn btn-info" value="Resultat"/>'+
+                            '</form></td></tr>';
 
     line.remove();
 
     $('#table-result tbody:last').append(append_line);
-
     $.ajax({
        url : 'index.php?control=stage&action=enregistrerVoeu',
        type : 'POST',
-       data : 'stage_id='+line.getElementsByClassName("stage-id")[0].innerHTML+
-                '&user_id='+idUser+
-                '&rank='+getLastRank($('#table-result'))
+       data : 'stage_id='+ parseInt(line.getElementsByClassName("stage-id")[0].innerHTML) +
+                '&user_id='+ idUser +
+                '&rank='+ getLastRank($('#table-result'))
     });
     attributeRank($('#table-result'), idUser);
 }
@@ -85,7 +88,7 @@ function attributeRank(table, idUser) {
         $.ajax({
            url : 'index.php?control=stage&action=updateRankVoeu',
            type : 'POST',
-           data : 'user_id='+idUser+ 
+           data : 'user_id='+idUser+
                     '&stage_id='+$(this).find('.stage-id').text()+
                     '&rank='+rank
         });

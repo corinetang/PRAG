@@ -48,7 +48,7 @@ function getNbPlaces($id_stage){
 
 #===============================================================================================
 
-function setNbPlaces($id_stage, $new_nbplaces)[
+function setNbPlaces($id_stage, $new_nbplaces){
 	require('configSQL.php');
 
 	$add = $bd->prepare("UPDATE Stage 

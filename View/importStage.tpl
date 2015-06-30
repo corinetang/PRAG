@@ -1,25 +1,17 @@
 <head>
 	<link rel="stylesheet" type="text/css" 
-                       href="View/css/importStage.css " />
-    <script src="View/js/importClassement.js"></script>
+                       href="View/css/importStage.css" />
 </head>
 <div id="InportStage">
      <h1>Import de la liste des stages</h1>
-<div id="instruction">  
- <div class="container" style="margin-top:40px"><div class="row"><div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-     <div class="panel panel-default panel-horizontal">
-    <div class="panel-heading">
-        <h3 class="panel-title">Instruction</h3>
+    <div id="instruction">  
+        <div class="notice notice-info">
+            <strong>Instruction</strong>
+            <p>Sélectionnez la filiere</p>
+            Choissisez votre fichier <strong>CSV</strong>
+        <p>Cliquez sur "Envoyez" le fichier</p>
+        </div>
     </div>
-    <div class="panel-body">
-        Sélectionnez la filiere
-        Choissisez votre fichier <strong>CSV</strong>
-    <p>Cliquez sur "Envoyez" le fichier</p></div>
-    <div class="panel-footer">Instruction</div>
-</div>
-
-</div></div></div>
-</div>
 <br>
 <form class="form-horizontal" enctype="multipart/form-data" action="index.php?control=import&action=importerStage" method="POST">
 	<div class="form-group">
@@ -36,5 +28,6 @@
         <label for="exampleInputFile">Fichier à importer</label>
      <input name="file" type="file" />
  	</div>
-	 <button type="submit" class="btn btn-primary">Envoyer le fichier</button>
+    <button type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-download-alt"></i> Envoyer le fichier</button>
 </form>
+</div>
