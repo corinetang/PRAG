@@ -1,6 +1,5 @@
 $(document).ready(function(){
-    $(".Modal").click(function(e){
-        e.preventDefault();
-        $("#myModal").modal("show");
-    })
+    $('#Modal').on('shown.bs.modal', function () {
+		$('#myInput').focus()
+	})
 });
