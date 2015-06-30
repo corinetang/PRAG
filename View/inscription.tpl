@@ -10,6 +10,7 @@
 	<div id="dialog-form"  title="Inscription">
 			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=inscription" enctype="multipart/form-data" onsubmit="return valideForm(this)">
                 	<fieldset>
+					<legend>Remplissez le formulaire <legend>
                 <div class="form-group">
                     <label for="Nom" class="col-md-4 control-label">Nom</label>
                     <div class="col-md-4">
@@ -87,7 +88,12 @@
                 </div>
 
              <!--- BUTTON -->
+			 <div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+				<a href="index.php" role="button" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary" value="submit" name="submit-inscription" id="submit-inscription"> Inscription </button>
+				</div>
+			</div>
 			</form>
 		</fieldset>
 	</div>

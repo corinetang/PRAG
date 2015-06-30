@@ -151,7 +151,7 @@ CREATE TABLE Questions(
 
 CREATE TABLE Reponse(
         id_reponse          int (11) Auto_increment  NOT NULL ,
-        commentaire_reponse Varchar (25) ,
+        commentaire_reponse Varchar (1000) ,
         PRIMARY KEY (id_reponse )
 )ENGINE=InnoDB;
 

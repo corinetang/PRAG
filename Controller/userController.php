@@ -33,7 +33,8 @@ function showAccueilConnect() {
     require ('Model/stageModel.php');
 
     $idUser = $_SESSION['user']['id_user'];
-    $Stages = getStagesByUser($idUser);
+    $filiere_user = $_SESSION['user']['id_Filiere'];
+    $Stages = getStagesByFiliereAndUserNotChoices($filiere_user,$idUser);
 	require ('View/pageAccueilConnect.tpl');
 }
 
