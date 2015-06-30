@@ -30,6 +30,13 @@ function showEval() {
  * Affiche la page des consultation
  */
 function showConsultation() {
+	require ('Model/filiereModel.php');
+	$id_filiere = $_SESSION['user']['id_Filiere'];
+	$filiere = getFiliereById($id_filiere);
+
+	require ('Model/stageModel.php');
+	$stages = getStagesByFiliere($id_filiere);
+
     require ('View/consultation.tpl');
 }
 ?>
