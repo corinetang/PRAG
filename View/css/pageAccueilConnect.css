@@ -1,6 +1,3 @@
-body{
-     background-color: #f2f3f4;
-}
 div#AffichageStage{
  border-color:grey;
     width: 75%;
@@ -21,4 +18,13 @@ dl#DESStage {
 span.list-group-item.disabled {
   font-weight: bold;
     letter-spacing: 2px;
+}
+
+img.img-responsive {
+  float: left;
+  width: 13%;
+}
+
+.alert.alert-info {
+  TEXT-ALIGN: -webkit-center;
 }

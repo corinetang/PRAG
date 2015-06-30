@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css"
-                       href="View/css/headerfooter.css " />
     <link rel="stylesheet" type="text/css"
     					href="View/css/libs/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+                       href="View/css/headerfooter.css " />
 	<script type="text/javascript" src="View/js/libs/jquery-1.11.3.js"></script>
 	<script src="View/js/libs/bootstrap.min.js"></script>
   <script src="View/js/header.js"></script>
@@ -23,10 +23,12 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
+<div id="container">
+    <div id="header">
 <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Logo</a>
+     <img src="View/css/images/logo-siphif_Header.jpg" id="header" alt="logo-siphif_Heade" height="55px" width="55px">
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -63,9 +65,16 @@
                     echo $_SESSION["user"]["identifiant_user"];
                 }else {?> <?php }?>
          </p>
-        <p class="navbar-text"> Filiere</p>
+        <p class="navbar-text">
+          Filière :
+          <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"]))
+              echo $_SESSION["user"]['nom_filiere'];
+          ?>
+        </p>
         <li><a href="index.php?control=user&action=deconnexion" class="change-at-focus">Deconnexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+    </div>
+ <div id="content">

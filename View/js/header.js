@@ -30,23 +30,23 @@ function initializeHeader(idRole) {
 
 jQuery(function(){
 	$( ".change-at-focus" ).mouseover(function() {
-  		$(this).css('background-color','#75b9e7' );
+  		$(this).css('background-color','#337ab7' );
 	});
 
 	$( ".change-at-focus" ).mouseleave(function() {
-  		$(this).css('background-color','#3498db' );
+  		$(this).css('background-color','#347ab6' );
 	});
 });
 
 $(document).ready(function(){
-    $(".dropdown").hover(            
+    $(".dropdown").hover(
         function() {
             $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideDown("fast");
-            $(this).toggleClass('open');        
+            $(this).toggleClass('open');
         },
         function() {
             $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideUp("fast");
-            $(this).toggleClass('open');       
+            $(this).toggleClass('open');
         }
     );
 });

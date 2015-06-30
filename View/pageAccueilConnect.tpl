@@ -2,15 +2,15 @@
     <script src="View/js/pageAccueilConnect.js"></script>
     <link rel="stylesheet" type="text/css" href="View/css/pageAccueilConnect.css" />
 </head>
-<div id='pageAccueilConnect'>
-    <h1>Bonjour <?php echo $_SESSION["user"]["prenom_user"] ?> ! </h1><br>
+<div id='pageAccueilConnect'>  
+    <h1>Bonjour<STRONG> <?php echo $_SESSION["user"]["prenom_user"] ?> ! </STRONG></h1><br>
     <div class="list-group" id="AffichageStage">
            <?php if ($Stages == null) { ?>
        <div class="alert alert-info" role="alert"><h3>Désolé ! </h3>Vous n'avez pas de stage à votre actif !</div>
        <?php  }
         else{
             foreach ($Stages as $stage) { ?>
-      <h3><span class="list-group-item disabled" id="AffichageStage1">Information sur votre dernier stage</span></h3>
+      <h3><span class="list-group-item disabled" id="AffichageStage1">Sur votre stage</span></h3>
         <div id="informationStage1">
             <dl id="DESStage">
                 <dt>DES</dt>
@@ -30,3 +30,4 @@
     <?php } } ?>
     </div>
 </div>
+</nav>

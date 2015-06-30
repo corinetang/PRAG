@@ -5,7 +5,7 @@
 </head>
 <div id="wrap"> 
     <div class="row">
-    <img src="view/css/images/logo.jpg" alt="Logo du SIPHIF" class="img-rounded">
+    <img src="view/css/images/logo.jpg" alt="Logo du SIPHIF" id="connexion" class="img-rounded">
     </div>
 	<div id="connexion-div"  title="Connexion">
 	<fieldset>

@@ -1,9 +1,11 @@
-body{
-    background-color: #f2f3f4;
-}
-
 table#tableau_gestionUsers {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+}
+
+div#tableau_gestionUsers_wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }

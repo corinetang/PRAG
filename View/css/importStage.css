@@ -1,19 +1,32 @@
-body{
-     background-color: #f2f3f4;
-}
-
 form.form-horizontal {
-  width: 50%;
+    width: 50%;
     margin-left: auto;
-  margin-right: auto;
-}
-
-label{
-   padding-right: 80%;   
+    margin-right: auto;
 }
 
 div#instruction {
     margin-top: 5%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notice {
+    padding: 15px;
+    background-color: #fafafa;
+    border-left: 6px solid #7f7f84;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+       -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+            box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+
+.notice-info {
+    border-color: #45ABCD;
+}
+
+.notice-info>strong {
+    color: #45ABCD;
 }
 
 /*
