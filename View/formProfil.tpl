@@ -7,12 +7,12 @@
 		<fieldset>
             <h1>Modification des données</h1>
             <br>
-			<form class="form-horizontal" method="post" id="profil" action="index.php?control=user&action=profil" enctype="multipart/form-data">
+			<form class="form-horizontal" method="post" id="profil" action="index.php?control=user&action=profil" enctype="multipart/form-data" onsubmit="return valideForm(this)">
 <!--                NOM-->
                 <div class="form-group">
                     <label for="Nom" class="col-sm-5 control-label">Nom</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control input-md" name="Nom" value=<?php echo $_SESSION["user"]["nom_user"]; ?>>
+                        <input type="text" class="form-control input-md" name="Nom" onblur="verifName(this)" value=<?php echo $_SESSION["user"]["nom_user"]; ?>>
                     </div>
                 </div>
                 
@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="Prenom" class="col-sm-5 control-label">Pr&eacute;nom</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control input-md" name="Prenom" value=<?php echo $_SESSION["user"]["prenom_user"]; ?>>
+                        <input type="text" class="form-control input-md" name="Prenom" onblur="verifName(this)" value=<?php echo $_SESSION["user"]["prenom_user"]; ?>>
                     </div>
                 </div>
                 
@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label for="NbSemestre" class="col-sm-5 control-label">Nombre de semestre</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control input-md" name="NbSemestre" placeholder="Nombre de Semestre Valides" value=<?php echo $_SESSION["user"]["NbSemestre_user"]; ?>>
+                        <input type="text" class="form-control input-md" name="NbSemestre" onblur="verifNbSemestre(this)" placeholder="Nombre de Semestre Valides" value=<?php echo $_SESSION["user"]["NbSemestre_user"]; ?>>
                     </div>
                 </div>
                 
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-5 control-label">Email</label>
                     <div class="col-sm-7">
-                        <input type="email" class="form-control input-md" id="inputEmail3" name="Email" placeholder="Adresse Email" value=<?php echo $_SESSION["user"]["mail_user"]; ?>>
+                        <input type="email" class="form-control input-md" id="inputEmail3" name="mail" onblur="verifMail(this)" placeholder="Adresse Email" value=<?php echo $_SESSION["user"]["mail_user"]; ?>>
                     </div>
                 </div>
                 
@@ -77,7 +77,7 @@
                 <div class="form-group">
                     <label for="Telephone" class="col-sm-5 control-label">T&eacute;l&eacute;phone</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control input-md" name="Telephone" value=<?php echo $_SESSION["user"]["numtel_user"]; ?>>
+                        <input type="text" class="form-control input-md" name="Telephone" onblur="verifNumTel(this)" value=<?php echo $_SESSION["user"]["numtel_user"]; ?>>
                     </div>
                 </div>
                 
