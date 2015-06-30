@@ -3,8 +3,11 @@
 
 
 	function verif_nom($nom){
-		$patternNom = '#^[[:alnum:]_\-ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{3,30}$#';
-		return preg_match($patternNom, $nom);
+		$patternNom = '#^[[:alnum:]_\-ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{2,30}$#';
+		if ( !preg_match($patternNom, $nom) || strlen($nom) < 2 || is_null($nom)) {
+			return false;
+		}
+		return true;
 	}#End verif_nom
 
 	#=======================================================================================================
@@ -27,6 +30,28 @@
 		$pattern_niveau_etude = '#^[a-zA-Z0-9?\-\'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ ]{3,50}$#';
 		return preg_match($pattern_niveau_etude, $niveau_etude);
 	}#End verif_niveau_etude
+	
+	#=======================================================================================================
+
+	function verif_nbSemestre($nbSemestre_user){
+	
+		$patternMdp = '#^[0-9]{1}$#';
+		if(!preg_match($patternMdp, $nbSemestre_user) || !is_numeric(nbSemestre_user)){
+			return false;
+		}
+		return false;
+	}#End verif_psswd
+	
+	#=======================================================================================================
+	
+	function verif_nbTelephone($Telephone){
+	
+		$patternMdp = '#^[0-9]{10}$#';
+		if(!preg_match($patternMdp, $Telephone) || !is_numeric(Telephone)){
+			return false;
+		}
+		return false;
+	}#End verif_psswd
 
 	#=======================================================================================================
 
@@ -96,17 +121,23 @@
 	#=======================================================================================================
 
 	function ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere){
-		/*if(!verif_nom($nom))
+		if(!verif_nom($nom))
 			return false;
 
 		if(!verif_nom($prenom))
-			return false;*/
+			return false;
 
-		/*if(!verif_email($email))
+		if(!verif_email($email))
 			return false;
 
 		if(!verif_psswd($mdp))
-			return false;*/
+			return false;
+		
+		if(!verif_nbSemestre($NbSemestre))
+			return false;
+			
+		if(!verif_nbTelephone(Telephone))
+			return false;
 
 		return ajout_BD($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
 	}#End ajout
