@@ -135,9 +135,6 @@
 		
 		if(!verif_nbSemestre($NbSemestre))
 			return false;
-			
-		if(!verif_nbTelephone($Telephone))
-			return false;
 
 		return ajout_BD($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
 	}#End ajout
