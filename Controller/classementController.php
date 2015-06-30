@@ -8,4 +8,10 @@ function DisplayResultatPreChoix($value=''){
 	$result = getClassementByPreChoix($stage_id,$user_id);
 }#End DisplayResultatPreChoix
 
+function CloseVoeux(){
+	require('Model/classementModel.php');
+	traitementClassement();
+    echo "FINI";
+}#End CloseVoeux
+
 ?>

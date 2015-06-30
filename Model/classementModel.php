@@ -83,14 +83,16 @@ function traitementClassement(){
 
 
 	for ($i=0; $i < count($liste) ; $i++) { 
-		$rang = getRangByUser($liste[$i][2]);
+		//d($liste);
+		$rang = getRangByUser($liste[$i]['id_user']);
 		$estAccepte = false;
 		for ($j=0; $j < count($rang) and $estAccepte == false; $j++) { 
-			$nbPlacesStage = getNbPlaces($rang[$j][1]);
+			//d($rang);
+			$nbPlacesStage = getNbPlaces($rang[$j]['id_Stage']);
 			if ( $nbPlacesStage > 0) {
 				$estAccepte = true;
-				setNbPlaces($rang[$j][1],$nbPlacesStage-1);
-				estAccepte($liste[$i][2],$rang[$j][1]);
+				setNbPlaces($rang[$j]['id_Stage'],$nbPlacesStage-1);
+				estAccepte($liste[$i]['id_user'],$rang[$j]['id_Stage']);
 			}#end if
 		}#End for
 	}#End for
