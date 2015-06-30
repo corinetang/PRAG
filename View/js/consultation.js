@@ -3,7 +3,7 @@
       event: "click hoverintent"
     });
   });
- 
+
   /*
    * hoverIntent | Copyright 2011 Brian Cherne
    * http://cherne.net/brian/resources/jquery.hoverIntent.html
@@ -22,27 +22,27 @@
         target = $( event.target ),
         previousX = event.pageX,
         previousY = event.pageY;
- 
+
       function track( event ) {
         currentX = event.pageX;
         currentY = event.pageY;
       };
- 
+
       function clear() {
         target
           .unbind( "mousemove", track )
           .unbind( "mouseout", clear );
         clearTimeout( timeout );
       }
- 
+
       function handler() {
         var prop,
           orig = event;
- 
+
         if ( ( Math.abs( previousX - currentX ) +
             Math.abs( previousY - currentY ) ) < 7 ) {
           clear();
- 
+
           event = $.Event( "hoverintent" );
           for ( prop in orig ) {
             if ( !( prop in event ) ) {
@@ -53,7 +53,7 @@
           // is fired asynchronously and the old event is no longer
           // usable (#6028)
           delete event.originalEvent;
- 
+
           target.trigger( event );
         } else {
           previousX = currentX;
@@ -61,7 +61,7 @@
           timeout = setTimeout( handler, 100 );
         }
       }
- 
+
       timeout = setTimeout( handler, 100 );
       target.bind({
         mousemove: track,
@@ -69,3 +69,7 @@
       });
     }
   };
+
+function initModalConsulation() {
+
+}
