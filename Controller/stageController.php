@@ -21,17 +21,27 @@ function showVoeux () {
 
 function showStages() {
 
-	// if (isset($_SESSION['user'])) {
+	require('Model/kint/Kint.class.php');
 
-	// 	// Recuperation du nom de filière
-	// 	require ('Model/filiereModel.php');
-	// 	$id_filiere = $_SESSION['user']['id_Filiere'];
-	// 	$filiere = getFiliereById($id_filiere);
+	if (isset($_SESSION['user'])) {
 
-	// 	require ('Model/stageModel.php');
-	// 	$idStageActuel = getUserStage($_SESSION['user']['id_user']);
-	// 	$stageActuel = getStage($idStageActuel);
-	// }
+		// Recuperation du nom de filière
+		require ('Model/filiereModel.php');
+		$id_filiere = $_SESSION['user']['id_Filiere'];
+		$filiere = getFiliereById($id_filiere);
+
+		require ('Model/stageModel.php');
+		$idStageActuel = getUserStage($_SESSION['user']['id_user']);
+		$stageActuel = getStage($idStageActuel);
+
+		require ('Model/questionModel.php');
+		$listQuestions = getQuestions();
+
+		require ('Model/evaluationModel.php');
+		$Evaluation = getUserStageEval($_SESSION['user']['id_user'], $idStageActuel);
+
+		require ('Model/reponseModel.php');
+	}
 
 	require ('View/listStages.tpl');
 }

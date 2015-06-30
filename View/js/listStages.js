@@ -1,8 +1,5 @@
-function showEvaluation(idStage) {
-    console.log(idStage);
-    $.ajax({
-       url : 'index.php?control=stage&action=showEval',
-       type : 'POST',
-       data : 'id_Stage=' + idStage
+jQuery(document).ready(function (){    
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus()
     });
-}
+} );

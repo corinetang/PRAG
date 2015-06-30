@@ -1,80 +1,120 @@
-<!-- <head>
-    <script src="View/js/formProfil.js"></script>
-    <link rel="stylesheet" type="text/css" href="View/css/formProfil.css " />
-</head> -->
-<div> 
-	<div id="dialog-form"  title="Eval">
+<head>
+    <link rel="stylesheet" type="text/css" 
+                       href="View/css/gestionUsers.css " />  
+    <script src="View/js/listStages.js"></script>
+    <!-- DataTables CSS -->
+    <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
+  
+<!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="View/js/libs/jquery.dataTables.js"></script>
+</head>
 
-        <?php d($id_stage) ?> 
-		<fieldset>
-			<form class="form-horizontal" method="post" id="eval" action="index.php?control=stage&action=eval" enctype="multipart/form-data">
+<div id="gestionUsers">
+    <h1>Gestion des membres</h1>
+    <br>
+    <br>
+    <br>
+    <table class="display" id="tableau_gestionUsers">
+        <thead>
+            <tr >
+                <th data-dynatable-sorts= "Alpha">Nom</th>
+                <th>Prenom</th>
+                <th>Identifiant</th>
+                <th>Filière</th>
+                <th>Date de naissance</th>
+                <th>Adresse mail</th>
+                <th>Téléphone</th>
+                <th>Membre du SIPHIF ?</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+             <?php foreach ($users as $user) { ?>
+            <tr>
+<!--            <td class="user-id"><?php echo $user['id_user'] ?></td>-->
+              <td><?php echo $user['nom_user'] ?></td>
+              <td><?php echo $user['prenom_user'] ?></td>
+              <td><?php echo $user['identifiant_user'] ?></td>
+                <td><?php echo $user['nom_filiere'] ?></td>
+              <td><?php echo $user['dateDeNaissance_user'] ?></td>
+                <td><?php echo $user['mail_user'] ?></td>
+                <td><?php echo $user['numtel_user'] ?></td>
+                <td><input type="checkbox"></td>
+                <td><button type="button" class="btn btn-danger" onClick="supprimerMembre()">
+  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="button_edit">
+  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+</button></td>
+            </tr>
+            <?php }; ?>
+        </tbody>
+    </table>
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modification des informations</h4>
+      </div>
+      <div class="modal-body">
+        <fieldset>
+            <form class="form-horizontal" >
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Nom</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="Nom" value=<?php echo $id_stage ?>>
+                    <label for="Nom" class="col-sm-3 control-label">Nom</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="Nom" >
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Prenom" class="col-sm-2 control-label">Pr&eacute;nom</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="Prenom" value=<?php echo $_SESSION["user"]["prenom_user"]; ?>>
+                    <label for="Prenom" class="col-sm-3 control-label">Pr&eacute;nom</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="Prenom">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Ddn" class="col-sm-2 control-label">Date de naissance</label>
-                    <div class="col-sm-5">
-                        <input type="date" class="form-control" name="Ddn" value=<?php echo $_SESSION["user"]["dateDeNaissance_user"]; ?>>
+                    <label for="Ddn" class="col-sm-3 control-label">Date de naissance</label>
+                    <div class="col-sm-9">
+                        <input type="date" class="form-control" name="Ddn">
                     </div>
                 </div>                
                 <div class="form-group">
-                    <label for="NbSemestre" class="col-sm-2 control-label">Nombre de semestre</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="NbSemestre" placeholder="Nombre de Semestre Valides" value=<?php echo $_SESSION["user"]["NbSemestre_user"]; ?>>
+                    <label for="NbSemestre" class="col-sm-3 control-label">Nombre de semestre</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="NbSemestre" placeholder="Nombre de Semestre Valides">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-5">
-                        <input type="email" class="form-control" id="inputEmail3" name="Email" placeholder="Adresse Email" value=<?php echo $_SESSION["user"]["mail_user"]; ?>>
+                    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" id="inputEmail3" name="Email" placeholder="Adresse Email">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Password" class="col-sm-2 control-label">Ancien Mot de passe</label>
-                    <div class="col-sm-5">
-                        <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Ancien Mot de passe">
-                     </div>
-                </div>
-                 <div class="form-group">
-                    <label for="Password" class="col-sm-2 control-label">Nouveau Mot de passe</label>
-                    <div class="col-sm-5">
-                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Nouveau Mot de passe">
-                     </div>
-                </div>
-                <div class="alert alert-danger" style="display:none;" id="error-password">Attention : Votre mot de passe et votre confirmation de mot de passe sont différents</div>
-                <div class="form-group">
-                    <label for="ValidationPassword" class="col-sm-2 control-label">Confirmation de votre nouveau Mot de passe</label>
-                    <div class="col-sm-5">
-                        <input type="password" class="form-control" id="ValidationPassword" name="ValidationPassword" placeholder="Confirmez votre mot de passe">
-                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="Telephone" class="col-sm-2 control-label">T&eacute;l&eacute;phone</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="Telephone" value=<?php echo $_SESSION["user"]["numtel_user"]; ?>>
+                    <label for="Telephone" class="col-sm-3 control-label">T&eacute;l&eacute;phone</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="Telephone">
                     </div>
                 </div>
-                <div class="form-group">
-				<label for="Filiere" class="col-sm-2 control-label">Filiere</label>
-				<div class="col-sm-5">
-                    <select class ="form-control col-sm-5" name="Filiere">
-					<option>Biologie</option>
-					<option>IPR</option>
-					<option>Pharmacie</option>
-				</select>
-                    </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="2"> Membre du SIPHIF ?
+                    </label>
                 </div>
-                <button type="submit" class="btn btn-primary" value="submit" name="submit-profil" id="submit-profil"> Modifier profil </button>
-			</form>
-		</fieldset>
-	</div>
+            </form>
+        </fieldset>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+    <script>
+        $(document).ready(function () {
+    $('#tableau_gestionUsers').DataTable();
+} );
+    </script>
