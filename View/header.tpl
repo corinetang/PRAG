@@ -56,6 +56,7 @@
               <li><a href="index.php?control=question&action=showQuestions">Gestion des evaluations</a></li>
             <li><a href="index.php?control=import&action=showImportClassement">Import Classement</a></li>
             <li><a href="index.php?control=import&action=showImportStage">Import Stage</a></li>
+            <li><a href="index.php?control=classement&action=CloseVoeux">Clôturer les demandes</a></li>
           </ul>
         </li>
       </ul>
