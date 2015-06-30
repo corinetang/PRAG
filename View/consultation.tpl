@@ -24,7 +24,7 @@
               <td><?php echo $stage['nom_service'] ?></td>
               <td><?php echo $stage['NbPoste_stage'] ?></td>
               <td>
-                <button type="button" class="btn btn-default btn-lg btn-choice-move">
+                <button type="button" class="btn btn-default btn-lg btn-choice-move" onClick="initModalConsulation">
                   <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                 </button>
               </td>
