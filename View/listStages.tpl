@@ -51,13 +51,13 @@
       <form class="form-horizontal" >
 
             <?php 
-            d($listQuestions);
-            d($Evaluation);
             foreach ($listQuestions as $Question) { ?>
               <div class="form-group">
-                    <label for="Question" class="col-sm-3 control-label"> <?php echo $Question['Libelle_question'] ?> </label>
+                    <?php $Reponse = getReponseQuestion($Question['id_Question'], $Evaluation[0]['id_Evaluation']); ?>
+                    <label for="Question" class="col-sm-3 control-label"> <?php echo $Question['Libelle_question']; ?> </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="<?php getReponseQuestion($Question['id_Question'], $Evaluation['id_Evaluation']) ?>">
+                        <input type="text" class="form-control" id="reponse-<?php echo $Reponse[0]['id_reponse']; ?>">
+                        <?php $reponses[] = $Reponse[0]['id_reponse']; ?>
                     </div>
               </div>
             <?php } ?>
@@ -67,7 +67,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" onClick="">Annuler</button>
-        <button type="button" class="btn btn-primary">Enregistrer</button>
+        <button type="submit" class="btn btn-primary" onClick="enregistrer(<?php echo json_encode($reponses); ?>)" >Enregistrer</button>
         <button type="button" class="btn btn-primary">Enregistrer et Valider</button>
       </div>
     </div>

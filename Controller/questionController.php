@@ -45,5 +45,13 @@ function editQuestion () {
     updateQuestion($id_question, $libelle_question);
 }
 
+function repondre() {
+    $id_reponse = isset($_POST['id_reponse'])?$_POST['id_reponse']:"";
+    $commentaire = isset($_POST['reponse'])?$_POST['reponse']:"";
+
+    require ('Model/reponseModel.php');
+
+    EnregistrerReponse($id_reponse, $commentaire);
+}
 
 ?>
