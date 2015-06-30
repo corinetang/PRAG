@@ -35,13 +35,12 @@ function choiceMove(id, idUser) {
     line.remove();
 
     $('#table-result tbody:last').append(append_line);
-
     $.ajax({
        url : 'index.php?control=stage&action=enregistrerVoeu',
        type : 'POST',
-       data : 'stage_id='+line.getElementsByClassName("stage-id")[0].innerHTML+
-                '&user_id='+idUser+
-                '&rank='+getLastRank($('#table-result'))
+       data : 'stage_id='+ parseInt(line.getElementsByClassName("stage-id")[0].innerHTML) +
+                '&user_id='+ idUser +
+                '&rank='+ getLastRank($('#table-result'))
     });
     attributeRank($('#table-result'), idUser);
 }
