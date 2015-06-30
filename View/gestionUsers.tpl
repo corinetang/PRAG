@@ -1,11 +1,8 @@
 <head>
-    <link rel="stylesheet" type="text/css" 
-                       href="View/css/gestionUsers.css " />  
+    <link rel="stylesheet" type="text/css"
+                       href="View/css/gestionUsers.css "/>
     <script src="View/js/gestionUsers.js"></script>
-    <!-- DataTables CSS -->
     <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
-  
-<!-- DataTables -->
     <script type="text/javascript" charset="utf8" src="View/js/libs/jquery.dataTables.js"></script>
 </head>
 
@@ -16,7 +13,7 @@
     <br>
     <table class="display" id="tableau_gestionUsers">
         <thead>
-            <tr >
+            <tr>
                 <th data-dynatable-sorts= "Alpha">Nom</th>
                 <th>Prenom</th>
                 <th>Identifiant</th>
@@ -29,23 +26,32 @@
             </tr>
         </thead>
         <tbody>
-             <?php foreach ($users as $user) { ?>
-            <tr>
-<!--            <td class="user-id"><?php echo $user['id_user'] ?></td>-->
-              <td><?php echo $user['nom_user'] ?></td>
-              <td><?php echo $user['prenom_user'] ?></td>
-              <td><?php echo $user['identifiant_user'] ?></td>
+            <?php foreach ($users as $user) { ?>
+            <tr id="membre-<?php echo $user['id_user'] ?>">
+                <td><?php echo $user['nom_user'] ?></td>
+                <td><?php echo $user['prenom_user'] ?></td>
+                <td><?php echo $user['identifiant_user'] ?></td>
                 <td><?php echo $user['nom_filiere'] ?></td>
-              <td><?php echo $user['dateDeNaissance_user'] ?></td>
+                <td><?php echo $user['dateDeNaissance_user'] ?></td>
                 <td><?php echo $user['mail_user'] ?></td>
                 <td><?php echo $user['numtel_user'] ?></td>
-                <td><input type="checkbox"></td>
-                <td><button type="button" class="btn btn-danger" onClick="supprimerMembre()">
-  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-</button>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="button_edit">
-  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-</button></td>
+                <td>
+                    <?php
+                        if ($user['id_Groupe'] == 2)
+                            echo "oui";
+                        else
+                            echo "non";
+                    ?>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" onClick="supprimerMembre(<?php echo $user['id_user'] ?>)">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="button_edit"
+                    onClick="initUserModal(<?php echo $user['id_user'] ?>, '<?php echo $user['nom_user'] ?>', '<?php echo $user['prenom_user'] ?>', '<?php echo $user['NbSemestre_user'] ?>', '<?php echo $user['dateDeNaissance_user'] ?>', '<?php echo $user['mail_user'] ?>', '<?php echo $user['numtel_user'] ?>', <?php echo $user['id_Groupe'] ?>)">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                </td>
             </tr>
             <?php }; ?>
         </tbody>
@@ -64,57 +70,57 @@
                 <div class="form-group">
                     <label for="Nom" class="col-sm-3 control-label">Nom</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="Nom" onblur="verifName(this)" value ="<?php echo $user['nom_user'] ?>">
+                        <input type="text" class="form-control" name="Nom" onblur="verifName(this)" id="membre-nom">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Prenom" class="col-sm-3 control-label">Pr&eacute;nom</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="Prenom" onblur="verifName(this)">
+                        <input type="text" class="form-control" name="Prenom" onblur="verifName(this)" id="membre-prenom">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Ddn" class="col-sm-3 control-label">Date de naissance</label>
                     <div class="col-sm-9">
-                        <input type="date" class="form-control" name="Ddn">
+                        <input type="date" class="form-control" name="Ddn" id="membre-ddn">
                     </div>
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="NbSemestre" class="col-sm-3 control-label">Nombre de semestre</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="NbSemestre" onblur="verifNbSemestre(this)" placeholder="Nombre de Semestre Valides">
+                        <input type="text" class="form-control" name="NbSemestre" onblur="verifNbSemestre(this)" placeholder="Nombre de Semestre Valides" id="membre-semestre">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputEmail3" name="mail" onblur="verifMail(this)" placeholder="Adresse Email">
+                        <input type="email" class="form-control" id="membre-mail" name="Email" onblur="verifMail(this)" placeholder="Adresse Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Telephone" class="col-sm-3 control-label">T&eacute;l&eacute;phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="Telephone" onblur="verifNumTel(this)">
+                        <input type="text" class="form-control" name="Telephone" onblur="verifNumTel(this)" id="membre-telephone">
                     </div>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="2"> Membre du SIPHIF ?
+                      <input type="checkbox" id="membre-siphif"> Membre du SIPHIF ?
                     </label>
                 </div>
 			</form>
 		</fieldset>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" id="membre-edit" class="btn btn-primary" onClick="editMembre()">Sauvegarder</button>
       </div>
     </div>
   </div>
 </div>
 </div>
     <script>
-        $(document).ready(function () {
-    $('#tableau_gestionUsers').DataTable();
-} );
+        $(document).ready(function() {
+            $('#tableau_gestionUsers').DataTable();
+        });
     </script>

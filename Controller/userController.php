@@ -128,8 +128,6 @@ function profil() {
 	}
 
 	update_user($_SESSION["user"]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, 1);
-
-
 }
 
 function showUsers() {
@@ -145,5 +143,26 @@ function showUsers() {
 function deconnexion() {
 	session_destroy();
    	header("Location: index.php");
+}
+
+function removeUser() {
+	$id_user = isset($_POST['id_user'])?$_POST['id_user']:"";
+	require ('Model/userModel.php');
+
+	deleteUser($id_user);
+}
+
+function changeMembre() {
+	$idUser                = isset($_POST['IdUser'])?$_POST['IdUser']:"";
+	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
+	$Prenom                = isset($_POST['Prenom'])?$_POST['Prenom']:"";
+	$NbSemestre            = isset($_POST['NbSemestre'])?$_POST['NbSemestre']:"";
+	$Mail                  = isset($_POST['Mail'])?$_POST['Mail']:"";
+	$Telephone             = isset($_POST['Telephone'])?$_POST['Telephone']:"";
+	$dateDeNaissance_user  = isset($_POST['Ddn'])?$_POST['Ddn']:"";
+	$groupe  			   = isset($_POST['Groupe'])?$_POST['Groupe']:"";
+
+	require ('Model/userModel.php');
+	update_membre($idUser, $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $groupe);
 }
 ?>
