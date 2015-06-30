@@ -4,10 +4,7 @@
 
 	function verif_nom($nom){
 		$patternNom = '#^[[:alnum:]_\-ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{2,30}$#';
-		if ( !preg_match($patternNom, $nom) || strlen($nom) < 2 || is_null($nom)) {
-			return false;
-		}
-		return true;
+		return preg_match($patternNom, $nom);
 	}#End verif_nom
 
 	#=======================================================================================================
@@ -36,7 +33,7 @@
 	function verif_nbSemestre($nbSemestre_user){
 	
 		$patternMdp = '#^[0-9]{1}$#';
-		if(!preg_match($patternMdp, $nbSemestre_user) || !is_numeric(nbSemestre_user)){
+		if(!preg_match($patternMdp, $nbSemestre_user) || !is_numeric($nbSemestre_user)){
 			return false;
 		}
 		return false;
@@ -126,10 +123,10 @@
 
 		if(!verif_nom($Prenom))
 			return false;
-
+		/*
 		if(!verif_email($Mail))
 			return false;
-
+		*/
 		if(!verif_psswd($mdp))
 			return false;
 		
