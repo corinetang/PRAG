@@ -1,4 +1,48 @@
 jQuery(function () {
+	$("#Nom").focusout(function () {
+        var nameU  = $("#Nom").val();
+        
+        if(nameU.length < 2) {
+			$("#error-nom").removeAttr('style');
+		}
+		else{ 
+			$("#error-nom").css('display', 'none');
+		}
+	});
+	
+	$("#Prenom").focusout(function () {
+        var Prenom  = $("#Prenom").val();
+        
+        if(Prenom.length < 2 || Prenom == '' || espace(Prenom)) {
+			$("#error-prenom").removeAttr('style');
+		}
+		else{ 
+			$("#error-prenom").css('display', 'none');
+		}
+	});
+	
+    $("#NbSemestre").focusout(function () {
+        var NbSemestre  = $("#NbSemestre").val();
+        
+        if (NbSemestre < 7) {
+            $("#error-nbSemestre").removeAttr('style');
+        }
+        else {
+            $("#error-nbSemestre").css('display', 'none');
+        }
+    });
+	
+	$("#Telephone").focusout(function () {
+        var tel  = $("#Telephone").val();
+        
+        if(tel.length > 10) {
+			$("#error-telephone").removeAttr('style');
+		}
+		else{ 
+			$("#error-telephone").css('display', 'none');
+		}
+	});
+	
     $("#ValidationPassword").focusout(function () {
         var passwordVal  = $("#Password").val();
         var checkVal     = $("#ValidationPassword").val();
@@ -61,94 +105,3 @@ function espace(champ) {
    return true;
 	}
 }
-
-function valideForm(f) {
-	var nameOk = verifName(f.Nom);
-	var prenomOk = verifName(f.Prenom);
-	var mailOk = verifMail(f.mail);
-	var nbSemestreOk = verifNbSemestre(f.NbSemestre);
-	var passwordOK = verifPassword(f.Password);
-	var passwordConfirmOK = verifPassword(f.ValidationPassword);
-   
-   if(f.Password.value != f.ValidationPassword.value) {
-   document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Attention : Votre mot de passe et votre confirmation de mot de passe sont différents</div>');
-		return false
-   }
-   else if (!nameOk && !prenomOk && !mailOk && !nbSemestreOk && !passwordOK && !passwordConfirmOK) {
-		document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Veuillez remplir tout les champs</div>');
-	    return false;
-   }
-    return true;
-}
-	
-function verifName(champ) {
-	if(champ.value.length <2 || champ.value == '' || espace(champ.value)) {
-		surligne(champ, true);
-		document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Votre nom doit comporter au minimum 2 caractères<div>');
-		return false;
-	}
-	else{ 
-		return true;
-	} 
-}
-
-function verifPassword(champ){
-	var password = champ.value;
-	if(password.length <4 ){
-		surligne(champ, true);
-		document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Votre mot de passe doit contenir plus de 4 caractères</div>');
-		return false;
-	}
-	return true;
-}
-
-function verifNbSemestre(champ) {
-	var NbSemestre = parseInt(champ.value);
-	if (isNaN(NbSemestre) || NbSemestre < 0 || NbSemestre > 7 || NbSemestre == '') {
-		surligne(champ, true);
-		document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Le nombre de semestre doit etre compris entre 1 et 7</div>');
-		return false;
-	}
-	else
-		return true;
-}
-
-function verifMail(champ)
-{
-   var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
-   if(!regex.test(champ.value) || champ.value =='')
-   {
-	   surligne(champ, true);
-	   document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Veuillez entrer une adresse mail valide</div>');
-      return false;
-   }
-   else
-   {
-      return true;
-   }
-} 
-
-function verifNumTel(champ)
-{
-   var tel = parseInt(champ.value);
-   if(isNaN(tel) || tel != 10)
-   {
-	  surligne(champ, true);
-	  document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Veuillez entrer votre numero à 10 chiffres</div>');
-      return false;
-   }
-   else
-   {
-      return true;
-   }
-}
-
-function surligne(champ, erreur)
-{
-   if(erreur)
-      champ.style.backgroundColor = "#fba";
-   else
-      champ.style.backgroundColor = "";
-}
-
-
