@@ -51,9 +51,15 @@
     <?php if (isset($_SESSION['prechoix'])) { ?>
       <div style="margin-left:auto;margin-right:auto;">
         <?php if ($_SESSION['prechoix'] == 1) { ?>
-          Préchoix Accepté
+         <div class="alert alert-dismissible alert-success">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	<strong>Bravo!</strong> Votre pré-choix est acceptée.
+	</div>
         <?php } else { ?>
-          Préchoix refusé
+              <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Nous sommes désolé ! </strong> Votre pré-choix a été refusé
+</div>
         <?php } ?>
       </div>
     <?php } ?>
