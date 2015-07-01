@@ -9,7 +9,7 @@
 <div id="listVoeux">
     <h1>Choix des stages</h1><span id="userId" style="display:none;"><?php echo $_SESSION['user']['id_user'] ?></span>
     <br>
-    <h2> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h2>
+    <h3> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h3>
     <table class="table table-striped table-bordered" cellspacing="0"  id="table_choice_user">
         <thead>
 			<tr>
@@ -39,7 +39,7 @@
         </tbody>
     </table><br>
 
-    <h2> Stage selectionnés </h2>
+    <h3> Stage selectionnés </h3>
     <table class="table table-striped" id="table-result">
       <thead>
 	  <tr>
@@ -49,8 +49,8 @@
         <th>Etablissement</th>
         <th>Service</th>
         <th>Nombre de poste</th>
-        <th>Test</th>
-        <th>Test2</th>
+        <th></th>
+        <th></th>
 		</tr>
       </thead>
       <tbody id="sortable">
