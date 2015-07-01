@@ -9,7 +9,7 @@
             <br>
 			<form class="form-horizontal" method="post" id="profil" action="index.php?control=user&action=profil" enctype="multipart/form-data" onsubmit="return valideForm(this)">
 			<fieldset>
-				<legend>Modifier ces données personnelles</legend>
+				<legend>MODIFIER SES DONNEES PERSONNELLES</legend>
 <!--                NOM-->
                 <div class="form-group">
                     <label for="Nom" class="col-sm-5 control-label">Nom</label>
@@ -83,7 +83,7 @@
 
 <!--                FILIERE-->
                 <div class="form-group">
-				<label for="Filiere" class="col-sm-5 control-label">Filiere</label>
+				<label for="Filiere" class="col-sm-5 control-label">Filière</label>
 				<div class="col-sm-7">
                     <select class ="form-control input-md" name="Filiere">
 					<option>Biologie</option>
