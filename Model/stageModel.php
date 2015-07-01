@@ -138,6 +138,23 @@
 		return $res;
 	} #End getStagesByFiliereAndUserNotChoices
 
+#=========================================================================================================
+
+	function getUserStage($id_user){
+		require('configSQL.php');
+
+		$add = $bd->prepare("SELECT c.id_Stage From choix c
+							JOIN user u ON u.id_user = c.id_user
+							WHERE u.id_user = ?
+							AND estAccepte_choix = 1");
+	    $add->bindValue(1, $id_user);
+		$add->execute();
+		$res = $add->fetch();
+
+		return $res[0];
+	}#End getUserStage
+
+
 #=======================================================================================================
     function getStagesByUser($idUser){
         require('ConfigSQL.php');

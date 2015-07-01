@@ -45,5 +45,28 @@ function editQuestion () {
     updateQuestion($id_question, $libelle_question);
 }
 
+function repondre() {
+    
+    require ('Model/stageModel.php');
+    $idStageActuel = getUserStage($_SESSION['user']['id_user']);
+    $stageActuel = getStage($idStageActuel);
+
+    require ('Model/questionModel.php');
+    $listQuestions = getQuestions();
+
+    require ('Model/evaluationModel.php');
+    $Evaluation = getUserStageEval($_SESSION['user']['id_user'], $idStageActuel);
+
+    require ('Model/reponseModel.php');
+
+    foreach ($listQuestions as $question ) {
+        $Reponse = getReponseQuestion($question['id_Question'], $Evaluation[0]['id_Evaluation']);
+        $id_reponse = $Reponse[0]['id_reponse'];
+
+        $commentaire = isset($_POST['reponse-' . $id_reponse])?$_POST['reponse-' . $id_reponse]:"";
+
+        EnregistrerReponse($id_reponse, $commentaire);
+    }
+}
 
 ?>
