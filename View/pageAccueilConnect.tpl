@@ -5,7 +5,7 @@
 <div id='pageAccueilConnect'>  
     <h1>Bonjour<STRONG> <?php echo $_SESSION["user"]["prenom_user"] ?> ! </STRONG></h1><br>
     <div class="list-group" id="AffichageStage">
-        <legend>Ici, la liste de vos stages fait au sein du SIPHIF</legend>
+        <legend>ICI, LA LISTE DE VOS STAGES FAITS AU SEIN DE SIPHIF</legend>
            <?php if ($Stages == null) { ?>
        <div class="alert alert-info" role="alert"><h3>Désolé ! </h3>Vous n'avez pas de stage à votre actif !</div>
        <?php  }
