@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="View/css/consultation.css">
 	<link rel="stylesheet" href="View/css/libs/jquery-ui.css">
 </head>
-
 <div id="Consultation">
     <h1>Consultation</h1><br>
 	<div id="Filter" class="form-inline">
@@ -37,7 +36,7 @@
                 <td><?php echo $stage['nom_service'] ?></td>
                 <td><?php echo $stage['NbPoste_stage'] ?></td>
                 <td>
-                  <button type="button" class="btn btn-default btn-lg btn-choice-move" data-toggle="modal" data-target="#modal-stage" onClick="initModalConsulation(<?php echo $stage['id_Stage'] ?>)">
+                  <button type="button" class="btn btn-default btn-lg btn-choice-move" data-toggle="modal" data-target="#modal-stage" onClick='initModalConsulation(<?php echo json_encode($stage['evaluation']); ?>)'>
                     <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                   </button>
                 </td>
@@ -57,7 +56,7 @@
       </div>
       <div class="modal-body">
         <fieldset>
-        <div id="presentation"></div>
+        <div id="evaluations-stage"></div>
         </fieldset>
       </div>
       <div class="modal-footer">
