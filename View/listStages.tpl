@@ -1,6 +1,10 @@
 <head>
   <link rel="stylesheet" type="text/css"
                        href="View/css/listStages.css " />
+  <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
+	<script link rel="stylesheet" type="text/css" href="View/css/libs/dataTables.bootstrap.css"></script>
+	<script type="text/javascript" charset="utf8" src="View/js/libs/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="View/js/libs/dataTables.bootstrap.js"></script>
 </head>
 
 <div id="listStages">
@@ -10,13 +14,15 @@
     <?php $stage = json_decode($stageActuel);?>
 
 
-    <table class="table table-striped" id="table-result">
+     <table class="table table-striped table-hover" cellspacing="0" id="table-result">
       <thead>
+        <tr>
         <th>DES</th>
         <th>Etablissement</th>
         <th>Service</th>
         <th></th>
         <th></th>
+        </tr>
       </thead>
       <tbody>
           <tr>
