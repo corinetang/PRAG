@@ -223,6 +223,18 @@ INSERT INTO Filiere (nom_filiere) VALUES ('Pharmacie hospitalière');
 INSERT INTO Groupe (libelle_groupe) VALUES ('Interne');
 INSERT INTO Groupe (libelle_groupe) VALUES ('Adhérent');
 INSERT INTO Groupe (libelle_groupe) VALUES ('Admin');
+
+INSERT INTO `questions` (`id_Question`, `Libelle_question`) VALUES
+(1, 'Lieu de stage'),
+(2, 'Activité de l’interne Hors garde - Hors astreinte'),
+(3, 'Activité de l’interne en garde'),
+(4, 'Activité de l’interne en astreinte'),
+(5, 'Encadrement et formation'),
+(6, 'Respect du statut de l’interne'),
+(7, 'Organisation du service d’affectation'),
+(8, 'Appréciation globale du stage Points forts du stage'),
+(9, 'Points faibles du stage - Remarques éventuelles');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
