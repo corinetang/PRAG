@@ -9,6 +9,12 @@
 <div id="listVoeux">
     <h1>Choix des stages</h1><span id="userId" style="display:none;"><?php echo $_SESSION['user']['id_user'] ?></span>
     <br>
+    <?php if ($is_after_acceptable != false) { ?>
+	<div class="alert alert-dismissible alert-danger">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	<strong>Attention !</strong> Vous possedez déjà un stage ! 
+	</div>
+	 <?php } ?>
     <h3> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h3>
     <table class="table table-striped table-bordered" cellspacing="0"  id="table_choice_user">
         <thead>
@@ -45,9 +51,15 @@
     <?php if (isset($_SESSION['prechoix'])) { ?>
       <div style="margin-left:auto;margin-right:auto;">
         <?php if ($_SESSION['prechoix'] == 1) { ?>
-          Préchoix Accepté
+         <div class="alert alert-dismissible alert-success">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	<strong>Bravo!</strong> Votre pré-choix est acceptée.
+	</div>
         <?php } else { ?>
-          Préchoix refusé
+              <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Nous sommes désolé ! </strong> Votre pré-choix a été refusé
+</div>
         <?php } ?>
       </div>
     <?php } ?>

@@ -13,3 +13,7 @@ margin-right: auto;
 h4{
     text-align: -webkit-auto;
 }
+
+div#blockAnswer{
+	margin-bottom: 100px;
+}

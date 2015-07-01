@@ -53,8 +53,8 @@
 
 <!--                ANCIEN PASSWORD-->
                 <div class="form-group">
-                    <label for="Password" class="col-sm-5 control-label">Ancien Mot de passe</label>
-                    <div class="col-sm-7">
+                    <label for="Password" class="col-md-4 control-label">Ancien Mot de passe</label>
+                    <div class="col-md-4">
                         <input type="password" class="form-control input-md" id="oldPassword" name="oldPassword" placeholder="Ancien Mot de passe">
                      </div>
                 </div>

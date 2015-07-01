@@ -14,7 +14,9 @@ function showVoeux() {
 		$result = getClassementByPreChoix($stage_id,$user_id);
 		$_SESSION['prechoix'] = $result;
 	}
-
+	else {
+		require ('Model/choixModel.php');
+	}
 	if (isset($_SESSION['user'])) {
 
 		// Recuperation du nom de filière

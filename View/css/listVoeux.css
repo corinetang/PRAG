@@ -10,3 +10,7 @@ div#listVoeux {
   MARGIN-LEFT: auto;
   MARGIN-RIGHT: auto;
 }
+
+table#table-result {
+margin-bottom: 100px;
+}

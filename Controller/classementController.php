@@ -13,7 +13,10 @@ function DisplayResultatPreChoix($value=''){
 function CloseVoeux(){
 	require('Model/classementModel.php');
 	traitementClassement();
-    echo "FINI";
+	echo ('<div class="alert alert-dismissible alert-info">
+	  <button type="button" class="close" data-dismiss="alert">×</button>
+	  <strong>Information!</strong> Les voeux sont maintenants cloturés.
+	</div>');
 }#End CloseVoeux
 
 ?>

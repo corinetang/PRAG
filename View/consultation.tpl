@@ -6,8 +6,7 @@
 </head>
 <div id="Consultation">
     <h1>Consultation</h1><br>
-
-   <table class="table table-striped table-hover" cellspacing="0" id="table_consultation">
+    <table class="table table-striped table-hover" cellspacing="0" id="table_consultation">
           <thead>
               <tr>
                   <th>DES</th>
@@ -33,7 +32,6 @@
             <?php } ?>
           </tbody>
       </table>
-</div>
 
 <div class="modal fade" id="modal-stage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -53,6 +51,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
     <script>
         $(document).ready(function() {
