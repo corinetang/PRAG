@@ -28,16 +28,17 @@ function initializeHeader(idRole) {
     }
     $('.valid-edit-button').hide();
 }
-
-jQuery(function(){
-	$( ".change-at-focus" ).mouseover(function() {
-  		$(this).css('background-color','##9ed5f3' );
-	});
-
-	$( ".change-at-focus" ).mouseleave(function() {
-  		$(this).css('background-color','#3dabe8' );
-	});
-});
+	// jQuery(function(){
+		// $( ".change-at-focus" ).mouseover(function() {
+			// $(this).css('background-color','#3dabe8' );
+		// });
+	// linear-gradient(#54B4EB, #2FA4E7 60%, #1D9CE5)
+		// $( ".change-at-focus" ).mouseleave(function() {
+			// $(this).css('background-color','#3dabe8' );
+			// $(this).css('border-bottom-color','#178ACC' );
+			// $(this).css('background-image','linear-gradient(#54B4EB, #2FA4E7 60%, #1D9CE5)' );
+		// });
+	// });
 
 $(document).ready(function(){
     $(".dropdown").hover(
