@@ -38,15 +38,6 @@ function showAccueilConnect() {
 	require ('View/pageAccueilConnect.tpl');
 }
 
-
-/*
- * Affiche la page de recuperation de mot de passe
- */
-function recuperation() {
-	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
-	require ('View/recuperation.tpl');
-}
-
 /*
  * Envoie les donnees de connexion au serveur
  */
@@ -165,5 +156,32 @@ function changeMembre() {
 
 	require ('Model/userModel.php');
 	update_membre($idUser, $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $groupe);
+}
+
+function recupererPassword() {
+	$mail = isset($_POST['Mail'])?$_POST['Mail']:"";
+	
+	require ('Model/userModel.php');
+	$newpassword = reset_mail($mail);
+	if ($newpassword) {
+		envoiMail($newpassword, $mail);
+	}
+	else {
+		echo ('<div class="alert alert-danger" role="alert">
+		<a href="index.php?control=user&action=showInscription" class="alert-link">Votre adresse mail est inconnu ! </a>
+		</div>');
+	}
+}
+
+function envoiMail($newpassword, $mail) {
+	$message = 'Bonjour,
+	Voici votre nouveau mot de passe pour vous connecter au site du SIPHIF, vous pourrez modifier votre mot de passe sur votre espace Profil :
+	Mot de passe : '.$newpassword.'
+	Ne pas répondre à  cet email : message automatique.';
+	if($res=mail(''.$mail.'','GIRV : Vos identifiants d\'accès', $message)){
+		echo "<script>alert('Mail envoyé');</script>";
+	} else {
+		echo'Problème à l\'envoie du mail';
+	}
 }
 ?>
