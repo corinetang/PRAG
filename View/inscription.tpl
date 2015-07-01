@@ -17,7 +17,8 @@
                         <input type="text" class="form-control input-md" name="Nom" onblur="verifName(this)" required>
                     </div>
                 </div>
-
+		<div class="alert alert-danger" style="display:none;" id="error-nom">Attention : Votre nom doit comporter au minimun 2 caractères</div>
+		
                  <!--- PRENOM -->
                 <div class="form-group">
                     <label for="Prenom" class="col-md-4 control-label">Pr&eacute;nom</label>
@@ -25,7 +26,8 @@
                         <input type="text" class="form-control input-md" name="Prenom" onblur="verifName(this)" required>
                     </div>
                 </div>
-
+		<div class="alert alert-danger" style="display:none;" id="error-nom">Attention : Votre prénom doit comporter au minimun 2 caractères</div>
+		
                  <!--- DATE DE NAISSANCE -->
                 <div class="form-group">
                     <label for="Ddn" class="col-md-4 control-label">Date de naissance</label>
@@ -41,7 +43,8 @@
                         <input type="text" class="form-control input-md" name="NbSemestre" placeholder="Nombre de Semestre Valides" onblur="verifNbSemestre(this)">
                     </div>
                 </div>
-
+		<div class="alert alert-danger" style="display:none;" id="error-nbSemestre">Attention : Ce champ doit comporter un chiffre comporis entre 1 et 7</div>
+		
                  <!--- E-MAIL -->
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
@@ -74,7 +77,8 @@
                         <input type="text" class="form-control input-md" name="Telephone" onblur="verifNumTel(this)">
                     </div>
                 </div>
-
+		 <div class="alert alert-danger" style="display:none;" id="error-telephone">Attention : Votre numéro de téléphone doit comporter 10 chiffres</div>
+		 
                  <!--- FILIERE -->
                 <div class="form-group">
 				<label for="Filiere" class="col-md-4 control-label">Filière</label>
