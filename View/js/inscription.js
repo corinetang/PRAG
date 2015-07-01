@@ -71,11 +71,11 @@ function valideForm(f) {
 	var passwordConfirmOK = verifPassword(f.ValidationPassword);
    
    if(f.Password.value != f.ValidationPassword.value) {
-	alert("Vos mots de passe ne sont pas identiques");
+   document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Attention : Votre mot de passe et votre confirmation de mot de passe sont différents</div>');
 		return false
    }
    else if (!nameOk && !prenomOk && !mailOk && !nbSemestreOk && !passwordOK && !passwordConfirmOK) {
-		alert("Veuillez remplir correctement tous les champs");
+		document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Veuillez remplir tout les champs</div>');
 	    return false;
    }
     return true;
@@ -84,7 +84,7 @@ function valideForm(f) {
 function verifName(champ) {
 	if(champ.value.length <2 || champ.value == '' || espace(champ.value)) {
 		surligne(champ, true);
-		alert('Votre nom doit comporter au minimum 2 caracteres');
+		document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Votre nom doit comporter au minimum 2 caractères<div>');
 		return false;
 	}
 	else{ 
@@ -96,7 +96,7 @@ function verifPassword(champ){
 	var password = champ.value;
 	if(password.length <4 ){
 		surligne(champ, true);
-		alert('Votre mot de passe doit contenir entre 4 et 50 caractères !');
+		document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Votre mot de passe doit contenir plus de 4 caractères</div>');
 		return false;
 	}
 	return true;
@@ -106,7 +106,7 @@ function verifNbSemestre(champ) {
 	var NbSemestre = parseInt(champ.value);
 	if (isNaN(NbSemestre) || NbSemestre < 0 || NbSemestre > 7 || NbSemestre == '') {
 		surligne(champ, true);
-		alert('Le nombre de semestre doit etre compris entre 1 et 7');
+		document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Le nombre de semestre doit etre compris entre 1 et 7</div>');
 		return false;
 	}
 	else
@@ -119,7 +119,7 @@ function verifMail(champ)
    if(!regex.test(champ.value) || champ.value =='')
    {
 	   surligne(champ, true);
-      alert('Veuillez entrer une adresse mail valide');
+	   document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Veuillez entrer une adresse mail valide</div>');
       return false;
    }
    else
@@ -133,8 +133,8 @@ function verifNumTel(champ)
    var tel = parseInt(champ.value);
    if(isNaN(tel) || tel != 10)
    {
-	   surligne(champ, true);
-      alert('Veuillez entrer votre numero à 10 choffres');
+	  surligne(champ, true);
+	  document.write('<div class="alert alert-danger" style="display:none;" id="error-password">Veuillez entrer votre numero à 10 chiffres</div>');
       return false;
    }
    else
