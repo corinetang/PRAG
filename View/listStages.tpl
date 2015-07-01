@@ -9,7 +9,9 @@
 
 <div id="listStages">
 
-    <h1> Stage Actuel </h1>
+        <h1> Stages</h1>
+<br>
+	<h3>Mon stage actuel </h3>
 
     <?php $stage = json_decode($stageActuel);?>
 
