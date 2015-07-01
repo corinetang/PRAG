@@ -5,9 +5,11 @@
 <div>
 	<div id="dialog-form"  title="Profil">
 		<fieldset>
-            <h1>Modification des données</h1>
+            <h1>Mon profil</h1>
             <br>
 			<form class="form-horizontal" method="post" id="profil" action="index.php?control=user&action=profil" enctype="multipart/form-data" onsubmit="return valideForm(this)">
+			<fieldset>
+				<legend>Modifier ces données personnelles</legend>
 <!--                NOM-->
                 <div class="form-group">
                     <label for="Nom" class="col-sm-5 control-label">Nom</label>
@@ -90,9 +92,13 @@
 				</select>
                     </div>
                 </div>
-                <br>
+               <div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+				<a href="index.php" role="button" class="btn btn-default lg">Cancel</a>
                 <button type="submit" class="btn btn-primary lg" value="submit" name="submit-profil" id="submit-profil"> Modifier profil </button>
-			</form>
+				</div>
+			</div>
 		</fieldset>
+	</form>
 	</div>
 </div>

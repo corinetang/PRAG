@@ -1,6 +1,6 @@
 
 <?php
-require 'Model/kint/Kint.class.php';
+
 /*
  * Affiche la page des pré-choix
  */
@@ -49,8 +49,55 @@ function updateRankVoeu() {
 /*
  * Affiche la page des évaluations
  */
+function showStages() {
+
+	require('Model/kint/Kint.class.php');
+
+	if (isset($_SESSION['user'])) {
+
+		// Recuperation du nom de filière
+		require ('Model/filiereModel.php');
+		$id_filiere = $_SESSION['user']['id_Filiere'];
+		$filiere = getFiliereById($id_filiere);
+
+		require ('Model/stageModel.php');
+		$idStageActuel = getUserStage($_SESSION['user']['id_user']);
+		$stageActuel = getStage($idStageActuel);
+
+		require ('Model/questionModel.php');
+		$listQuestions = getQuestions();
+
+		require ('Model/evaluationModel.php');
+		$Evaluation = getUserStageEval($_SESSION['user']['id_user'], $idStageActuel);
+
+		require ('Model/reponseModel.php');
+	}
+
+	require ('View/listStages.tpl');
+}
+
 function showEval() {
-    require ('View/evaluation.tpl');
+
+	require('Model/kint/Kint.class.php');
+
+	// if (isset($_SESSION['user'])) {
+
+	// 	// Recuperation du nom de filière
+	// 	require ('Model/filiereModel.php');
+	// 	$id_filiere = $_SESSION['user']['id_Filiere'];
+	// 	$filiere = getFiliereById($id_filiere);
+
+	// 	require ('Model/stageModel.php');
+	// 	$idStageActuel = getUserStage($_SESSION['user']['id_user']);
+	// 	$stageActuel = getStage($idStageActuel);
+	// }
+
+	// $id_stage = isset($_POST['id_Stage'])?$_POST['id_Stage']:"";
+
+
+
+	require ('View/formEval.tpl');
+
 }
 
 /*

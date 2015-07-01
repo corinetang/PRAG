@@ -28,7 +28,7 @@
 <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-     <img src="View/css/images/logo-siphif_Header.jpg" id="header" alt="logo-siphif_Heade" height="55px" width="55px">
+     <img src="View/css/images/logo-siphif_Header_v2.jpg" id="header" alt="logo-siphif_Heade" height="55px" width="55px">
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -46,11 +46,11 @@
           <ul class="dropdown-menu">
             <li class="stage-voeux-option hide-option"><a href="index.php?control=stage&action=showVoeux">Liste de voeux</a></li>
             <li class="stage-consultation-option hide-option"><a href="index.php?control=stage&action=showConsultation">Consultation</a></li>
-            <li class="stage-evaluation-option hide-option"><a href="index.php?control=stage&action=showEval">Evaluation</a></li>
+            <li class="stage-evaluation-option hide-option"><a href="index.php?control=stage&action=showStages">Evaluation</a></li>
           </ul>
         </li>
         <li class="dropdown admin-option hide-option">
-              <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle change-at-focus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="Header_Admin">ADMIN<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index.php?control=user&action=showUsers">Gestion des utilisateurs</a></li>
               <li><a href="index.php?control=question&action=showQuestions">Gestion des evaluations</a></li>

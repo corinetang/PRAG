@@ -4,13 +4,14 @@
 </head>
 
 <div id="gestionAnswers">
-    <h1>Gestion des evaluations</h1>
+    <h1>Gestion des évaluations</h1>
     <br>
-    <h2>Questions présents en base de donnée</h2>
+    <h3>Questions présents en base de donnée</h3>
     
     <div class="form-group" id="answerBDD">
     <!--- AFFICHAGE DES QUESTIONS PRESENTS SUR LA BASE DE DONNEE -->
       <?php foreach ($questions as $question) { ?>
+	  <blockquote>
         <div id= "question-<?php echo $question['id_Question'] ?>" >
           <span id= "question-libelle-<?php echo $question['id_Question'] ?>"><label><?php echo $question['Libelle_question'] ?></label></span>
           <button type="button" id="valid-libelle-<?php echo $question['id_Question'] ?>" class="btn btn-success btn-sm valid-edit-button" onClick="validEditAnswer(<?php echo $question['id_Question'] ?>)">
@@ -23,10 +24,11 @@
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
           </button>
         </div>
+		</blockquote>
       <?php } ?>
     </div>
     
-<h2>Ajout de questions</h2>
+<h3>Ajout de questions</h3>
     <div class="form-group" id="blockAnswer">
       <div class="col-sm-7" id="question">
         <input type="text" class="form-control" id="newQuestion" placeholder="Votre Question">

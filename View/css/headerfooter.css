@@ -8,11 +8,17 @@ html, body{
     margin: 0;
     padding: 0;
     height: 100%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .header {
 	height: 10%;
 }
+
+a#Header_Admin {
+	color:red;
+}
+
 img#header {
 width: 55px;
   height: 55px;
@@ -22,7 +28,7 @@ width: 55px;
   border: none;
 }
 nav.navbar {
-	background-color: #347ab6;
+	background-color: #3dabe8;
     top: 0;
 }
 
@@ -51,7 +57,7 @@ nav.navbar {
     bottom:0;
     width:100%;
     height:60px;
-     background-color: #347ab6;
+     background-color: #3699d0;
 }
 
 .footer>.container>p {
@@ -60,19 +66,14 @@ nav.navbar {
     padding: 2% 0 0 0;
 }
 
-h1{
-    text-align: left;
-    padding: 1% 0 0 7%;
-    font-weight:bold;
-    font-family: serif;
-    font-weight: 400;
-    color: #347ab6;
-}
-
 .hide-option {
   display: none !important;
 }
 
 p.text-muted {
   padding-top: 2%;
+}
+
+h1 {
+	margin: 0.67em 0;
 }
