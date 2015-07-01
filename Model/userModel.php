@@ -257,7 +257,23 @@
 		else
 			return true;
 	}#End verif_password_BD
+	
+	#=======================================================================================================
 
+	function update_password_mail($email, $newpassword) {
+		require('ConfigSQL.php');
+
+	    $add = $bd->prepare("UPDATE user
+	    					 SET mdp_user = ?
+	    					 WHERE mail_user = ?");
+
+
+	    $add->bindvalue(1, $newpassword);
+	    $add->bindvalue(2, $email);
+
+	    return ($add->execute());
+	}#End update_password_mail
+	
 	#=======================================================================================================
 
 	function getUserFiliere(){
@@ -347,5 +363,41 @@
 
         return ($add->execute());
 	}#End deleteUser
+	
+	#=========================================================================================================
+
+	function generer_mot_de_passe($nb_caractere = 12){
+        $mot_de_passe = "";
+       
+        $chaine = "abcdefghjkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ023456789+@!$%?&";
+        $longeur_chaine = strlen($chaine);
+       
+        for($i = 1; $i <= $nb_caractere; $i++){
+            $place_aleatoire = mt_rand(0,($longeur_chaine-1));
+            $mot_de_passe .= $chaine[$place_aleatoire];
+        }#End for
+
+        return $mot_de_passe;   
+	}#End generer_mot_de_passe
+	
+	#=========================================================================================================
+	
+	function reset_mail($mail){
+		require('configSQL.php');
+        $add = $bd->prepare("SELECT mail_user
+                             FROM User
+                             WHERE mail_user = ?");
+        $add->bindValue(1, $id_user);
+        $add->execute();
+		
+		$res = $add->fetch();
+		
+		if(isset($res[0])){
+			$newpassword = generer_mot_de_passe(12);
+			update_password_mail($mail, $newpassword);
+			return $newpassword;
+		}#End if
+		return null;
+	}#End reset_mail
 
 ?>
