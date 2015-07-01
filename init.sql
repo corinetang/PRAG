@@ -86,13 +86,13 @@ INSERT INTO `choix` (`id_Choix`, `estAccepte_choix`, `rang_choix`, `id_user`, `i
 
 
 /* Insertion questions --------------------------------- */
-INSERT INTO `questions` (`id_Question`, `Libelle_question`, `id_Stage`) VALUES
-(1, 'Lieu de stage', 1),
-(2, 'Activité de l’interne Hors garde - Hors astreinte', 2),
-(3, 'Activité de l’interne en garde', 3),
-(4, 'Activité de l’interne en astreinte',4),
-(5, 'Encadrement et formation',4),
-(6, 'Respect du statut de l’interne',3),
-(7, 'Organisation du service d’affectation',4),
-(8, 'Appréciation globale du stage Points forts du stage',5),
-(9, 'Points faibles du stage - Remarques éventuelles',3);
+INSERT INTO `questions` (`id_Question`, `Libelle_question`) VALUES
+(1, 'Lieu de stage'),
+(2, 'Activité de l’interne Hors garde - Hors astreinte'),
+(3, 'Activité de l’interne en garde'),
+(4, 'Activité de l’interne en astreinte'),
+(5, 'Encadrement et formation'),
+(6, 'Respect du statut de l’interne'),
+(7, 'Organisation du service d’affectation'),
+(8, 'Appréciation globale du stage Points forts du stage'),
+(9, 'Points faibles du stage - Remarques éventuelles');
