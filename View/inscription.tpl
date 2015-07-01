@@ -10,7 +10,7 @@
 	<div id="dialog-form"  title="Inscription">
 			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=inscription" enctype="multipart/form-data" onsubmit="return valideForm(this)">
                 	<fieldset>
-					<legend>Remplissez le formulaire <legend>
+					<legend>REMPLISSEZ LE FORMULAIRE</legend>
                 <div class="form-group">
                     <label for="Nom" class="col-md-4 control-label">Nom</label>
                     <div class="col-md-4">
@@ -77,7 +77,7 @@
 
                  <!--- FILIERE -->
                 <div class="form-group">
-				<label for="Filiere" class="col-md-4 control-label">Filiere</label>
+				<label for="Filiere" class="col-md-4 control-label">Filière</label>
                     <div class="col-md-4">
                          <select class ="form-control " name="Filiere">
                             <?php foreach ($listFiliere as $filiere) { ?>
