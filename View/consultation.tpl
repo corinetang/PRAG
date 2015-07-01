@@ -47,8 +47,6 @@
         </fieldset>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-        <button type="button" id="membre-edit" class="btn btn-primary">Sauvegarder</button>
       </div>
     </div>
   </div>
