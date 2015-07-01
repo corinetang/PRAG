@@ -3,13 +3,14 @@
     <link rel="stylesheet" type="text/css" href="View/css/formProfil.css " />
 </head>
 <div>
+	<div id="formulaire_Profil">
+ 	<h1>Mon profil</h1>
 	<div id="dialog-form"  title="Profil">
 		<fieldset>
-            <h1>Mon profil</h1>
             <br>
 			<form class="form-horizontal" method="post" id="profil" action="index.php?control=user&action=profil" enctype="multipart/form-data" onsubmit="return valideForm(this)">
 			<fieldset>
-				<legend>MODIFIER SES DONNEES PERSONNELLES</legend>
+				<legend>MODIFIER SES DONNEES PERSONNELLES</legend><br>
 <!--                NOM-->
                 <div class="form-group">
                     <label for="Nom" class="col-md-4 control-label">Nom</label>
