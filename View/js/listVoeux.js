@@ -33,7 +33,7 @@ function choiceMove(id, idUser) {
                             '</td><td><form method="post" action="index.php?control=classement&action=DisplayResultatPreChoix">'+
                                 '<input type="hidden" class="btn btn-info" name="stage_id" value="<?php echo $choosenStage[\'id_Stage\'] ?>">'+ 
                                 '<input type="hidden" class="btn btn-info" name="user_id" value="<?php echo $_SESSION[\'user\'][\'id_user\'] ?>">'+ 
-                                '<input type="submit" class="btn btn-info" value="Resultat"/>'+
+                                '<input type="submit" class="btn btn-info" value="Préchoix"/>'+
                             '</form></td></tr>';
 
     line.remove();
