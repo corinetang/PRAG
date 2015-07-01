@@ -5,7 +5,7 @@
 <div id='pageAccueilConnect'>  
     <h1>Bonjour<STRONG> <?php echo $_SESSION["user"]["prenom_user"] ?> ! </STRONG></h1><br>
     <div class="list-group" id="AffichageStage">
-        <legend>LISTE DE VOS STAGES FAITS AU SEIN DE SIPHIF</legend>
+        <legend>LISTE DE VOS STAGES FAITS AU SEIN DE LA SIPHIF</legend>
           <?php if ($Stages == null) { ?>
 		   <div class="panel panel-warning">
 		  <div class="panel-heading">
