@@ -387,7 +387,7 @@
         $add = $bd->prepare("SELECT mail_user
                              FROM User
                              WHERE mail_user = ?");
-        $add->bindValue(1, $id_user);
+        $add->bindValue(1, $mail);
         $add->execute();
 		
 		$res = $add->fetch();
