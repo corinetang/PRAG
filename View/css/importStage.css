@@ -21,6 +21,10 @@ div#instruction {
             box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
 }
 
+label#label_filiere{
+	text-align:left;
+}
+
 .notice-info {
     border-color: #45ABCD;
 }
