@@ -6,6 +6,8 @@ function DisplayResultatPreChoix($value=''){
 	$user_id     = isset($_POST['user_id'])?$_POST['user_id']:"";
 
 	$result = getClassementByPreChoix($stage_id,$user_id);
+	echo 'Résultat : ' . $result;
+	var_dump($result);
 }#End DisplayResultatPreChoix
 
 function CloseVoeux(){
