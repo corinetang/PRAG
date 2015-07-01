@@ -84,6 +84,12 @@ INSERT INTO `choix` (`id_Choix`, `estAccepte_choix`, `rang_choix`, `id_user`, `i
 (14, 0, 2, 5, 6),
 (15, 0, 3, 5, 4);
 
+INSERT INTO `Evaluation` (`id_Evaluation`, `Valide_evaluation`, `id_Stage`) VALUES
+(1, 1, 1),
+(2, 1, 1),
+(3, 0, NULL),
+(4, 0, NULL),
+(5, 0, NULL);
 
 /* Insertion questions --------------------------------- */
 INSERT INTO `questions` (`id_Question`, `Libelle_question`) VALUES
@@ -96,3 +102,77 @@ INSERT INTO `questions` (`id_Question`, `Libelle_question`) VALUES
 (7, 'Organisation du service d’affectation'),
 (8, 'Appréciation globale du stage Points forts du stage'),
 (9, 'Points faibles du stage - Remarques éventuelles');
+
+INSERT INTO `Reponse` (`id_reponse`, `commentaire_reponse`) VALUES
+(1, 'hopital'),
+(2, 'Activité avec les employés de hopital'),
+(3, 'Apprentissage avec des internes'),
+(4, 'La même chose que en garde'),
+(5, 'Le tuteur est très pédagogue'),
+(6, 'Oui, beaucoup de responsabilité'),
+(7, 'Organisation qui se fait au fur et à mesure'),
+(8, 'Très bien. Beaucoup de responsabilité'),
+(9, 'Difficile accès en transport en commun'),
+(10, 'Sur le terrain'),
+(11, 'Rien'),
+(12, 'Surchargé'),
+(13, 'Pas astreinte'),
+(14, 'Présence quotidienne du tuteur'),
+(15, 'Respect'),
+(16, 'Très bonne organisation'),
+(17, 'Très bon stage'),
+(18, 'Pas de points faibles'),
+(19, NULL),
+(20, NULL),
+(21, NULL),
+(22, NULL),
+(23, NULL),
+(24, NULL),
+(25, NULL),
+(26, NULL),
+(27, NULL),
+(28, NULL),
+(29, NULL),
+(30, NULL),
+(31, NULL),
+(32, NULL),
+(33, NULL),
+(34, NULL),
+(35, NULL),
+(36, NULL),
+(37, NULL),
+(38, NULL),
+(39, NULL),
+(40, NULL),
+(41, NULL),
+(42, NULL),
+(43, NULL),
+(44, NULL),
+(45, NULL);
+
+INSERT INTO `Question_Reponse` (`id_Evaluation`, `id_Question`, `id_reponse`) VALUES
+(1, 1, 1),
+(2, 1, 10),
+(1, 2, 2),
+(2, 2, 11),
+(1, 3, 3),
+(2, 3, 12),
+(1, 4, 4),
+(2, 4, 13),
+(1, 5, 5),
+(2, 5, 14),
+(1, 6, 6),
+(2, 6, 15),
+(1, 7, 7),
+(2, 7, 16),
+(1, 8, 8),
+(2, 8, 17),
+(1, 9, 9),
+(2, 9, 18);
+
+INSERT INTO `User_Evaluation` (`id_Evaluation`, `id_user`) VALUES
+(1, 2),
+(2, 2),
+(3, 2),
+(4, 2),
+(5, 2);
