@@ -44,7 +44,7 @@
     <?php if (isset($_SESSION['prechoix'])) { ?>
       <div style="margin-left:auto;margin-right:auto;">
         <?php if ($_SESSION['prechoix'] == 1) { ?>
-          Préchoix accepté
+          Préchoix Accepté
         <?php } else { ?>
           Préchoix refusé
         <?php } ?>

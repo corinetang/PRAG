@@ -65,7 +65,7 @@ function resultMove(id, idUser) {
                             '</button></td></tr>';
 
     line.remove();
-    $('#table-choice tbody:last').append(append_line);
+    $('#table_choice_user tbody:last').append(append_line);
 
     $.ajax({
        url : 'index.php?control=stage&action=retirerVoeu',
