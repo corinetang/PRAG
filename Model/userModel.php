@@ -32,22 +32,22 @@
 
 	function verif_nbSemestre($nbSemestre_user){
 	
-		$patternMdp = '#^[0-9]{1}$#';
-		if(!preg_match($patternMdp, $nbSemestre_user) || !is_numeric($nbSemestre_user)){
+		$patternMdp = '/[[:digit:]]/';
+		if(!preg_match($patternMdp, $nbSemestre_user)){
 			return false;
 		}
-		return false;
+		return true;
 	}#End verif_psswd
 	
 	#=======================================================================================================
 	
 	function verif_nbTelephone($Telephone){
 	
-		$patternMdp = '#^[0-9]{10}$#';
+		$patternMdp = '/[0-9]{10}/';
 		if(!preg_match($patternMdp, $Telephone) || !is_numeric(Telephone)){
 			return false;
 		}
-		return false;
+		return true;
 	}#End verif_psswd
 
 	#=======================================================================================================
@@ -127,7 +127,7 @@
 		if(!verif_email($Mail))
 			return false;
 		*/
-		if(!verif_psswd($mdp))
+		if(!verif_psswd($Password))
 			return false;
 		
 		if(!verif_nbSemestre($NbSemestre))
@@ -347,7 +347,7 @@
 							ORDER BY u.NbSemestre_user DESC, u.RangClassement_user");
 	    $add->bindValue(1, $id_stage);
 		$add->execute();
-		$res = $add->fetch();
+		$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
 		return $res;
 	}#End getUserByIdStage
