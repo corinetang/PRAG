@@ -15,7 +15,7 @@
 <br>
 <form class="form-horizontal" enctype="multipart/form-data" action="index.php?control=import&action=importerStage" method="POST">
 	<div class="form-group">
-		<label for="Filiere" class="col-sm-3 control-label">Filiere</label>
+		<label for="Filiere" class="col-sm-2 control-label">Filiere</label>
         <div class="col-sm-9">
                 <select class ="form-control" name="Filiere">
                 <?php foreach ($listFiliere as $filiere) { ?>
