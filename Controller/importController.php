@@ -36,13 +36,13 @@ function importerClassement() {
 				echo ('<div class="alert alert-dismissible alert-success">
   <button type="button" class="close" data-dismiss="alert">×</button>
   <strong>Bravo!</strong>L\'import s\'est passé avec success. <a href="index.php" class="alert-link"><br>Retour à la page d\'accueil</a>.
-</div>')
+</div>');
 			}
 			else{
 				echo ('<div class="alert alert-dismissible alert-danger">
   <button type="button" class="close" data-dismiss="alert">×</button>
   <strong>Mince!</strong> <a href="index.php?control=import&action=showImportClassement" class="alert-link">Un problème est survenu lors de l\'import du fichier. </a> Réessayez ! .
-</div>')
+</div>');
 			}
 		}
 		else{
@@ -67,12 +67,13 @@ function importerStage() {
 				echo ('<div class="alert alert-dismissible alert-success">
 			  <button type="button" class="close" data-dismiss="alert">×</button>
 			  <strong>Bravo!</strong>L\'import s\'est passé avec success. <a href="index.php" class="alert-link"><br>Retour à la page d\'accueil</a>.
-			</div>')
+			</div>');
 			}else {
 			echo ('<div class="alert alert-dismissible alert-danger">
 			  <button type="button" class="close" data-dismiss="alert">×</button>
 			  <strong>Mince!</strong> <a href="index.php?control=import&action=showImportStage" class="alert-link">Un problème est survenu lors de l\'import du fichier. </a> Réessayez ! .
-			</div>')
+			</div>');
+			}
 			}#End if
 		else{
 			die("Vous ne devriez pas être là");
