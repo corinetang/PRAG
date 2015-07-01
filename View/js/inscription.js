@@ -67,15 +67,18 @@ function valideForm(f) {
 	var prenomOk = verifName(f.Prenom);
 	var mailOk = verifMail(f.mail);
 	var nbSemestreOk = verifNbSemestre(f.NbSemestre);
+	var passwordOK = verifPassword(f.Password);
+	var passwordConfirmOK = verifPassword(f.ValidationPassword);
    
-   if (nameOk && prenomOk && mailOk && nbSemestreOk) {
-	        return true;
+   if(f.Password.value != f.ValidationPassword.value) {
+	alert("Vos mots de passe ne sont pas identiques");
+		return false
    }
-   else
-   {
-      alert("Veuillez remplir correctement tous les champs");
-      return false;
+   else if (!nameOk && !prenomOk && !mailOk && !nbSemestreOk && !passwordOK && !passwordConfirmOK) {
+		alert("Veuillez remplir correctement tous les champs");
+	    return false;
    }
+    return true;
 }
 	
 function verifName(champ) {
@@ -87,6 +90,16 @@ function verifName(champ) {
 	else{ 
 		return true;
 	} 
+}
+
+function verifPassword(champ){
+	var password = champ.value;
+	if(password.length <4 ){
+		surligne(champ, true);
+		alert('Votre mot de passe doit contenir entre 4 et 50 caractères !');
+		return false;
+	}
+	return true;
 }
 
 function verifNbSemestre(champ) {

@@ -31,11 +31,11 @@ function initializeHeader(idRole) {
 
 jQuery(function(){
 	$( ".change-at-focus" ).mouseover(function() {
-  		$(this).css('background-color','#337ab7' );
+  		$(this).css('background-color','##9ed5f3' );
 	});
 
 	$( ".change-at-focus" ).mouseleave(function() {
-  		$(this).css('background-color','#347ab6' );
+  		$(this).css('background-color','#3dabe8' );
 	});
 });
 

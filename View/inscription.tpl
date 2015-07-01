@@ -10,10 +10,11 @@
 	<div id="dialog-form"  title="Inscription">
 			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=inscription" enctype="multipart/form-data" onsubmit="return valideForm(this)">
                 	<fieldset>
+					<legend>Remplissez le formulaire <legend>
                 <div class="form-group">
                     <label for="Nom" class="col-md-4 control-label">Nom</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control input-md" name="Nom" onblur="verifName(this)">
+                        <input type="text" class="form-control input-md" name="Nom" onblur="verifName(this)" required>
                     </div>
                 </div>
 
@@ -21,7 +22,7 @@
                 <div class="form-group">
                     <label for="Prenom" class="col-md-4 control-label">Pr&eacute;nom</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control input-md" name="Prenom" onblur="verifName(this)">
+                        <input type="text" class="form-control input-md" name="Prenom" onblur="verifName(this)" required>
                     </div>
                 </div>
 
@@ -29,7 +30,7 @@
                 <div class="form-group">
                     <label for="Ddn" class="col-md-4 control-label">Date de naissance</label>
                     <div class="col-md-4">
-                        <input type="date" class="form-control input-md" name="Ddn">
+                        <input type="date" class="form-control input-md" name="Ddn" required>
                     </div>
                 </div>
 
@@ -45,7 +46,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
                     <div class="col-md-4">
-                        <input type="email" class="form-control input-md" id="inputEmail3" name="mail" placeholder="Adresse Email" onblur="verifMail(this)">
+                        <input type="email" class="form-control input-md" id="inputEmail3" name="mail" placeholder="Adresse Email" onblur="verifMail(this)" required>
                     </div>
                 </div>
 
@@ -53,7 +54,7 @@
                  <div class="form-group">
                     <label for="Password" class="col-md-4 control-label">Mot de passe</label>
                     <div class="col-md-4">
-                        <input type="password" class="form-control input-md" id="Password" name="Password" placeholder="Password">
+                        <input type="password" class="form-control input-md" id="Password" onblur="verifPassword(this)" name="Password" placeholder="Password" required>
                      </div>
                 </div>
                 <div class="alert alert-danger" style="display:none;" id="error-password">Attention : Votre mot de passe et votre confirmation de mot de passe sont différents</div>
@@ -62,7 +63,7 @@
                 <div class="form-group">
                     <label for="ValidationPassword" class="col-md-4 control-label">Confirmation de votre Mot de passe</label>
                     <div class="col-md-4">
-                        <input type="password" class="form-control input-md" id="ValidationPassword" name="ValidationPassword" placeholder="Confirmez votre mot de passe">
+                        <input type="password" class="form-control input-md" id="ValidationPassword" onblur="verifPassword(this)" name="ValidationPassword" placeholder="Confirmez votre mot de passe" required>
                      </div>
                 </div>
 
@@ -87,7 +88,12 @@
                 </div>
 
              <!--- BUTTON -->
+			 <div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+				<a href="index.php" role="button" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary" value="submit" name="submit-inscription" id="submit-inscription"> Inscription </button>
+				</div>
+			</div>
 			</form>
 		</fieldset>
 	</div>

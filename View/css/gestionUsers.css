@@ -9,3 +9,6 @@ div#tableau_gestionUsers_wrapper {
   margin-right: auto;
   width: 90%;
 }
+body {
+	font-size: 140%;
+}

@@ -1,21 +1,25 @@
 <head>
-  <link rel="stylesheet" type="text/css"
-                       href="View/css/listVoeux.css " />
     <script src="View/js/listVoeux.js" id="myscript"></script>
     <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
+	<script link rel="stylesheet" type="text/css" href="View/css/libs/dataTables.bootstrap.css"></script>
+    <script type="text/javascript" charset="utf8" src="View/js/libs/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="View/js/libs/dataTables.bootstrap.js"></script>
 </head>
 
 <div id="listVoeux">
     <h1>Choix des stages</h1><span id="userId" style="display:none;"><?php echo $_SESSION['user']['id_user'] ?></span>
     <br>
     <h2> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h2>
-    <table class="table table-striped" id="table-choice">
+    <table class="table table-striped table-bordered" cellspacing="0"  id="table_choice_user">
         <thead>
-          <th>DES</th>
-          <th>Etablissement</th>
-          <th>Service</th>
-          <th>Nombre de poste</th>
-          <th></th>
+			<tr>
+				<th>ID</th>
+				  <th>DES</th>
+				  <th>Etablissement</th>
+				  <th>Service</th>
+				  <th>Nombre de poste</th>
+				  <th></th>
+			</tr>
         </thead>
         <tbody>
           <?php foreach ($stages as $stage) { ?>
@@ -26,11 +30,10 @@
               <td class="stage-service"><?php echo $stage['nom_service'] ?></td>
               <td class="stage-nb-poste"><?php echo $stage['NbPoste_stage'] ?></td>
               <td>
-                <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
+                <button type="button" class="btn btn-success btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
               </td>
-              <td></td>
             </tr>
           <?php }; ?>
         </tbody>
@@ -39,14 +42,16 @@
     <h2> Stage selectionnés </h2>
     <table class="table table-striped" id="table-result">
       <thead>
+	  <tr>
         <th>Rang</th>
         <th>Id</th>
         <th>DES</th>
         <th>Etablissement</th>
         <th>Service</th>
         <th>Nombre de poste</th>
-        <th></th>
-        <th></th>
+        <th>Test</th>
+        <th>Test2</th>
+		</tr>
       </thead>
       <tbody id="sortable">
         <?php foreach ($choosenStages as $choosenStage) { ?>
@@ -71,5 +76,20 @@
             </td>
           </tr>
         <?php } ?>
-          </tbody>
-          </table>
+         </tbody>
+    </table>
+</div>
+	<script>
+        $(document).ready(function() {
+            $('#table_choice_user').dataTable({ 
+				 "columns": [
+					null,
+					null,
+					{ "orderDataType": "dom-text" },
+					{ "orderDataType": "dom-text", "type": "numeric" },
+					{ "orderDataType": "dom-select" },
+					{ "orderDataType": "dom-checkbox" }
+				  ]
+			});
+		});	
+    </script>

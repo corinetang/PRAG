@@ -33,7 +33,8 @@ function showAccueilConnect() {
     require ('Model/stageModel.php');
 
     $idUser = $_SESSION['user']['id_user'];
-    $Stages = getStagesByUser($idUser);
+    $filiere_user = $_SESSION['user']['id_Filiere'];
+    $Stages = getStagesByFiliereAndUserNotChoices($filiere_user,$idUser);
 	require ('View/pageAccueilConnect.tpl');
 }
 
@@ -87,13 +88,13 @@ function inscription() {
     require ('Model/userModel.php');
 
 	if (ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere)) {
-		echo ('<div class="alert alert-success" role="alert">
-  <a href="index.php" class="alert-link">Vous êtes maintenant insrit</a>
+	echo ('<div class="alert alert-success" role="alert">
+  <a href="index.php" class="alert-link">Vous êtes maintenant inscrit !<br> Votre identifiant est: <strong>VotreNom.VotrePrenom<strong>.<br> Vous pouvez vous connecter en cliquant sur la bannière.</a>
 </div>');
 	}
 	else{
 		echo ('<div class="alert alert-danger" role="alert">
-  <a href="#" class="alert-link">Une erreur a empeché votre inscription</a>
+  <a href="index.php?control=user&action=showInscription" class="alert-link">Une erreur a empeché votre inscription</a>
 </div>');
 	}
 
