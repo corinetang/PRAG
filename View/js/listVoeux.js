@@ -57,7 +57,7 @@ function resultMove(id, idUser) {
                         '</td><td class="stage-etablissement">'+line.getElementsByClassName("stage-etablissement")[0].innerHTML+
                         '</td><td class="stage-service">'+line.getElementsByClassName("stage-service")[0].innerHTML+
                         '</td><td class="stage-nb-poste">'+line.getElementsByClassName("stage-nb-poste")[0].innerHTML+
-                        '</td><td><button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="choiceMove('+
+                        '</td><td><button type="button" class="btn btn-success btn-lg btn-choice-move" onclick="choiceMove('+
                         line.getElementsByClassName("stage-id")[0].innerHTML+
                         ','+ idUser +
                         ')">'+
