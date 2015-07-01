@@ -6,19 +6,8 @@
 </head>
 <div id="Consultation">
     <h1>Consultation</h1><br>
-	<div id="Filter" class="form-inline">
-		<select class="form-control input-sm" id="Filiere">
 
-		</select>
-		<select class="form-control input-sm" id="Hopital">
-
-		</select>
-		<select class="form-control input-sm" id="Poste">
-		</select>
-	</div>
-    <br>
-	<div id="accordion">
-   <table class="display" id="table_choice">
+   <table class="table table-striped table-hover" cellspacing="0" id="table_consultation">
           <thead>
               <tr>
                   <th>DES</th>
@@ -40,7 +29,6 @@
                     <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
                   </button>
                 </td>
-                <td></td>
               </tr>
             <?php } ?>
           </tbody>
