@@ -8,7 +8,7 @@
         </head>
         <div class="col-md-8">
             <div class="container">
-                <p class="text-muted"> <a href="siphif.org">2015 siphif.org Tous droits réservés</a></p>
+                <p class="text-muted"> <a href="siphif.org" target="_blank">2015 siphif.org Tous droits réservés</a></p>
             </div>
         </div>
         <div class="col-md-4">
