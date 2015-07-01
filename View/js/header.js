@@ -32,7 +32,7 @@ function initializeHeader(idRole) {
 		$( ".change-at-focus" ).mouseover(function() {
 			// $(this).css('background-color','#3dabe8' );
 		 });
-	linear-gradient(#54B4EB, #2FA4E7 60%, #1D9CE5)
+
 		$( ".change-at-focus" ).mouseleave(function() {
 			$(this).css('background-color','#3dabe8' );
 			$(this).css('border-bottom-color','#178ACC' );
