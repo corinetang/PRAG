@@ -15,11 +15,11 @@
     function setChoix($estAccepte_choix, $rang_choix, $id_user, $id_Stage){
         require('ConfigSQL.php');
         $add = $bd->prepare("INSERT INTO Choix(estAccepte_choix, rang_choix, id_user, id_Stage)
-                          VALUES(true,1,1,1)");
-        $add->bindValue(1, $estAccepte_choix);
-        $add->bindValue(2, $rang_choix);
-        $add->bindValue(3, $id_user);
-        $add->bindValue(4, $id_Stage);
+                          VALUES(:estAccepte_choix, :rang_choix, :id_user, :id_Stage)");
+        $add->bindParam(':estAccepte_choix', $estAccepte_choix);
+        $add->bindParam(':rang_choix', $rang_choix);
+        $add->bindParam(':id_user', $id_user);
+        $add->bindParam(':id_Stage', $id_Stage);
 
         return ($add->execute());
     }#End setChoix
