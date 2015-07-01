@@ -46,7 +46,7 @@
           <ul class="dropdown-menu">
             <li class="stage-voeux-option hide-option"><a href="index.php?control=stage&action=showVoeux">Liste de voeux</a></li>
             <li class="stage-consultation-option hide-option"><a href="index.php?control=stage&action=showConsultation">Consultation</a></li>
-            <li class="stage-evaluation-option hide-option"><a href="index.php?control=stage&action=showEval">Evaluation</a></li>
+            <li class="stage-evaluation-option hide-option"><a href="index.php?control=stage&action=showStages">Evaluation</a></li>
           </ul>
         </li>
         <li class="dropdown admin-option hide-option">

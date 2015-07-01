@@ -23,7 +23,11 @@
 	/*** RECUPERE UN STAGE ***/
 	function getStage($id_Stage){
 		require('ConfigSQL.php');
-	    $add = $bd->prepare("SELECT * FROM stage
+	    $add = $bd->prepare("SELECT * FROM stage s
+							LEFT JOIN Service serv ON serv.id_Service = s.id_Service
+                            LEFT JOIN Etablissement e ON serv.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES_Etablissement deseta ON deseta.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES des ON des.id_DES = deseta.id_DES
 	    					 WHERE id_Stage = :id_Stage");
 	    $add->bindParam(':id_Stage', $id_Stage);
 		$add->execute();
@@ -138,12 +142,32 @@
 		return $res;
 	} #End getStagesByFiliereAndUserNotChoices
 
+#=========================================================================================================
+
+	function getUserStage($id_user){
+		require('configSQL.php');
+
+		$add = $bd->prepare("SELECT c.id_Stage From choix c
+							JOIN user u ON u.id_user = c.id_user
+							WHERE u.id_user = ?
+							AND estAccepte_choix = 1");
+	    $add->bindValue(1, $id_user);
+		$add->execute();
+		$res = $add->fetch();
+
+		return $res[0];
+	}#End getUserStage
+
+
 #=======================================================================================================
     function getStagesByUser($idUser){
         require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT * FROM Stage s
 	    					LEFT JOIN Choix c ON c.id_Stage = s.id_Stage
                             LEFT JOIN Service serv ON serv.id_Service = s.id_Service
+                            LEFT JOIN Etablissement e ON serv.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES_Etablissement deseta ON deseta.id_Etablissement = e.id_Etablissement
+                            LEFT JOIN DES des ON des.id_DES = deseta.id_DES
 	    					WHERE c.id_User = :id_User");
 	    $add->bindParam(':id_User', $idUser);
 		$add->execute();
