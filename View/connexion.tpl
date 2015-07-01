@@ -36,7 +36,7 @@
         <h4 class="modal-title" id="myModalLabel">Récupérer votre mot de passe</h4>
       </div>
         <fieldset>
-		<form class="form-horizontal" id="f1" method="post" action="index.php?control=user&action=envoiMail">
+		<form class="form-horizontal" id="f1" method="post" action="index.php?control=user&action=recupererPassword">
       <div class="modal-body">
        	
                 <div class="form-group">
