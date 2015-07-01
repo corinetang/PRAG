@@ -10,7 +10,6 @@ function getClassementByPreChoix($stage,$id_user){
 	//$list_choix = getChoixByIdStage($stage,$id_user);
 	$nbPlacesStage = getNbPlaces($stage);
 
-	d($list_user);
 	$valid = false;
 
 	for ($i=0;$i < count($list_user) and $valid == false; $i++) {  

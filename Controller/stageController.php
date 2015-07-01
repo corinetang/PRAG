@@ -6,6 +6,15 @@
  */
 function showVoeux() {
 
+	if(isset($_POST['stage_id']) && isset($_POST['user_id'])) {
+		require('Model/classementModel.php');
+		$stage_id    = isset($_POST['stage_id'])?$_POST['stage_id']:"";
+		$user_id     = isset($_POST['user_id'])?$_POST['user_id']:"";
+
+		$result = getClassementByPreChoix($stage_id,$user_id);
+		$_SESSION['prechoix'] = $result;
+	}
+
 	if (isset($_SESSION['user'])) {
 
 		// Recuperation du nom de filière
@@ -17,7 +26,6 @@ function showVoeux() {
 		$stages = getStagesByFiliereAndUserNotChoices($id_filiere, $_SESSION['user']['id_user']);
 		$choosenStages = getStagesByFiliereAndUserChoices($id_filiere, $_SESSION['user']['id_user']);
 
-		require('Model/choixModel.php');
 		$is_after_acceptable = isAfterAcceptable();
 	}
 	require ('View/listVoeux.tpl');

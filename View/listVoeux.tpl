@@ -41,7 +41,18 @@
         </tbody>
     </table><br>
 
-    <h3> Stage selectionnés </h3>
+
+    <?php if (isset($_SESSION['prechoix'])) { ?>
+      <div style="margin-left:auto;margin-right:auto;">
+        <?php if ($_SESSION['prechoix'] == 1) { ?>
+          Préchoix Accepté
+        <?php } else { ?>
+          Préchoix refusé
+        <?php } ?>
+      </div>
+    <?php } ?>
+
+    <h2> Stage selectionnés </h2>
     <table class="table table-striped" id="table-result">
       <thead>
 	  <tr>
@@ -83,7 +94,7 @@
               </button>
             </td>
             <td>
-              <form method="post" action="index.php?control=classement&action=DisplayResultatPreChoix">
+              <form method="post" action="index.php?control=stage&action=showVoeux">
                 <input type="hidden" class="btn btn-info" name="stage_id" value="<?php echo $choosenStage['id_Stage'] ?>">
                 <input type="hidden" class="btn btn-info" name="user_id" value="<?php echo $_SESSION['user']['id_user'] ?>">
                 <input type="submit" class="btn btn-info" value="Préchoix"/>
