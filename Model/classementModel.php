@@ -1,7 +1,5 @@
 <?php
 
-require '/kint/Kint.class.php';
-
 function getClassementByPreChoix($stage,$id_user){
 	require("userModel.php");
 	require("choixModel.php");
@@ -12,7 +10,7 @@ function getClassementByPreChoix($stage,$id_user){
 
 	$valid = false;
 
-	for ($i=0;$i < count($list_user) and $valid == false; $i++) {  
+	for ($i=0;$i < count($list_user) and $valid == false; $i++) {
 		$row = $list_user[$i];
 		#Si la moyenne d'un autre interne est plus élevée et que l'interne n'est pas celui connecté
 		if (($row['id_user'] != $_SESSION['user']['id_user']) ) {
@@ -20,7 +18,7 @@ function getClassementByPreChoix($stage,$id_user){
 		} else {
 			if ($nbPlacesStage > 0) {
 				$valid = true;
-			}#End if				
+			}#End if
 		}#End if
 	}
 
@@ -47,7 +45,7 @@ function getNbPlaces($id_stage){
 function setNbPlaces($id_stage, $new_nbplaces){
 	require('configSQL.php');
 
-	$add = $bd->prepare("UPDATE Stage 
+	$add = $bd->prepare("UPDATE Stage
 						SET NbPoste_stage = ?
 						WHERE id_Stage = ?");
 	$add->bindValue(1, $new_nbplaces);
@@ -61,7 +59,7 @@ function setNbPlaces($id_stage, $new_nbplaces){
 function getListeClassmentFinal(){
 	require('configSQL.php');
 
-		$add = $bd->prepare("SELECT NbSemestre_user,RangClassement_user,id_user 
+		$add = $bd->prepare("SELECT NbSemestre_user,RangClassement_user,id_user
 							From user u
 							GROUP BY NbSemestre_user,RangClassement_user,id_user
 							ORDER BY NbSemestre_user DESC,RangClassement_user");
@@ -78,11 +76,11 @@ function traitementClassement(){
 	$liste = getListeClassmentFinal();
 
 
-	for ($i=0; $i < count($liste) ; $i++) { 
+	for ($i=0; $i < count($liste) ; $i++) {
 		//d($liste);
 		$rang = getRangByUser($liste[$i]['id_user']);
 		$estAccepte = false;
-		for ($j=0; $j < count($rang) and $estAccepte == false; $j++) { 
+		for ($j=0; $j < count($rang) and $estAccepte == false; $j++) {
 			//d($rang);
 			$nbPlacesStage = getNbPlaces($rang[$j]['id_Stage']);
 			if ( $nbPlacesStage > 0) {
@@ -92,7 +90,7 @@ function traitementClassement(){
 			}#end if
 		}#End for
 	}#End for
-	
+
 }#End traitementClassement
 
 #===============================================================================================
@@ -100,7 +98,7 @@ function traitementClassement(){
 function estAccepte($id_user,$id_stage){
 	require('configSQL.php');
 
-	$add = $bd->prepare("UPDATE choix 
+	$add = $bd->prepare("UPDATE choix
 						SET estAccepte_choix = 1
 						WHERE id_user = ?
 						AND id_Stage = ?");
