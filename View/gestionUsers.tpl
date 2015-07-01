@@ -13,7 +13,7 @@
     <br>
     <br>
     <br>
-    <table class="table table-striped table-bordered" cellspacing="0" id="tableau_gestionUsers">
+    <table class="table table-striped table-hover" cellspacing="0" id="tableau_gestionUsers">
         <thead>
             <tr>
                 <th data-dynatable-sorts= "Alpha">Nom</th>
