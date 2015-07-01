@@ -5,11 +5,17 @@
 <div id='pageAccueilConnect'>  
     <h1>Bonjour<STRONG> <?php echo $_SESSION["user"]["prenom_user"] ?> ! </STRONG></h1><br>
     <div class="list-group" id="AffichageStage">
-        <legend>ICI, LA LISTE DE VOS STAGES FAITS AU SEIN DE SIPHIF</legend>
-           <?php if ($Stages == null) { ?>
-       <div class="alert alert-info" role="alert"><h3>Désolé ! </h3>Vous n'avez pas de stage à votre actif !</div>
-       <?php  }
-        else{
+        <legend>LISTE DE VOS STAGES FAITS AU SEIN DE SIPHIF</legend>
+          <?php if ($Stages == null) { ?>
+		   <div class="panel panel-warning">
+		  <div class="panel-heading">
+			<h3 class="panel-title">Votre stage</h3>
+		</div>
+		  <div class="panel-body">
+			Vous n'avez pas de stage à votre actif !
+		  </div>
+		</div>
+        <?php } else{
             foreach ($Stages as $stage) { ?>
         <div id="informationStage1">
             <div class="panel panel-info">
