@@ -11,14 +11,15 @@
        <?php  }
         else{
             foreach ($Stages as $stage) { ?>
-<!--      <h3><span class="list-group-item disabled" id="AffichageStage1">Sur votre stage</span></h3>-->
         <div id="informationStage1">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">Votre stage</h3>
                 </div>
                 <div class="panel-body">
+                  <table>
                     <id>
+					<td>
                         <dl id="DESStage">
                             <dt>DES</dt>
                             <dd><?php echo $stage['libelle_DES'] ?></dd>
@@ -31,7 +32,29 @@
                             <dt>Service</dt>
                             <dd><?php echo $stage['nom_service'] ?></dd>
                         </dl>
+						</td>
+						<td>
+							<dl id="maitreStageStage">
+								<dt>Maitre de Stage</dt>
+								<dd><?php echo $stage['maitre_stage'] ?></dd>
+							</dl>
+							<dl id="dateDebutStage">
+								<dt>Date de début du stage</dt>
+								<dd><?php if (is_null($stage['dateFin_stage'] )) {
+									echo ('Non renseigné');
+								}echo $stage['dateDebut_stage'];
+							 ?></dd>
+							</dl>
+							<dl id="dateFinStage">
+								<dt>Date de fin du stage</dt>
+								<dd><?php if (is_null($stage['dateFin_stage'] )) {
+										echo ('Non renseigné');
+									}echo $stage['dateFin_stage'];
+								 ?></dd>
+							</dl>
+						</td>
                     </id>
+					</table>
                 </div>
             </div>
         </div>
