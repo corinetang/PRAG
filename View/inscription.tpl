@@ -90,10 +90,10 @@
         				</select>
                     </div>
                 </div>
-
+<br><br>
              <!--- BUTTON -->
 			 <div class="form-group">
-				<div class="col-lg-10 col-lg-offset-2">
+				<div class="col-lg-6 col-lg-offset-6">
 				<a href="index.php" role="button" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary" value="submit" name="submit-inscription" id="submit-inscription"> Inscription </button>
 				</div>
