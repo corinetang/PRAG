@@ -12,7 +12,6 @@
 
     <table class="table table-striped" id="table-result">
       <thead>
-        <th>Id</th>
         <th>DES</th>
         <th>Etablissement</th>
         <th>Service</th>
@@ -20,12 +19,10 @@
         <th></th>
       </thead>
       <tbody>
-
           <tr>
-            <td class="stage-id"> <?php echo $stage->{'id_Stage'}?> </td>
-            <td class="stage-des"> </td>
-            <td class="stage-etablissement">Etablissement</td>
-            <td class="stage-service">Service</td>
+            <td class="stage-des"><?php echo $stage->{'libelle_DES'} ?></td>
+            <td class="stage-etablissement"><?php echo $stage->{'nom_etablissement'} ?></td>
+            <td class="stage-service"><?php echo $stage->{'nom_service'} ?></td>
             <td>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="button_edit">
                 <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
@@ -72,29 +69,4 @@
     </div>
   </div>
 </div>
-
-    <h1>Liste des Stages Effectués</h1>
-
-    <table class="table table-striped" id="table-choice">
-        <thead>
-          <th>Id</th>
-          <th>DES</th>
-          <th>Etablissement</th>
-          <th>Service</th>
-          <th></th>
-        </thead>
-        <tbody>
-            <tr>
-              <td class="stage-id">id_stage</td>
-              <td class="stage-des">DES</td>
-              <td class="stage-etablissement">Etablissement</td>
-              <td class="stage-service">Service</td>
-              <td>
-              </td>
-              <td></td>
-            </tr>
-        </tbody>
-    </table><br>
-
-
 </div>
