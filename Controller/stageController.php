@@ -16,6 +16,9 @@ function showVoeux() {
 		require ('Model/stageModel.php');
 		$stages = getStagesByFiliereAndUserNotChoices($id_filiere, $_SESSION['user']['id_user']);
 		$choosenStages = getStagesByFiliereAndUserChoices($id_filiere, $_SESSION['user']['id_user']);
+
+		require('Model/choixModel.php');
+		$is_after_acceptable = isAfterAcceptable();
 	}
 	require ('View/listVoeux.tpl');
 }

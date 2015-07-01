@@ -30,9 +30,11 @@
               <td class="stage-service"><?php echo $stage['nom_service'] ?></td>
               <td class="stage-nb-poste"><?php echo $stage['NbPoste_stage'] ?></td>
               <td>
-                <button type="button" class="btn btn-success btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
+                <?php if ($is_after_acceptable == false) { ?>
+                  <button type="button" class="btn btn-success btn-lg btn-choice-move" onclick="choiceMove(<?php echo $stage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  </button>
+                <?php } ?>
               </td>
             </tr>
           <?php }; ?>
@@ -49,8 +51,12 @@
         <th>Etablissement</th>
         <th>Service</th>
         <th>Nombre de poste</th>
-        <th>Test</th>
-        <th>Test2</th>
+        <?php if ($is_after_acceptable == true) { ?>
+          <th>Accepté</th>
+        <?php }else { ?>
+          <th></th>
+          <th></th>
+        <?php } ?>
 		</tr>
       </thead>
       <tbody id="sortable">
@@ -62,6 +68,15 @@
             <td class="stage-etablissement"><?php echo $choosenStage['nom_etablissement'] ?></td>
             <td class="stage-service"><?php echo $choosenStage['nom_service'] ?></td>
             <td class="stage-nb-poste"><?php echo $choosenStage['NbPoste_stage'] ?></td>
+            <?php if ($is_after_acceptable == true) { ?>
+            <td>
+              <?php if ($choosenStage['estAccepte_choix'] == '1') { ?>
+                accepté
+              <?php } else { ?>
+                refusé
+              <?php } ?>
+            </td>
+            <?php }else { ?>
             <td>
               <button type="button" class="btn btn-default btn-lg btn-choice-move" onclick="resultMove(<?php echo $choosenStage['id_Stage'] ?>, <?php echo $_SESSION['user']['id_user'] ?>)">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -71,9 +86,10 @@
               <form method="post" action="index.php?control=classement&action=DisplayResultatPreChoix">
                 <input type="hidden" class="btn btn-info" name="stage_id" value="<?php echo $choosenStage['id_Stage'] ?>"> 
                 <input type="hidden" class="btn btn-info" name="user_id" value="<?php echo $_SESSION['user']['id_user'] ?>"> 
-                <input type="submit" class="btn btn-info" value="Resultat"/>
+                <input type="submit" class="btn btn-info" value="Préchoix"/>
               </form>
             </td>
+            <?php } ?>
           </tr>
         <?php } ?>
          </tbody>

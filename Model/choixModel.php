@@ -108,4 +108,19 @@
     }#End getRangbyUser
 
     #=======================================================================================================
+
+    function isAfterAcceptable(){
+        require('configSQL.php');
+
+        $add = $bd->prepare("SELECT c.estAccepte_choix From choix c");
+        $add->execute();
+        $res = $add->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($res as $r) {
+            if ($r['estAccepte_choix'] == '1')
+                return true;
+        }
+
+        return false;
+    }
 ?>
