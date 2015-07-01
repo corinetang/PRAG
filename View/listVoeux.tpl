@@ -9,6 +9,12 @@
 <div id="listVoeux">
     <h1>Choix des stages</h1><span id="userId" style="display:none;"><?php echo $_SESSION['user']['id_user'] ?></span>
     <br>
+    <?php if ($is_after_acceptable != false) { ?>
+	<div class="alert alert-dismissible alert-danger">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	<strong>Attention !</strong> Vous possedez déjà un stage ! 
+	</div>
+	 <?php } ?>
     <h3> Filière : <?php echo $filiere[0]['nom_filiere'] ?> </h3>
     <table class="table table-striped table-bordered" cellspacing="0"  id="table_choice_user">
         <thead>
