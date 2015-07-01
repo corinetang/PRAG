@@ -1,76 +1,30 @@
 
- $(function() {
-    $( "#accordion" ).accordion({
-      event: "click hoverintent"
+ // $(function() {
+ //    $( "#accordion" ).accordion({
+ //      event: "click hoverintent"
+ //    });
+ //  });
+
+ jQuery(document).ready(function (){
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus();
     });
-  });
+} );
 
-  /*
-   * hoverIntent | Copyright 2011 Brian Cherne
-   * http://cherne.net/brian/resources/jquery.hoverIntent.html
-   * modified by the jQuery UI team
-   */
-  $.event.special.hoverintent = {
-    setup: function() {
-      $( this ).bind( "mouseover", jQuery.event.special.hoverintent.handler );
-    },
-    teardown: function() {
-      $( this ).unbind( "mouseover", jQuery.event.special.hoverintent.handler );
-    },
-    handler: function( event ) {
-      var currentX, currentY, timeout,
-        args = arguments,
-        target = $( event.target ),
-        previousX = event.pageX,
-        previousY = event.pageY;
-
-      function track( event ) {
-        currentX = event.pageX;
-        currentY = event.pageY;
-      };
-
-      function clear() {
-        target
-          .unbind( "mousemove", track )
-          .unbind( "mouseout", clear );
-        clearTimeout( timeout );
-      }
-
-      function handler() {
-        var prop,
-          orig = event;
-
-        if ( ( Math.abs( previousX - currentX ) +
-            Math.abs( previousY - currentY ) ) < 7 ) {
-          clear();
-
-          event = $.Event( "hoverintent" );
-          for ( prop in orig ) {
-            if ( !( prop in event ) ) {
-              event[ prop ] = orig[ prop ];
-            }
-          }
-          // Prevent accessing the original event since the new event
-          // is fired asynchronously and the old event is no longer
-          // usable (#6028)
-          delete event.originalEvent;
-
-          target.trigger( event );
-        } else {
-          previousX = currentX;
-          previousY = currentY;
-          timeout = setTimeout( handler, 100 );
-        }
-      }
-
-      timeout = setTimeout( handler, 100 );
-      target.bind({
-        mousemove: track,
-        mouseout: clear
-      });
+function initModalConsulation(evaluations) {
+  var lastId = evaluations[0][0]['id_evaluation'];
+  var nbEval = 1;
+  $('#evaluations-stage').append("<span><strong> EVALUATION N°" + nbEval + "</strong></span><br>");
+  for (var i = 0; i < evaluations[0].length; i++) {
+    if (lastId != evaluations[0][i]['id_evaluation']) {
+      nbEval += 1;
+      lastId = evaluations[0][i]['id_evaluation'];
+      $('#evaluations-stage').append("<br>");
+      $('#evaluations-stage').append("<span><strong> EVALUATION N°" + nbEval + "</strong></span><br>");
     }
-  };
+    $('#evaluations-stage').append("<table><tr><strong>" + evaluations[0][i]['libelle_question']
+      + "</strong></tr><br><tr>" + evaluations[0][i]['commentaire_reponse'] + "</tr><br></table>" );
 
-function initModalConsulation() {
+  }
 
 }

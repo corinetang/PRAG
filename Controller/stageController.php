@@ -109,9 +109,17 @@ function showConsultation() {
 	$filiere = getFiliereById($id_filiere);
 
 	require ('Model/stageModel.php');
-	$stages = getStagesByFiliere($id_filiere);
+	$stages = getStagesByFiliereWithEvaluation($id_filiere);
 
-    require ('View/consultation.tpl');
+	for ($i = 0 ; $i < count($stages); $i++) {
+		$libelleEval = 'evaluation';
+		$evaluation = getEvaluationByIdStage($stages[$i]["id_Stage"]);
+
+		$stages[$i][$libelleEval] = array();
+		array_push($stages[$i][$libelleEval], $evaluation);
+	}
+
+	require ('View/consultation.tpl');
 }
 
 ?>
