@@ -30,7 +30,7 @@ function choiceMove(id, idUser) {
                         ')">'+
                             '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>'+
                             '</button>'+
-                            '</td><td><form method="post" action="index.php?control=classement&action=DisplayResultatPreChoix">'+
+                            '</td><td><form method="post" action="index.php?control=stage&action=showVoeux">'+
                                 '<input type="hidden" class="btn btn-info" name="stage_id" value="<?php echo $choosenStage[\'id_Stage\'] ?>">'+ 
                                 '<input type="hidden" class="btn btn-info" name="user_id" value="<?php echo $_SESSION[\'user\'][\'id_user\'] ?>">'+ 
                                 '<input type="submit" class="btn btn-info" value="Préchoix"/>'+
