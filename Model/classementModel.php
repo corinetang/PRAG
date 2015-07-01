@@ -8,25 +8,22 @@ function getClassementByPreChoix($stage,$id_user){
 	require('ConfigSQL.php');
 	$list_user =  getUserByIdStage($stage); // Récupère la liste des users ayant pour stage $stage
 	//$list_choix = getChoixByIdStage($stage,$id_user);
-	$nbPlacesStage = getNbPlaces($stage) ;
+	$nbPlacesStage = getNbPlaces($stage);
 
 	d($list_user);
-
-	$row = $list_user;
 	$valid = false;
 
-	if (!empty($row)) {
-		do {  
-			#Si la moyenne d'un autre interne est plus élevée et que l'interne n'est pas celui connecté
-			if (($row['id_user'] != $_SESSION['user']['id_user']) ) {
-				$nbPlacesStage--;
-			} else {
-				if ($nbPlacesStage > 0) {
-					$valid = true;
-				}#End if				
-			}#End if
-		} while($row = $list_user->fetch and $valid == false );
-	}#End if		
+	for ($i=0;$i < count($list_user) and $valid == false; $i++) {  
+		$row = $list_user[$i];
+		#Si la moyenne d'un autre interne est plus élevée et que l'interne n'est pas celui connecté
+		if (($row['id_user'] != $_SESSION['user']['id_user']) ) {
+			$nbPlacesStage--;
+		} else {
+			if ($nbPlacesStage > 0) {
+				$valid = true;
+			}#End if				
+		}#End if
+	}
 
 	return $valid;
 

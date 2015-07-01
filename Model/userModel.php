@@ -331,7 +331,7 @@
 							ORDER BY u.NbSemestre_user DESC, u.RangClassement_user");
 	    $add->bindValue(1, $id_stage);
 		$add->execute();
-		$res = $add->fetch();
+		$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
 		return $res;
 	}#End getUserByIdStage
