@@ -1,4 +1,4 @@
-table#table_choice_user {
+div#table_choice_user_wrapper {
   width: 90%;
   MARGIN-LEFT: auto;
   MARGIN-RIGHT: auto;
@@ -12,5 +12,5 @@ div#listVoeux {
 }
 
 table#table-result {
-margin-bottom: 100px;
+	margin-bottom: 100px;
 }

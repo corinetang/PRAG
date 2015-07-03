@@ -91,7 +91,6 @@
 		$res->execute();
 
 	}#End addDes
-
 	#===================================================================================================
 
 	function addService($service,$etablissement){

@@ -29,12 +29,13 @@ function getUserStageEval($id_user, $id_Stage) {
         $add->execute();
         $res = $add->fetchAll(PDO::FETCH_ASSOC);
 
-    }
-
+    }#End if
     return $res;
-}
+}#End getUserStageEval
 
-// function getUserEvaluations($id_user) {
+#=======================================================================================================
+
+function getUserEvaluations($id_user) {
 
 // 	require('ConfigSQL.php');
 // 	$add = $bd->prepare("SELECT * FROM User_Evaluation u WHERE id_user = ?");
@@ -44,6 +45,6 @@ function getUserStageEval($id_user, $id_Stage) {
 
 // 	return $res;
 
-// }
+}#End getUserEvaluations
 
 ?>

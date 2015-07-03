@@ -118,9 +118,8 @@
 
         foreach ($res as $r) {
             if ($r['estAccepte_choix'] == '1')
-                return true;
-        }
-
+                return true;#End if
+        }#End foreach
         return false;
-    }
+    }#End isAfterAcceptable
 ?>

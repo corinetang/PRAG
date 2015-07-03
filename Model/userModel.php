@@ -1,19 +1,16 @@
 <?php
+
 	/**** VERIFICATION DU FORMAT ****/
-
-
 	function verif_nom($nom){
 		$patternNom = '#^[[:alnum:]_\-ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{2,30}$#';
 		return preg_match($patternNom, $nom);
 	}#End verif_nom
-
 	#=======================================================================================================
 
 	function verif_email($email){
 		$patternEmail = '#^[a-zA-Z0-9.]{3,}@[a-z0-9]{2,}\.[a-z]{2,4}$#';
 		return preg_match($patternEmail, $email);
 	}#End verif_email
-
 	#=======================================================================================================
 
 	function verif_psswd($mdp){
@@ -27,26 +24,24 @@
 		$pattern_niveau_etude = '#^[a-zA-Z0-9?\-\'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ ]{3,50}$#';
 		return preg_match($pattern_niveau_etude, $niveau_etude);
 	}#End verif_niveau_etude
-	
-	#=======================================================================================================
+		#=======================================================================================================
 
 	function verif_nbSemestre($nbSemestre_user){
 	
 		$patternMdp = '/[[:digit:]]/';
 		if(!preg_match($patternMdp, $nbSemestre_user)){
 			return false;
-		}
+		}#End if
 		return true;
 	}#End verif_psswd
-	
-	#=======================================================================================================
+		#=======================================================================================================
 	
 	function verif_nbTelephone($Telephone){
 	
 		$patternMdp = '/[0-9]{10}/';
 		if(!preg_match($patternMdp, $Telephone) || !is_numeric(Telephone)){
 			return false;
-		}
+		}#End if
 		return true;
 	}#End verif_psswd
 
@@ -76,24 +71,20 @@
 
 	function authentification($login, $mdp){
 		/*if(!verif_nom($login))
-			return false;
+			return false;#End if
 
 		if(!verif_psswd($mdp))
-			return false;*/
+			return false;#End if*/
 
 		if(!authentification_BD($login, $mdp))
-			return false;
-
-
+			return false;#End if
 
 		return true;
 	}#End authentification
 
 	#=======================================================================================================
 
-
 	/*** INSCRIPTION ***/
-
 	function ajout_BD($nom, $prenom, $mdp, $nbSemestre_user, $dateDeNaissance_user, $email, $Numtel,$filiere){
 		require('ConfigSQL.php');
 		$password = sha1($mdp);
@@ -114,63 +105,58 @@
 
 	    return ($add->execute());
 	}#End ajout_BD
-
 	#=======================================================================================================
 
 	function ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere){
 		if(!verif_nom($nom))
-			return false;
+			return false;#End if
 
 		if(!verif_nom($Prenom))
-			return false;
+			return false;#End if
 		/*
 		if(!verif_email($Mail))
-			return false;
+			return false;#End if
 		*/
 		if(!verif_psswd($Password))
-			return false;
+			return false;#End if
 		
 		if(!verif_nbSemestre($NbSemestre))
-			return false;
+			return false;#End if
 
 		return ajout_BD($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$filiere);
 	}#End ajout
-
 	#=======================================================================================================
 
 	/*** MODIFICATION MDP ***/
 	function change($password_act, $password_new, $password_conf){
 		if(!verif_psswd($password_act))
-			return false;
+			return false;#End if
 
 		if(!verif_psswd($password_new))
-			return false;
+			return false;#End if
 
 		if(!verif_psswd($password_conf))
-			return false;
+			return false;#End if
 
 		if(!verif_password_BD($password_act))
-			return false;
+			return false;#End if
 
 		if($password_new != $password_conf)
 			return false;
 
-
 		return change_password_BD($password_new);
 	}#End change
-
-		#=======================================================================================================
+	#=======================================================================================================
 
 	/*** MODIFICATION PROFIL ***/
 	function changeProfil($nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $filiere){
 
 		if(!verif_nom($nom_user))
-			return false;
+			return false;#End if
 		if(!verif_nom($prenom_user))
-			return false;
+			return false;#End if
 		if(!verif_email($email))
-			return false;
-
+			return false;#End if
 
 		return update_user();
 	}#End change
@@ -202,7 +188,6 @@
 
 	    return ($add->execute());
 	}
-
 	#=======================================================================================================
 
 	function update_membre($id_user, $nom_user, $prenom_user, $date_naiss, $nbSemestre, $email, $Telephone, $id_groupe) {
@@ -230,8 +215,6 @@
 
 	    return ($add->execute());
 	}
-
-
 	#=======================================================================================================
 
 	function change_password_BD($password_new){
@@ -243,7 +226,6 @@
 
 	    return ($add->execute());
 	}#End change_password_BD
-
 	#=======================================================================================================
 
 	function verif_password_BD($password_act){
@@ -253,12 +235,11 @@
 		$add->bindParam(':id_user', $_SESSION['id']);
 		$add->execute();
 		if($add->rowCount()==0)
-			return false;
+			return false;#End if
 		else
-			return true;
+			return true;#End else
 	}#End verif_password_BD
-	
-	#=======================================================================================================
+		#=======================================================================================================
 
 	function update_password_mail($email, $newpassword) {
 		require('ConfigSQL.php');
@@ -273,8 +254,7 @@
 
 	    return ($add->execute());
 	}#End update_password_mail
-	
-	#=======================================================================================================
+		#=======================================================================================================
 
 	function getUserFiliere(){
 		require('ConfigSQL.php');
@@ -288,7 +268,6 @@
 
 		return json_encode($res);
 	}#End getUserFiliere
-
 	#=========================================================================================================
 	function getAllUserFiliere(){
 		require('ConfigSQL.php');
@@ -315,13 +294,12 @@
 	   #Gestion des identifiants (si homonymes)----------------------------------------------
 	    if ($res[0] == 0 ) {
 	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom);
-	    } else {
+	    } #End if
+        else {
 	    	$res[0] = $res[0];
 	    	$identifiant_user = strtolower($nom) ."." . strtolower($prenom) . $res[0];
-	    }#End If
-
+	    }#End else
 	    return $identifiant_user;
-
 	}#End ofcreate_id
 
 	#=========================================================================================================
@@ -335,7 +313,6 @@
 			/*return json_encode($res);*/
             return $res;
 	}#End of getAllUsers
-
 	#=========================================================================================================
 
 	function getUserByIdStage($id_stage){
@@ -351,7 +328,6 @@
 
 		return $res;
 	}#End getUserByIdStage
-
 	#=========================================================================================================
 
 	function deleteUser($id_user){
@@ -363,7 +339,6 @@
 
         return ($add->execute());
 	}#End deleteUser
-	
 	#=========================================================================================================
 
 	function generer_mot_de_passe($nb_caractere = 12){
@@ -379,7 +354,6 @@
 
         return $mot_de_passe;   
 	}#End generer_mot_de_passe
-	
 	#=========================================================================================================
 	
 	function reset_mail($mail){

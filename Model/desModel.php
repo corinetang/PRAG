@@ -10,6 +10,8 @@
 			return $res;
 	}#End getDES
 
+#=======================================================================================================
+
 	function getIdDES($id_Etablissement){
 		require('ConfigSQL.php');
 		    $add = $bd->prepare("SELECT * FROM DES_ETABLISSEMENT WHERE id_Etablissement = ?");
@@ -18,8 +20,7 @@
 			$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
 			return $res;
-	}#End getDES
-
+	}#End getIdDES
 	#=======================================================================================================
 
 	/*** AJOUT D'UN NOUVEAU DES ***/
@@ -32,7 +33,6 @@
 
 		return ($add->execute());
 	}#End setDES
-
 	#=======================================================================================================
 
 	/*** METTRE A JOUR UN DES ***/

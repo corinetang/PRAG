@@ -46,7 +46,7 @@
                     ?>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" onClick="supprimerMembre(<?php echo $user['id_user'] ?>)">
+                    <button type="button" class="btn btn-danger" data-target="#myModalRemove" id="button-remove" onclick="$('#myModalRemove').modal('show')">
                         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                     </button>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="button_edit"
@@ -58,7 +58,7 @@
             <?php }; ?>
         </tbody>
     </table>
-    <!-- Modal -->
+    <!-- Modal MODIF USERS-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -116,6 +116,24 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
         <button type="button" id="membre-edit" class="btn btn-primary" onClick="editMembre()">Sauvegarder</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Modal REMOVE USERS -->
+<div class="modal fade" id="myModalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" id="modal_header_remove">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Attention</h4>
+      </div>
+      <div class="modal-body">
+          <P> Vous allez supprimer définitivement cet utilisateur !</P>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-danger" onClick="supprimerMembre(<?php echo $user['id_user'] ?>)">Supprimer</button>
       </div>
     </div>
   </div>

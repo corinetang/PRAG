@@ -4,6 +4,7 @@
 	<script link rel="stylesheet" type="text/css" href="View/css/libs/dataTables.bootstrap.css"></script>
     <script type="text/javascript" charset="utf8" src="View/js/libs/jquery.dataTables.js"></script>
 	<script type="text/javascript" charset="utf8" src="View/js/libs/dataTables.bootstrap.js"></script>
+    <script link rel="stylesheet" type="text/css" href="View/css/listVoeux.css"></script>
 </head>
 
 <div id="listVoeux">

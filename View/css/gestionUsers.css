@@ -9,6 +9,16 @@ div#tableau_gestionUsers_wrapper {
   margin-right: auto;
   width: 90%;
 }
+
 body {
 	font-size: 140%;
+}
+
+div#modal_header_remove {
+    background-color: red;
+}
+
+h4#myModalLabel {
+  color: white;
+  font-size: x-large;
 }

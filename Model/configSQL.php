@@ -1,8 +1,4 @@
 <?php
-/*$hote="localhost";
-$login="root";
-$pass="";
-$bd="siphif"; */
 
 $hote = "localhost";
 $dbName = "siphif";

@@ -1,13 +1,13 @@
 /* Insertion filiere --------------------------------- */
-INSERT INTO Filiere (nom_filiere) VALUES ('Biologie médicale');
-INSERT INTO Filiere (nom_filiere) VALUES ('Innovation Pharmaceutique et Recherche');
-INSERT INTO Filiere (nom_filiere) VALUES ('Pharmacie hospitalière');
+INSERT INTO filiere (nom_filiere) VALUES ('Biologie médicale');
+INSERT INTO filiere (nom_filiere) VALUES ('Innovation Pharmaceutique et Recherche');
+INSERT INTO filiere (nom_filiere) VALUES ('Pharmacie hospitalière');
 
 
 /* Insertion groupe --------------------------------- */
-INSERT INTO Groupe (libelle_groupe) VALUES ('Interne');
-INSERT INTO Groupe (libelle_groupe) VALUES ('Adhérent');
-INSERT INTO Groupe (libelle_groupe) VALUES ('Admin');
+INSERT INTO groupe (libelle_groupe) VALUES ('Interne');
+INSERT INTO groupe (libelle_groupe) VALUES ('Adhérent');
+INSERT INTO groupe (libelle_groupe) VALUES ('Admin');
 
 
 /* Insertion user --------------------------------- */
@@ -103,7 +103,7 @@ INSERT INTO `questions` (`id_Question`, `Libelle_question`) VALUES
 (8, 'Appréciation globale du stage Points forts du stage'),
 (9, 'Points faibles du stage - Remarques éventuelles');
 
-INSERT INTO `Reponse` (`id_reponse`, `commentaire_reponse`) VALUES
+INSERT INTO `reponse` (`id_reponse`, `commentaire_reponse`) VALUES
 (1, 'hopital'),
 (2, 'Activité avec les employés de hopital'),
 (3, 'Apprentissage avec des internes'),
@@ -121,34 +121,7 @@ INSERT INTO `Reponse` (`id_reponse`, `commentaire_reponse`) VALUES
 (15, 'Respect'),
 (16, 'Très bonne organisation'),
 (17, 'Très bon stage'),
-(18, 'Pas de points faibles'),
-(19, NULL),
-(20, NULL),
-(21, NULL),
-(22, NULL),
-(23, NULL),
-(24, NULL),
-(25, NULL),
-(26, NULL),
-(27, NULL),
-(28, NULL),
-(29, NULL),
-(30, NULL),
-(31, NULL),
-(32, NULL),
-(33, NULL),
-(34, NULL),
-(35, NULL),
-(36, NULL),
-(37, NULL),
-(38, NULL),
-(39, NULL),
-(40, NULL),
-(41, NULL),
-(42, NULL),
-(43, NULL),
-(44, NULL),
-(45, NULL);
+(18, 'Pas de points faibles');
 
 INSERT INTO `Question_Reponse` (`id_Evaluation`, `id_Question`, `id_reponse`) VALUES
 (1, 1, 1),

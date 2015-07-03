@@ -1,45 +1,63 @@
 
 <?php
 
-/*
- * Affiche la page de connexion
- */
+/*** Affiche la page de connexion ***/
 function showConnexion () {
 	$presentation = "";
 	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
 	$pass = isset($_POST['pass'])?$_POST['pass']:"";
 
-	require ('View/connexion.tpl');
+    require ('View/connexion.tpl');
+  
+}#End showConnexion
 
-}
+#=======================================================================================================
 
-/*
- * Affiche la page inscription
- */
+/*** Affiche la page inscription ***/
 function showInscription() {
 	require ('Model/filiereModel.php');
 	$listFiliere = getFiliere();
 
-	require ('View/inscription.tpl');
-}
+    if (!empty($_SESSIONS["user"]["id_Groupe"])){
+	   require ('View/inscription.tpl');
+    }#End if
+    else{
+         header("Location: index.php");
+    }#End else
+}#End showInscription
 
+#=======================================================================================================
+
+/*** Affiche la page de modification des données du profil ***/
 function showProfil() {
 	require("Model/kint/Kint.class.php");
-	require ('View/formProfil.tpl');
+      if ($_SESSION["user"]["id_Groupe"]){
+	   require ('View/formProfil.tpl');
+    }#End if
+    else {
+        header("Location: index.php");
+    }#End else
+}#End showProfil
 
-}
+#=======================================================================================================
 
+/*** Affiche la page d'accueil d'un utilisateur connecté ***/
 function showAccueilConnect() {
     require ('Model/stageModel.php');
 
     $idUser = $_SESSION['user']['id_user'];
     $Stages = getStagesByUser($idUser);
-	require ('View/pageAccueilConnect.tpl');
-}
+    if ($_SESSION["user"]["id_Groupe"]){
+	   require ('View/pageAccueilConnect.tpl');
+    }#End if
+    else {
+        header("Location: index.php");
+    }#End else
+}#End showAccueilConnect
 
-/*
- * Envoie les donnees de connexion au serveur
- */
+#=======================================================================================================
+
+/*** Envoie les donnees de connexion au serveur ***/
 function connexion () {
 	//Récupération des variables saisies dans le formulaire-----------------------------
 	$identifiant = isset($_POST['identifiant'])?$_POST['identifiant']:"";
@@ -52,18 +70,18 @@ function connexion () {
 		$auth = authentification_BD($identifiant,$pass);
         if($auth){
             header("Location: index.php");
-        }
+        }#End if
 		else {
             echo('<div class="alert alert-danger" role="alert">
   <a href="index.php" class="alert-link">La connection n\'a pas abouti</a>
 </div>');
-		}
+		}#End else
 	}
-}
+}#End connexion
 
-/*
- * Envoie les donnees inscription au model
- */
+#=======================================================================================================
+
+/*** Envoie les données inscription au model ***/
 function inscription() {
 	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
 	$Prenom                = isset($_POST['Prenom'])?$_POST['Prenom']:"";
@@ -79,17 +97,19 @@ function inscription() {
 
 	if (ajout($nom, $Prenom, $Password, $NbSemestre, $dateDeNaissance_user, $Mail, $Telephone,$Filiere)) {
 	echo ('<div class="alert alert-success" role="alert">
-  <a href="index.php" class="alert-link">Vous êtes maintenant inscrit !<br> Votre identifiant est: <strong>VotreNom.VotrePrenom<strong>.<br> Vous pouvez vous connecter en cliquant sur la bannière.</a>
+  <a href="index.php" class="alert-link">Vous êtes maintenant inscrit !<br> Votre identifiant est: <strong>"'.$nom.'.'.$Prenom.'"<strong><br> Vous pouvez vous connecter en cliquant sur la bannière.</a>
 </div>');
-	}
+	}#End if
 	else{
 		echo ('<div class="alert alert-danger" role="alert">
   <a href="index.php?control=user&action=showInscription" class="alert-link">Une erreur a empeché votre inscription</a>
 </div>');
-	}
+	}#End else
+}#End inscription
 
-}
+#=======================================================================================================
 
+/*** Envoie les données modifiées au model ***/
 function profil() {
 	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
 	$Prenom                = isset($_POST['Prenom'])?$_POST['Prenom']:"";
@@ -116,33 +136,49 @@ function profil() {
 	if ($NewPassword != "" && $OldPassword != "" && $NewPassword == $ValidationPassword) {
 		change_password_BD($NewPassword);
 		$_SESSION["user"]["mdp_user"] = $NewPassword;
-	}
+	}#End if
 
 	update_user($_SESSION["user"]["id_user"], $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, 1);
-}
+}#End profil
 
+#=======================================================================================================
+
+/*** Affiche la page de gestion des utilisateurs ***/
 function showUsers() {
 	require ('Model/userModel.php');
 	$users = getAllUserFiliere();
 
     require ('Model/filiereModel.php');
     $listFiliere = getFiliere();
+    if ($_SESSION["user"]["id_Groupe"] == 3){
+	   require ('View/gestionUsers.tpl');
+    }#End if
+    else {
+        header("Location: index.php");
+    }#End else
+}#End showUsers
 
-	require ('View/gestionUsers.tpl');
-}
+#=======================================================================================================
 
+/*** Arrete la session ***/
 function deconnexion() {
 	session_destroy();
    	header("Location: index.php");
-}
+}#End deconnexion
 
+#=======================================================================================================
+
+/*** Envoie les données de suppression au model ***/
 function removeUser() {
 	$id_user = isset($_POST['id_user'])?$_POST['id_user']:"";
 	require ('Model/userModel.php');
 
 	deleteUser($id_user);
-}
+}#End removeUser
 
+#=======================================================================================================
+
+/*** Envoie les données de modification au model ***/
 function changeMembre() {
 	$idUser                = isset($_POST['IdUser'])?$_POST['IdUser']:"";
 	$nom                   = isset($_POST['Nom'])?$_POST['Nom']:"";
@@ -155,32 +191,52 @@ function changeMembre() {
 
 	require ('Model/userModel.php');
 	update_membre($idUser, $nom, $Prenom, $dateDeNaissance_user, $NbSemestre, $Mail, $Telephone, $groupe);
-}
+}#End changeMembre
 
+#=======================================================================================================
+
+/***  ***/
 function recupererPassword() {
-	$mail = isset($_POST['Mail'])?$_POST['Mail']:"";
-	
+	$mail_to = isset($_POST['email'])?$_POST['email']:"";
 	require ('Model/userModel.php');
-	$newpassword = reset_mail($mail);
+	$newpassword = reset_mail($mail_to);
 	if ($newpassword) {
-		envoiMail($newpassword, $mail);
-	}
+		envoiMail($newpassword, $mail_to);
+	}#End if
 	else {
 		echo ('<div class="alert alert-danger" role="alert">
 		<a href="index.php?control=user&action=showInscription" class="alert-link">Votre adresse mail est inconnu ! </a>
 		</div>');
-	}
-}
+	}#End else
+}#End recupererPassword
 
-function envoiMail($newpassword, $mail) {
+#=======================================================================================================
+
+/*** Envoie un mail avec le nouveau mdp à l'utilisateur ***/
+function envoiMail($newpassword, $mail_to) {
+    $mail_from = 'amandlabeautin@gmail.com';
+    //=====Création du header de l'e-mail
+    $header = 'From: ' .$mail_from . "\r\n". 
+                'Reply-To: ' . $mail_from. "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+    
+    $subject = "GIRV : Vos identifiants d'accès";
+    //==========
 	$message = 'Bonjour,
 	Voici votre nouveau mot de passe pour vous connecter au site du SIPHIF, vous pourrez modifier votre mot de passe sur votre espace Profil :
 	Mot de passe : '.$newpassword.'
 	Ne pas répondre à  cet email : message automatique.';
-	if($res=mail(''.$mail.'','GIRV : Vos identifiants d\'accès', $message)){
-		echo "<script>alert('Mail envoyé');</script>";
-	} else {
-		echo'Problème à l\'envoie du mail';
-	}
-}
+	if(mail($mail_to, $subject, $message, $header)){
+		echo('<div class="alert alert-success" role="alert">
+		<a href="index.php" class="alert-link">Vous pouvez dàs à présent, vous connecter vec votre nouveau not de passe</a><br> Pensez à le modifier lors de votre connection.
+		</div>');
+	} #End if
+    else {
+		echo('<div class="alert alert-danger" role="alert">
+		<a href="index.php" class="alert-link">Nous sommes désolé ! Une erreur a empéché l\'envoi du mail !</a>
+		</div>');
+	}#End else
+}#End envoiMail
+
+#=======================================================================================================
 ?>

@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" 
-                       href="View/css/gestionUsers.css " />  
-    <script src="View/js/listStages.js"></script>
+                       href="View/css/formEval.css " />  
+    <script src="View/js/formEval.js"></script>
     <!-- DataTables CSS -->
     <script link rel="stylesheet" type="text/css" href="View/css/libs/jquery.dataTables.css"></script>
   

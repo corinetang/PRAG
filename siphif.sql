@@ -200,6 +200,9 @@ CREATE TABLE DES_Etablissement(
         PRIMARY KEY (id_DES ,id_Etablissement )
 )ENGINE=InnoDB;
 
+#------------------------------------------------------------
+# ALTER Table
+#------------------------------------------------------------
 ALTER TABLE Evaluation ADD CONSTRAINT FK_Evaluation_id_Stage FOREIGN KEY (id_Stage) REFERENCES Stage(id_Stage);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Groupe FOREIGN KEY (id_Groupe) REFERENCES Groupe(id_Groupe);
 ALTER TABLE User ADD CONSTRAINT FK_User_id_Filiere FOREIGN KEY (id_Filiere) REFERENCES Filiere(id_Filiere);
@@ -215,6 +218,40 @@ ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_Question FORE
 ALTER TABLE Question_Reponse ADD CONSTRAINT FK_Question_Reponse_id_reponse FOREIGN KEY (id_reponse) REFERENCES Reponse(id_reponse);
 ALTER TABLE DES_Etablissement ADD CONSTRAINT FK_DES_Etablissement_id_DES FOREIGN KEY (id_DES) REFERENCES DES(id_DES);
 ALTER TABLE DES_Etablissement ADD CONSTRAINT FK_DES_Etablissement_id_Etablissement FOREIGN KEY (id_Etablissement) REFERENCES Etablissement(id_Etablissement);
+
+#------------------------------------------------------------
+# INSERT Table: FILIERE
+#------------------------------------------------------------
+INSERT INTO filiere (nom_filiere) VALUES ('Biologie médicale');
+INSERT INTO filiere (nom_filiere) VALUES ('Innovation Pharmaceutique et Recherche');
+INSERT INTO filiere (nom_filiere) VALUES ('Pharmacie hospitalière');
+
+#------------------------------------------------------------
+# INSERT Table: GROUPE
+#------------------------------------------------------------
+INSERT INTO groupe (libelle_groupe) VALUES ('Interne');
+INSERT INTO groupe (libelle_groupe) VALUES ('Adhérent');
+INSERT INTO groupe (libelle_groupe) VALUES ('Admin');
+
+#------------------------------------------------------------
+# INSERT Table: USER
+#------------------------------------------------------------
+INSERT INTO `user` (`id_user`, `identifiant_user`, `nom_user`, `prenom_user`, `mdp_user`, `NbSemestre_user`, `moyenneClassement_user`, `dateDeNaissance_user`, `RangClassement_user`, `mail_user`, `numtel_user`, `id_Groupe`, `id_Filiere`) VALUES
+(1, 'admin', 'admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 5, NULL, '1994-10-17', NULL, '', 2147483647, 3, 1);
+
+#------------------------------------------------------------
+# INSERT Table: QUESTIONS
+#------------------------------------------------------------
+INSERT INTO `questions` (`id_Question`, `Libelle_question`) VALUES
+(1, 'Lieu de stage'),
+(2, 'Activité de l’interne Hors garde - Hors astreinte'),
+(3, 'Activité de l’interne en garde'),
+(4, 'Activité de l’interne en astreinte'),
+(5, 'Encadrement et formation'),
+(6, 'Respect du statut de l’interne'),
+(7, 'Organisation du service d’affectation'),
+(8, 'Appréciation globale du stage Points forts du stage'),
+(9, 'Points faibles du stage - Remarques éventuelles');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -13,6 +13,8 @@
 			return $res;
 	}#End getFiliere
 
+#=======================================================================================================
+
 	function getFiliereById($id){
 		require('ConfigSQL.php');
 		    $add = $bd->prepare("SELECT * FROM filiere f WHERE id_filiere = :id");

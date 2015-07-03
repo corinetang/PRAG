@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
                     <div class="col-md-4">
-                        <input type="email" class="form-control input-md" id="inputEmail3" name="mail" placeholder="Adresse Email" onblur="verifMail(this)" required>
+                        <input type="email" class="form-control input-md" id="inputEmail3" name="Mail" placeholder="Adresse Email" onblur="verifMail(this)" required>
                     </div>
                 </div>
 

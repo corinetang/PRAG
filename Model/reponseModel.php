@@ -12,7 +12,9 @@
             return $res;
     }
 
-    //récupérer réponse à la question
+#=======================================================================================================
+
+    /*** récupérer réponse à la question ***/
     function getReponseQuestion($id_Question, $id_Evaluation) {
         require('ConfigSQL.php');
             $add = $bd->prepare("SELECT * FROM Reponse r
@@ -25,7 +27,6 @@
 
             //si les tables n'existent pas, on les crée
             if (!$res) {
-
                 $add = $bd->prepare("INSERT INTO Reponse VALUES ()");
                 $add->execute();
                 $id_Reponse = $bd->lastInsertId();
@@ -40,10 +41,11 @@
                 $add->bindvalue(1, $id_Reponse);
                 $add->execute();
                 $res = $add->fetchAll(PDO::FETCH_ASSOC);
-            }
-
+            }#End if
             return $res;
     }
+
+#=======================================================================================================
 
     /*** METTRE A JOUR UNE QUESTION ***/
     function EnregistrerReponse($id_Reponse, $commentaire_reponse){

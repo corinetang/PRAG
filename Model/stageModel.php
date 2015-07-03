@@ -17,7 +17,6 @@
 
 		return json_encode($res);
 	}*/#End getStageFiliere
-
 	#=======================================================================================================
 
 	/*** RECUPERE UN STAGE ***/
@@ -36,7 +35,6 @@
 
 		return json_encode($res);
 	}#End getStageFiliere
-
 	#=======================================================================================================
 
 	/*** AJOUT D'UN NOUVEAU STAGE ***/
@@ -53,7 +51,6 @@
 
 		return ($add->execute());
 	}#End setStage
-
 	#=======================================================================================================
 
 	/*** METTRE A JOUR UN STAGE ***/
@@ -77,7 +74,6 @@
 
 	    return ($add->execute());
 	}#End updateStage
-
 	#=======================================================================================================
 
 	function getStagesByFiliere($idfiliere){
@@ -113,7 +109,6 @@
 
 		return $res;
 	}#End getStageByFiliere
-
 	#=======================================================================================================
 
 	function getEvaluationByIdStage($id_stage) {
@@ -129,7 +124,6 @@
 	    $res = $add->fetchAll(PDO::FETCH_ASSOC);
 	    return $res;
 	} #getEvaluationByIdStage
-
 	#========================================================================================================
 
 	function getStagesByFiliereAndUserChoices($idfiliere, $iduser){
@@ -151,7 +145,6 @@
 
 		return $res;
 	}
-
 	#==========================================================================================================
 
 	function getStagesByFiliereAndUserNotChoices($idfiliere, $iduser){
@@ -192,8 +185,8 @@
 		return $res[0];
 	}#End getUserStage
 
-
 #=======================================================================================================
+
     function getStagesByUser($idUser){
         require('ConfigSQL.php');
 	    $add = $bd->prepare("SELECT * FROM Stage s

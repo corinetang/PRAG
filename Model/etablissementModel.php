@@ -8,11 +8,10 @@
 			$res = $add->fetchAll(PDO::FETCH_ASSOC);
 
 			return $res;
-	}#End getService
-
+	}#End getEtablissement
 	#=======================================================================================================
 
-	/*** AJOUT D'UN NOUVEAU SERVICE ***/
+	/*** AJOUT D'UN NOUVEAU ETABLISSEMENT ***/
 	function setEtablissement($id_Etablissement){
 		/*require('ConfigSQL.php');
 	    $add = $bd->prepare("INSERT INTO Etablissement(nom_Etablissement) 
@@ -21,10 +20,9 @@
 
 		return ($add->execute());*/
 	}#End setEtablissement
-
 	#=======================================================================================================
 
-	/*** METTRE A JOUR UN SERVICE ***/
+	/*** METTRE A JOUR UN ETABLISSEMENT ***/
 	function updateEtablissement($id_Etablissement){
 		/*require('ConfigSQL.php');
 	    $add = $bd->prepare("UPDATE Etablissement 

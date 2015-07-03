@@ -1,9 +1,7 @@
 
 <?php
 
-/*
- * Affiche la page des pré-choix
- */
+/*** Affiche la page des pré-choix ***/
 function showVoeux() {
 
 	if(isset($_POST['stage_id']) && isset($_POST['user_id'])) {
@@ -13,10 +11,10 @@ function showVoeux() {
 
 		$result = getClassementByPreChoix($stage_id,$user_id);
 		$_SESSION['prechoix'] = $result;
-	}
+	}#End if
 	else {
 		require ('Model/choixModel.php');
-	}
+	}#End else
 	if (isset($_SESSION['user'])) {
 
 		// Recuperation du nom de filière
@@ -29,9 +27,16 @@ function showVoeux() {
 		$choosenStages = getStagesByFiliereAndUserChoices($id_filiere, $_SESSION['user']['id_user']);
 
 		$is_after_acceptable = isAfterAcceptable();
-	}
-	require ('View/listVoeux.tpl');
-}
+	}#End if
+    if ($_SESSION["user"]["id_Groupe"] == 1 || $_SESSION["user"]["id_Groupe"] == 2 ){
+	   require ('View/listVoeux.tpl');
+    }#End if
+    else {
+        header("Location: index.php");
+    }#End else
+}#End showVoeux
+
+#=======================================================================================================
 
 function enregistrerVoeu() {
 	$stage_id    = isset($_POST['stage_id'])?$_POST['stage_id']:"";
@@ -40,7 +45,9 @@ function enregistrerVoeu() {
 
 	require ('Model/choixModel.php');
 	setChoix(false, $rank, $user_id, $stage_id);
-}
+}#End enregistrerVoeu
+
+#=======================================================================================================
 
 function retirerVoeu() {
 	$user_id     = isset($_POST['user_id'])?$_POST['user_id']:"";
@@ -48,7 +55,9 @@ function retirerVoeu() {
 
 	require ('Model/choixModel.php');
 	removeChoix($user_id, $stage_id);
-}
+}#End retirerVoeu
+
+#=======================================================================================================
 
 function updateRankVoeu() {
 	$user_id     = isset($_POST['user_id'])?$_POST['user_id']:"";
@@ -57,11 +66,11 @@ function updateRankVoeu() {
 
 	require ('Model/choixModel.php');
 	updateRank($user_id, $stage_id, $rank);
-}
+}#End updateRankVoeu
 
-/*
- * Affiche la page des évaluations
- */
+#=======================================================================================================
+
+/*** Affiche la page des évaluations ***/
 function showStages() {
 
 	require('Model/kint/Kint.class.php');
@@ -84,10 +93,16 @@ function showStages() {
 		$Evaluation = getUserStageEval($_SESSION['user']['id_user'], $idStageActuel);
 
 		require ('Model/reponseModel.php');
-	}
+	}#End if
+    if ( $_SESSION["user"]["id_Groupe"] == 1 || $_SESSION["user"]["id_Groupe"] == 2 ){
+	   require ('View/listStages.tpl');
+    }#End if
+    else {
+        header("Location: index.php");
+    }#End else
+}#End showStages
 
-	require ('View/listStages.tpl');
-}
+#=======================================================================================================
 
 function showEval() {
 
@@ -108,10 +123,16 @@ function showEval() {
 	// $id_stage = isset($_POST['id_Stage'])?$_POST['id_Stage']:"";
 
 
+    if ( $_SESSION["user"]["id_Groupe"] == 1 || $_SESSION["user"]["id_Groupe"] == 2 ){
+	   require ('View/formEval.tpl');
+    }#End if
+    else {
+        header("Location: index.php");
+    }#End else
 
-	require ('View/formEval.tpl');
+}#End showEval
 
-}
+#=======================================================================================================
 
 /*
  * Affiche la page des consultation
@@ -130,9 +151,13 @@ function showConsultation() {
 
 		$stages[$i][$libelleEval] = array();
 		array_push($stages[$i][$libelleEval], $evaluation);
-	}
-
-	require ('View/consultation.tpl');
-}
+	}#End for
+    if ( $_SESSION["user"]["id_Groupe"] == 2 ){
+	   require ('View/consultation.tpl');
+    }#End if
+    else {
+        header("Location: index.php");
+    }#End else
+}#End showConsultation
 
 ?>

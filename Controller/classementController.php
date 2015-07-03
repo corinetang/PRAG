@@ -10,6 +10,8 @@ function DisplayResultatPreChoix($value=''){
 	var_dump($result);
 }#End DisplayResultatPreChoix
 
+#=======================================================================================================
+
 function CloseVoeux(){
 	require('Model/classementModel.php');
 	traitementClassement();

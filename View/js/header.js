@@ -4,7 +4,6 @@
 function initializeHeader(idRole) {
 	if (idRole === 3) { // Admin
 		$('ul.utilisateur-option').removeClass('hide-option');
-
 		$('li.admin-option').removeClass('hide-option');
 		$('li.profil-option').removeClass('hide-option');
 	}
@@ -21,7 +20,7 @@ function initializeHeader(idRole) {
 		$('li.profil-option').removeClass('hide-option');
 		$('li.stage-option').removeClass('hide-option');
 		$('li.stage-voeux-option').removeClass('hide-option');
-		$('li.stage-consultation-option').removeClass('hide-option');
+        $('li.stage-evaluation-option').removeClass('hide-option');
 	}
     else{ // Visiteur
     	$('li.accueil-option').removeClass('hide-option');
