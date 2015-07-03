@@ -18,7 +18,7 @@ function showInscription() {
 	require ('Model/filiereModel.php');
 	$listFiliere = getFiliere();
 
-    if (!empty($_SESSIONS["user"]["id_Groupe"])){
+    if (empty($_SESSIONS["user"]["id_Groupe"])){
 	   require ('View/inscription.tpl');
     }#End if
     else{
