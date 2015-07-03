@@ -8,25 +8,27 @@
      <h1>Inscrivez-vous dès maintenant !</h1>
     <br>
 	<div id="dialog-form"  title="Inscription">
-			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=inscription" enctype="multipart/form-data" onsubmit="return valideForm(this)">
+			<form class="form-horizontal" method="post" id="inscription" action="index.php?control=user&action=inscription" enctype="multipart/form-data">
                 	<fieldset>
 					<legend>REMPLISSEZ LE FORMULAIRE</legend>
+                        
+                <!--- NOM -->
                 <div class="form-group">
                     <label for="Nom" class="col-md-4 control-label">Nom</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control input-md" name="Nom" onblur="verifName(this)" required>
+                        <input type="text" class="form-control input-md" id="Nom" name="Nom" required>
                     </div>
                 </div>
-		<div class="alert alert-danger" style="display:none;" id="error-nom">Attention : Votre nom doit comporter au minimun 2 caractères</div>
+		          <div class="alert alert-danger" style="display:none;" id="error-nom"><strong>Attention !</strong> Votre nom doit comporter au minimun 2 caractères</div>
 		
                  <!--- PRENOM -->
                 <div class="form-group">
                     <label for="Prenom" class="col-md-4 control-label">Pr&eacute;nom</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control input-md" name="Prenom" onblur="verifName(this)" required>
+                        <input type="text" class="form-control input-md" name="Prenom" id="Prenom" required>
                     </div>
                 </div>
-		<div class="alert alert-danger" style="display:none;" id="error-nom">Attention : Votre prénom doit comporter au minimun 2 caractères</div>
+		          <div class="alert alert-danger" style="display:none;" id="error-nom"><strong>Attention !</strong> Votre prénom doit comporter au minimun 2 caractères</div>
 		
                  <!--- DATE DE NAISSANCE -->
                 <div class="form-group">
@@ -40,16 +42,16 @@
                 <div class="form-group">
                     <label for="NbSemestre" class="col-md-4 control-label">Nombre de semestre</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control input-md" name="NbSemestre" placeholder="Nombre de Semestre Valides" onblur="verifNbSemestre(this)">
+                        <input type="text" class="form-control input-md" name="NbSemestre" id="NbSemestre" placeholder="Nombre de Semestre Valides">
                     </div>
                 </div>
-		<div class="alert alert-danger" style="display:none;" id="error-nbSemestre">Attention : Ce champ doit comporter un chiffre comporis entre 1 et 7</div>
+		          <div class="alert alert-danger" style="display:none;" id="error-nbSemestre"><strong>Attention !</strong> Ce champ doit comporter un chiffre comporis entre 1 et 7</div>
 		
                  <!--- E-MAIL -->
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
                     <div class="col-md-4">
-                        <input type="email" class="form-control input-md" id="inputEmail3" name="Mail" placeholder="Adresse Email" onblur="verifMail(this)" required>
+                        <input type="email" class="form-control input-md" id="inputEmail3" name="Mail" placeholder="Adresse Email" required>
                     </div>
                 </div>
 
@@ -57,16 +59,16 @@
                  <div class="form-group">
                     <label for="Password" class="col-md-4 control-label">Mot de passe</label>
                     <div class="col-md-4">
-                        <input type="password" class="form-control input-md" id="Password" onblur="verifPassword(this)" name="Password" placeholder="Password" required>
+                        <input type="password" class="form-control input-md" id="Password" name="Password" placeholder="Password" required>
                      </div>
                 </div>
-                <div class="alert alert-danger" style="display:none;" id="error-password">Attention : Votre mot de passe et votre confirmation de mot de passe sont différents</div>
+                <div class="alert alert-danger" style="display:none;" id="error-password"><strong>Attention !</strong> Votre mot de passe et votre confirmation de mot de passe sont différents</div>
 
                  <!--- MOT DE PASSE -->
                 <div class="form-group">
                     <label for="ValidationPassword" class="col-md-4 control-label">Confirmation de votre Mot de passe</label>
                     <div class="col-md-4">
-                        <input type="password" class="form-control input-md" id="ValidationPassword" onblur="verifPassword(this)" name="ValidationPassword" placeholder="Confirmez votre mot de passe" required>
+                        <input type="password" class="form-control input-md" id="ValidationPassword" name="ValidationPassword" placeholder="Confirmez votre mot de passe" required>
                      </div>
                 </div>
 
@@ -74,10 +76,10 @@
                 <div class="form-group">
                     <label for="Telephone" class="col-md-4 control-label">T&eacute;l&eacute;phone</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control input-md" name="Telephone" onblur="verifNumTel(this)">
+                        <input type="text" class="form-control input-md" name="Telephone">
                     </div>
                 </div>
-		 <div class="alert alert-danger" style="display:none;" id="error-telephone">Attention : Votre numéro de téléphone doit comporter 10 chiffres</div>
+		          <div class="alert alert-danger" style="display:none;" id="error-telephone"><strong>Attention !</strong> Votre numéro de téléphone doit comporter 10 chiffres</div>
 		 
                  <!--- FILIERE -->
                 <div class="form-group">

@@ -1,7 +1,7 @@
 jQuery(function () {
 	$("#Nom").focusout(function () {
         var nameU  = $("#Nom").val();
-        
+
         if(nameU.length < 2) {
 			$("#error-nom").removeAttr('style');
 		}
